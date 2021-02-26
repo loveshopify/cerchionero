@@ -1,0 +1,156 @@
+
+<style>
+  #shopify-section-{{section.id}} .collection-grid-item__link:hover {opacity:1;}
+
+  @media only screen and (min-width: 750px) and (max-width: 979px){
+    {% if section.settings.layout == 'full_with_spacing'%}
+    #shopify-section-{{section.id}} .five_image .btn {
+      padding: 2px 12px;
+      font-size: 11px;
+    }
+    #shopify-section-{{section.id}} .five_image .collection-grid-item__title {
+      font-size: 12px;
+    }
+    {% endif %}
+  }
+  {% if section.settings.layout == 'full_without_spacing'%}
+  #shopify-section-{{section.id}}.index-section {
+    margin-top:0;
+    margin-bottom:0;
+  }
+  #shopify-section-{{section.id}} .collection-grid-item__link {
+    border-width:0;
+  }
+  #shopify-section-{{section.id}} .collection-grid-item {
+    margin-bottom:0;
+  }
+  {% endif %}
+
+</style>	
+
+{% if section.settings.layout == 'container'%}
+<div class="page-width">
+  {% else %}
+  <div class="page-width_1">  
+    {% endif %}
+    {% if section.settings.title != blank and section.settings.layout != 'full_without_spacing'%}
+    <div class="section-header text-{{settings.title_position}}">
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+    {% endif %}
+
+    {% case section.settings.grid %}
+      {% when 2 %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+      {% when 3 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+      {% when 4 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter four_image' -%}
+      {% when 5 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth five_image' -%}
+    {% endcase %}
+
+    <div class="collection-grid">
+      <div class="grid grid--uniform{% if section.settings.layout == 'full_without_spacing'%} grid--no-gutters{% endif %}">
+        {% for block in section.blocks limit: section.blocks.size %}
+        <div class="grid__item {{ grid_item_width }}" {{ block.shopify_attributes }}>
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% include 'collection-grid-item' %}
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
+    {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+    {% endif %}
+  </div>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "class": "index-section",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collection List [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002080774-How-to-setup-Collection-List-section-in-Booster-2-0)"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Boxed"
+          },
+          {
+            "value": "full_with_spacing",
+            "label": "Wide with spacing"
+          },
+          {
+            "value": "full_without_spacing",
+            "label": "Wide without spacing"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Collections per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 4
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Select Image",
+            "info": "Selecting a new picture will replace the Collection featured image."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

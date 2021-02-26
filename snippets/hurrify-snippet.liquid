@@ -1,0 +1,10 @@
+{% if template.name == "product" %}
+<script>
+    window.hurrifyVariants = {{ product.variants | map: "inventory_quantity" | json }};
+    window.hurrifyProductAvailable = {{ product.available }};
+</script>
+{% endif %}
+<script>
+    window.hurrifyBaseUrl = "https://hurrifyme.com";
+</script>
+<script src="//{{ shop.domain }}/apps/hurrify/plugin/js/hurrify.js" ></script>

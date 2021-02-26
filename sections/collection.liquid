@@ -1,0 +1,184 @@
+<style>
+  #shopify-section-{{section.id}} .coll_button_view {
+    {% if section.settings.full_btn %}
+    width:100%;
+    {% endif %}
+    {% unless section.settings.transparent_btn %}
+    background: {{settings.color_button }};
+    color: {{settings.color_button_text}};
+    border: 1px solid {{settings.color_button }};
+    {% else %}
+    background: transparent;
+    color: {{ settings.color_body_text }};
+    border: 1px solid {{ settings.color_body_text }};
+    {% endunless %}
+  }
+  @media only screen and (min-width:750px) {
+    #shopify-section-{{section.id}} .coll_button_view {
+      {% if section.settings.full_btn %}
+      margin: 0 auto;
+      max-width: 75%;   
+      {% endif %}
+    }
+  }
+</style>
+<div class="page-width">
+  {% if section.settings.title != blank %}
+  <div class="section-header text-{{settings.title_position}}">
+    <h2 class="title">{{ section.settings.title | escape }}</h2>
+  </div>
+  {% endif %}
+
+  {%- assign collection = collections[section.settings.collection] -%}
+
+  {% case section.settings.grid %}
+    {% when 2 %}
+    {%- assign max_height = 530 -%}
+    {%- assign grid_item_width = 'medium-up--one-half' -%}
+    {% when 3 %}
+    {%- assign max_height = 345 -%}
+    {%- assign grid_item_width = 'medium-up--one-third' -%}
+    {% when 4 %}
+    {%- assign max_height = 250 -%}
+    {%- assign grid_item_width = 'medium-up--one-quarter' -%}
+    {% when 5 %}
+    {%- assign max_height = 195 -%}
+    {%- assign grid_item_width = 'medium-up--one-fifth' -%}
+  {% endcase %}
+
+  <!-- row setting for mobile  -->
+
+  {% if section.settings.mobile_grid == "on_mobile_set_row_one" %}
+  {%- assign grid_mobile = " " -%}
+  {% else %}
+  {%- assign grid_mobile = "small--one-half" -%}
+  {% endif %}
+
+  {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+
+  <div class="grid grid--uniform grid--view-items">
+    {% for product in collection.products limit: product_limit %}
+    <div class="grid__item grid__item--{{section.id}} {{ grid_mobile }} {{ grid_item_width }}">
+      {% include 'product-card-grid', max_height: max_height %}
+    </div>
+    {% else %}
+
+    {% for i in (1..product_limit) %}
+    <div class="grid__item grid__item--{{section.id}} {{ grid_mobile }} {{ grid_item_width }}">
+      <div class="grid-view-item">
+        <a href="#" class="grid-view-item__link">
+          <div class="grid-view-item__image">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+          <div class="subheading grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+          <div class="grid-view-item__meta">
+            {% include 'product-price' %}
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+  </div>
+
+  {% if section.settings.show_view_all %}
+  <hr class="hr--invisible">
+  <div class="text-center">
+    <a href="{{ collection.url }}" class="btn coll_button_view">
+      {{ 'collections.general.view_all' | t }}
+    </a>
+  </div>
+  {% endif %}
+
+</div>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "class": "index-section",
+    "settings": [
+  	  {
+        "type": "header",
+        "content": "Featured Collection [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002078853-How-to-setup-Featured-Collection-section-in-Booster-2-0)"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Products per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "label": "Rows",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendors",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label": "Show 'View all' button",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Button Style"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_btn",
+        "label": "Full Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "transparent_btn",
+        "label": "Transparent Button"
+      },
+	  {
+        "type": "radio",
+        "id": "mobile_grid",
+        "default" : "on_mobile_set_row_two",
+        "options": [
+          {
+            "value": "on_mobile_set_row_one",
+            "label": "1 per row"
+          },
+          {
+            "value": "on_mobile_set_row_two",
+            "label": "2 per rows"
+          }
+        ],
+        "label": "Product Per Row(Mobile)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

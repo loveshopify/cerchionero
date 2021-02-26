@@ -1,0 +1,165 @@
+      <script>
+						Number.prototype.padLeft = function(base,chr){
+                         var  len = (String(base || 10).length - String(this).length)+1;
+                         return len > 0? new Array(len).join(chr || '0')+this : this;
+                              }
+   
+                           // setting time reset every day
+                        var resttime="{{settings.enable_timer_reset_every_day}}";
+						var someDate = new Date();	
+						var ddNextDays = someDate.getDate()+1;
+						var dd = someDate.getDate();
+						var mm = someDate.getMonth()+ 1;
+						var y = someDate.getFullYear();
+                        var H=someDate.getHours().padLeft(); 
+                        var m=someDate.getMinutes().padLeft(); 
+                        var s=someDate.getSeconds().padLeft(); 
+					    var NextDate = new Date(Date.now()+1*24*60*60*1000);
+                        var ddN = NextDate.getDate();
+				        var mmN = NextDate.getMonth()+ 1;
+				        var yN = NextDate.getFullYear();
+
+				        var nextdayDate = yN+'/'+mmN+'/'+ddN;
+				        var startdayDate = y + '/'+ mm + '/'+ dd;
+				       var NowTime=H+':'+m+':'+s;
+						var TargetDate=nextdayDate+" "+resttime;
+						var StartDate=startdayDate+" "+resttime;
+						 var timeDate='';
+						if(NowTime < resttime) {
+						timeDate=StartDate;
+						} else{
+						
+						timeDate=TargetDate;
+						}
+     
+      
+               //  alert(diffDays);
+                  // left number
+        var current_product ='';
+        var enable_inventory_stock_number ="{{ settings.enable_inventory_stock_number }}";
+
+        if(enable_inventory_stock_number == 'enable_stock_number_random')
+        {
+          var current_product_random_num="random_left_number_{{ product.id }}";
+          var current_product= "product_{{ product.id }}";      
+
+        } else{
+          var current_product_random_num="random_left_number";
+          var current_product= "product_common_id";
+        }
+        
+        function setCookie(cname,cvalue,exdays,randomleftnum,currentLeftnum) {
+          var d = new Date();
+          d.setTime(d.getTime() + (exdays));
+          var expires = "expires=" + d.toGMTString();
+          var endTime=d.toGMTString();
+          var randomleftnumber=currentLeftnum; 
+          document.cookie = cname + "=" + endTime + ";" + expires + ";path=/";
+          document.cookie = randomleftnum+"=" + randomleftnumber + ";";
+
+        }
+        
+        function getCookie(cname) {
+          var name = cname + "=";
+          var decodedCookie = decodeURIComponent(document.cookie);
+          var ca = decodedCookie.split(';');
+          for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+
+
+        var randomNumber=getCookie(current_product_random_num);
+        if (timeDate != "") {
+          //  alert("Welcome again " + user);
+        } else {
+
+         var dd = new Date();
+	     dd.setTime(dd.getTime() + (remainderTime));
+         var endTime=dd.toGMTString();	
+		 timeDate=endTime;
+          // for randomly number start code
+
+          var myLeftnum = ['3','4', '5', '6', '7', '8','9','10','11','12'];    
+
+          var randLeftnum = Math.floor(Math.random() * myLeftnum.length);
+
+          var currentLeftnum = myLeftnum[randLeftnum];
+
+          randomNumber=currentLeftnum;
+          // for randomly number end code
+
+          if (timeDate != "" && timeDate != null) {
+            setCookie(current_product, timeDate, remainderTime, current_product_random_num, currentLeftnum);
+            if(enable_inventory_stock_number == "enable_stock_number_random"){
+
+              $("#stock_left_num").val(currentLeftnum);
+              $(".total_stock_left_num").val(currentLeftnum);
+              $("#counter_left").text(Math.round(Number(currentLeftnum))); 
+            } 
+          }
+        }       
+             // start time with time diff.
+        
+        var remainderTimeset ="86400";    
+         remainderTime= remainderTimeset*1000;
+        
+                 var ddd = new Date();
+                 ddd.setTime(ddd.getTime());
+                 var startTime1=ddd.toGMTString();	                    
+                 var date1 = new Date(startTime1);
+                 var date2 = new Date(timeDate);
+                 var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+                 var diffDays = Math.ceil(timeDiff / (1000)); 
+                 $(".timer_time_reset_day").val(diffDays);  
+        
+        var left_number=$(".total_stock_left_num").val();
+        if( enable_inventory_stock_number == "enable_inventory_stock_number_with_not_desc" || enable_inventory_stock_number == "enable_inventory_stock_number_with_desc")
+        {
+
+          $(".cookies_Left_number").val(left_number);
+          $("#counter_left").text(Math.round(Number(left_number)));
+
+        } else if(enable_inventory_stock_number == "enable_stock_number_random"){
+
+          $(".total_stock_left_num").val(randomNumber);
+          $("#stock_left_num").val(randomNumber);
+          $("#counter_left").text(Math.round(Number(randomNumber))); 
+
+          var getSecond=remainderTimeset/randomNumber;
+          var nowLeftnumber=diffDays/getSecond;
+          if(nowLeftnumber <= 1){
+            nowLeftnumber=1;
+          }  
+          $(".stock_left_num").val(nowLeftnumber);
+          $("#counter_left").text(Math.round(Number(nowLeftnumber))); 
+
+        }else{
+          var getSecond=remainderTimeset/left_number;
+          var nowLeftnumber=diffDays/getSecond;
+
+          if(nowLeftnumber <= 1){
+            nowLeftnumber=1;
+          }        
+          $(".reset_day_Left_number").val(nowLeftnumber);
+
+          $("#counter_left").text(Math.round(Number(nowLeftnumber)));
+        }
+          
+ 
+             var secondDiff=parseInt(diffDays) + 4;
+       
+              setTimeout(function(){
+              location.reload(true);
+              }, secondDiff*1000)
+
+        
+</script>

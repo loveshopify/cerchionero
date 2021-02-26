@@ -1,0 +1,179 @@
+
+{% if section.settings.enable_related_upsell %}
+<!-- Modal -->
+{% include 'condition_forrelated_popup' %}
+
+{% if collection1 %}
+<div id="related_cart_sucsses_msg"></div>
+<div id="related_popup_upsell" class="modal fade" role="dialog">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center related_popup_heading">{{ 'products.upsell.heading' | t }}</h4>
+         </div>
+        <div class="modal-body" id="comment_parent_like">
+          <div id="comment_child_like"> 
+            {% include 'condition_forrelated_popup' %}
+
+            {% if collection1 %}
+            
+            {%- assign collection = collections[settings.upsell_related_collection_1] -%}
+
+            {% capture index %}
+            {{ 'now' | date: '%S' | times: collections.all.products.size | divided_by: 60 }}
+            {% endcapture %}
+            <div class="related_pupup_rendome_parent hide-xs">
+              {% for product in collections[collection2.handle].products limit:3 %}
+                {% if product.available and product.variants.size >= 1 %}
+
+                <div class="grid__item  medium-up--one-third small--one-half related_pupup_rendome">
+                  {% include 'product-card-grid-related-popup', grid_image_width: '250X250' %}
+                </div>
+                {% endif %}
+              {% endfor %} 
+            </div>
+            <div class="medium-up--hide">
+             <button type="button" class="btn btn--link thumbnails-slider__btn thumbnails-slider__prev">
+                {% include 'icon-chevron-left' %}
+                <span class="icon__fallback-text">{{ 'sections.slideshow.previous_slide' | t }}</span>
+             </button>
+            <div class="related_pupup_rendome_parent one-time hide-lg grid--no-gutters">                         
+              {% for product in collections[collection2.handle].products limit:3 %}
+              <div class="grid__item">
+                {% include 'product-card-grid-related-popup-mobile'%}
+              </div>
+              {% endfor %}                          
+            </div>
+            <button type="button" class="btn btn--link thumbnails-slider__btn thumbnails-slider__next">
+                {% include 'icon-chevron-right' %}
+                <span class="icon__fallback-text">{{ 'sections.slideshow.next_slide' | t }}</span>
+             </button>
+            </div>
+            <input type="hidden" id="check_collection_emty" value="1">
+            {% else %}
+            <input type="hidden" id="check_collection_emty" value="0">
+            {% endif %}
+          </div>
+        </div> 
+        <div class="modal-footer related_popup_footer text-center">
+           <button type="button" class="close thanks_line" data-dismiss="modal">No Thanks</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% elsif product1 %}
+<div id="related_cart_sucsses_msg"></div>
+<div id="related_popup_upsell" class="modal fade" role="dialog" >
+  <div class="vertical-alignment-helper_pro ">
+    <div class="modal-dialog vertical-align-center">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center related_popup_heading">{{ 'products.upsell.heading' | t }}</h4>
+        </div>
+        <div class="modal-body" id="comment_parent_like">
+          <div id="comment_child_like"> 
+            {% include 'condition_forrelated_popup' %}
+            
+
+            {% if product1 %}
+            
+            {%- assign product = product2 -%}
+            
+        
+            <div class="related_pupup_rendome_parent">
+             
+              <div class="grid__item  one-whole small--push-one-tenth medium-up--push-one-quarter related_pupup_rendome pro_upsell_unique">
+                {% include 'product-card-grid-related-popup', grid_image_width: '300x300' %}
+              </div>
+              
+            </div>
+
+            <input type="hidden" id="check_collection_emty" value="1">
+            {% else %}
+            <input type="hidden" id="check_collection_emty" value="0">
+            {% endif %}
+          </div>
+        </div> 
+        <div class="modal-footer related_popup_footer text-center">
+          <button type="button" class="close thanks_line" data-dismiss="modal">{{ 'products.upsell.no_thanks' | t }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<!-- <div id="related_cart_sucsses_msg"></div> -->
+{% endif %}
+{% endif %}
+
+<style>
+  .one-time .slick-prev{left:0;z-index:999;height: 30px;width: 30px;}
+  .one-time .slick-next{right:0;z-index:999;height:30px;width: 30px;}
+</style>
+
+
+{% schema %}
+  {
+    "name": "Upsell Popup",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Related Upsell Popup [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360003026534-How-to-setup-the-Upsell-Pop-up-)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_related_upsell",
+        "label": "Enable related upsell",
+        "default": true
+      }
+	],
+	"blocks": [
+      {
+        "type": "coll_to_coll_upsell",
+        "name": "Collection Upsell",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "upsell_related_collection",
+            "label": "Upsell"
+          },
+          {
+            "type": "collection",
+            "id": "upsell_suggested_collection",
+            "label": "Upsell"
+          }
+        ]
+      },
+	  {
+        "type": "pro_to_pro_upsell",
+        "name": "Product Upsell",
+        "settings": [
+          {
+            "type": "product",
+            "id": "upsell_related_product",
+            "label": "Upsell"
+          },
+          {
+            "type": "product",
+            "id": "upsell_suggested_product",
+            "label": "Upsell"
+          }
+        ]
+      }
+    ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

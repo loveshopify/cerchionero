@@ -1,0 +1,2765 @@
+{
+  "current": {
+    "product_key": "",
+    "ano_color_bg": "#000000",
+    "color_topheader-text": "#ffffff",
+    "tophead_text_color_hover": "#474545",
+    "color_header": "rgba(0,0,0,0)",
+    "head_text_color": "#000000",
+    "color_body_bg": "#ffffff",
+    "color_body_text": "#000000",
+    "color_text": "#3d4246",
+    "megamenu_color_text": "#000000",
+    "color_product_title": "#494343",
+    "color_price_text": "#3a4247",
+    "color_sale_text": "#ff0000",
+    "color_borders": "#ebebeb",
+    "color_button": "#000000",
+    "color_button_text": "#ffffff",
+    "sp_button": "#0dbd21",
+    "sp_button_txt": "#ffffff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_stock_left": "#ff0000",
+    "progressBar_bg_color": "#ff0000",
+    "color_text_field": "#ffffff",
+    "color_text_field_text": "#000",
+    "color_image_overlay_text": "#ffffff",
+    "color_image_overlay": "#5c5c5c",
+    "image_overlay_opacity": 39,
+    "color_overlay_button": "#fff",
+    "color_overlay_button_text": "#000000",
+    "background_color": "#ffffff",
+    "custom_text_color": "#000000",
+    "discount_bg_color": "#ffffff",
+    "discount_normal_text_color": "#000000",
+    "discount_bold_text_color": "#000000",
+    "discount_btn_color": "#000000",
+    "discount_btn_txt_color": "#ffffff",
+    "hover_color": "#000",
+    "hover_opacity": 50,
+    "sale_button_option_one_color": "#000000",
+    "sale_button_option__text_one_color": "#ffffff",
+    "free_button_option_one_color": "#ff0000",
+    "free_button_option__text_one_color": "#ffffff",
+    "soldout_button_option_one_color": "#ff0000",
+    "soldout_button_option__text_one_color": "#ffffff",
+    "dynamicaddtocart_button": "#000000",
+    "dynamicaddtocart_button_txt": "#fff",
+    "dynamiccheckout_button": "#0dbd21",
+    "dynamiccheckout_button_txt": "#fff",
+    "related_popup_heading_font_color": "#000000",
+    "delivery_text_color": "#000000",
+    "badges_color": "#000000",
+    "logo_icon": "fa-heart",
+    "icon_side": "left",
+    "logo_font_style": "Google_Ubuntu_400_sans",
+    "logo_font_weight": "bold",
+    "logo_font_trans": "uppercase",
+    "icon_logo_size": 18,
+    "icon_logo_space": 3,
+    "menu_font_style": "Google_Ubuntu_400_sans",
+    "menu_font_weight": "bold",
+    "menu_font_trans": "uppercase",
+    "menu_font_size": 11,
+    "menu_font_space": 2,
+    "strip_font_style": "Google_Ubuntu_400_sans",
+    "strip_main_space": 2,
+    "strip_font_weight": "bold",
+    "strip_font_trans": "uppercase",
+    "type_header_family": "Google_Ubuntu_400_sans",
+    "heading_weight": "600",
+    "heading_trans": "uppercase",
+    "type_header_base_size_1": 26,
+    "heading_font_space": 1,
+    "subhead_font": "Poppins",
+    "subhead_weight": "normal",
+    "sub_font_size": 16,
+    "subhead_space": 0,
+    "subhead_font_trans": "none",
+    "type_title_family": "Google_Ubuntu_400_sans",
+    "title_weight": "600",
+    "title_trans": "uppercase",
+    "type_title_base_size": 26,
+    "title_font_space": 0,
+    "title_position": "center",
+    "type_base_family": "Poppins",
+    "type_base_size_1": 15,
+    "imgsldover_title": "Google_Ubuntu_400_sans",
+    "imgsldover_weight": "600",
+    "imgsldover_trans": "uppercase",
+    "imgsldover_title_size": 50,
+    "mobile_imgsldover_title_size": 20,
+    "imgsldover_title_space": 2,
+    "imgsldover_sub_title": "Google_Ubuntu_400_sans",
+    "imgsldover_sub_weight": "400",
+    "imgsldover_sub_trans": "uppercase",
+    "imgsldover_sub_size": 22,
+    "mobile_imgsldover_sub_size": 16,
+    "imgsldover_sub_space": 0,
+    "timer_font_family": "Poppins",
+    "timer_sub_font_family": "Poppins",
+    "product_price_size": 18,
+    "type_bold_product_price": true,
+    "productpage_price_size": 18,
+    "type_bold_productpage_price": true,
+    "delivery_font_family": "Poppins",
+    "delivery_font_size": 14,
+    "favicon": "shopify:\/\/shop_images\/resized_logo.png",
+    "show_multiple_currencies": false,
+    "select_dropdown": "selected_currency",
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "USD GBP",
+    "discount_popup_enable": false,
+    "discount_popup_disable_mobile": false,
+    "discount_image_desktop": false,
+    "discount_image_enable": true,
+    "discount_popup_time": "0.30",
+    "expire_time": 2,
+    "discount_icon": "",
+    "discount_popup_title": "20% OFF",
+    "discount_popup_description1": "Sign up to our newsletter for 10% off additional your first order!",
+    "discount_popup_link_text": "CLOSE THIS PAGE",
+    "discount_popup_submit_text": "<span>Thank you !<\/span>",
+    "popup_enable": true,
+    "popup_ago_custom_time": true,
+    "popup_disable_mobile": true,
+    "popup_disable_close": false,
+    "salepopup_position": "top",
+    "notification_popup_time": "10000",
+    "popup_randomly_collection": "",
+    "buttom_message": "Someone purchased a",
+    "mailchimp_link": "",
+    "klaviyo_link": "",
+    "sale_button_option": "sale_button_option_three",
+    "search_result": "only_product",
+    "search_free_page": false,
+    "enable_collection_url": false,
+    "show_saved_amount": true,
+    "show_discount_amount": "percent_save",
+    "show_free_badges": true,
+    "show_second_image": true,
+    "mobile_grid_1": "on_mobile_set_row_two",
+    "show_view_all": true,
+    "btn_text": "View All",
+    "full_btn": false,
+    "transparent_btn": true,
+    "disable_timer_regular_price": false,
+    "disable_timer_use_tag": false,
+    "enable_timer_stg": "enable_timer_randomly",
+    "enable_timer_reset_every_day": "19:00:00",
+    "enable_timer_stg_custom": 2000,
+    "enable_inventory_stock_number": "enable_stock_number_random",
+    "share_image": "",
+    "social_title": "Follow Us",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/resized_logo.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "rgba(0,0,0,0)",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#0170ca",
+    "checkout_button_color": "#0170ca",
+    "checkout_error_color": "#ff0000",
+    "heading_font_size": 14,
+    "head_color_text": "#ffffff",
+    "fetured_prd_title": 24,
+    "strip_font_size": 14,
+    "timer_top_message_value_after": "LEFT",
+    "timer_top_message_value_num": 130,
+    "type_title_base_size_1": "26",
+    "timer_top_message_value_before": "Only",
+    "default_currency": "CAD",
+    "newsletter_header": "#000000",
+    "enable_related_upsell": "true",
+    "hide_content": "false",
+    "heading_font_style": "Poppins",
+    "info_subfont_size": 17,
+    "mega_menu_5": "false",
+    "mega_menu_4": "false",
+    "mlvedaACS_positionTop": false,
+    "mega_menu_3": "false",
+    "cap_font_weight": "bold",
+    "related_popup_heading_font_size": "30",
+    "type_base_size": "16px",
+    "info_main_space": 1,
+    "hide_right_click": "false",
+    "product_title_size": 17,
+    "dil_font_size": 14,
+    "imgsldover_font_space": 0,
+    "mlvedaACS_positionLeft": false,
+    "mlvedaACS_defaultCurrency": "GBP",
+    "dil_font_family": "Montserrat",
+    "mega_menu_2": "false",
+    "mega_menu_1": "false",
+    "mlvedaACS_position": "inline",
+    "tim_lbl_family": "Poppins",
+    "mlvedaACS_enable": true,
+    "mlvedaACS_supportedCurrencies": "USD CAD AUD GBP EUR INR JPY",
+    "select_menu_view": "show_both_collection_product",
+    "newsletter_subheading": "#000000",
+    "mlvedaACS_currencyFormat": "money_with_currency_format",
+    "mlvedaACS_displayFlag": false,
+    "SO_sub_heading_font_style": "Poppins",
+    "type_header_base_size": "26px",
+    "menu_logo_size": 10,
+    "heading_font_weight": "lighter",
+    "r_view_cart_color": "#6c756c",
+    "type_bold_product_titles": true,
+    "discount_border_color": "#000000",
+    "info_font_space": 0,
+    "related_popup_text_font_color": "#000000",
+    "text_font_style": "Poppins",
+    "menu_logo_space": 0,
+    "product_family": "Google_Work+Sans_400_sans",
+    "heading_font_trans": "none",
+    "mlvedaACS_roundDecimal": false,
+    "related_popup_text_font_family": "Ek Mukta",
+    "tim_font_family": "Google_Muli_600_sans",
+    "related_popup_text_font_size": "20",
+    "timer_cookies_set_type": "timer_cookies_set_diff",
+    "SO_heading_font_style": "Poppins",
+    "r_continue_shoping_color": "#ffffff",
+    "menu_mega": "",
+    "mlvedaACS_positionRight": false,
+    "related_popup_heading_font_family": "Arial",
+    "enable_timer_top_message": true,
+    "secondary_newsletter_banner": true,
+    "text_font_size": 14,
+    "r_checkout_color": "#002500",
+    "mlvedaACS_positionBottom": false,
+    "on_related_upsell": true,
+    "enable_timer_stg_on": "enable_timer_stg_on",
+    "mlvedaACS_hideDecimal": false,
+    "sections": {
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": "3",
+          "show_view_all": true,
+          "btn_text": "View All"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1520514625558": {
+            "type": "text",
+            "settings": {
+              "logo_footer": true,
+              "logo": "shopify:\/\/shop_images\/resized_logo.png",
+              "desktop_logo_size": "50%",
+              "title": "",
+              "content": "<p>We are the go to store for premium mens products!<\/p>",
+              "social_icons_footer": true
+            }
+          },
+          "1521520287493": {
+            "type": "link_list",
+            "settings": {
+              "menu": "footer",
+              "social_icons_footer": false
+            }
+          },
+          "1520514274895": {
+            "type": "link_list",
+            "settings": {
+              "menu": "footer-menu-1",
+              "social_icons_footer": false
+            }
+          },
+          "1521800689906": {
+            "type": "customer_shopify",
+            "settings": {
+              "social_icons_footer": true
+            }
+          }
+        },
+        "block_order": [
+          "1520514625558",
+          "1521520287493",
+          "1520514274895",
+          "1521800689906"
+        ],
+        "settings": {
+          "shop_name": "",
+          "display_shopify_by": false,
+          "display_payment_methods": true,
+          "pay_visa": true,
+          "pay_master": true,
+          "pay_american_express": true,
+          "pay_paypal": true,
+          "pay_diners_club": false,
+          "pay_discover": true
+        }
+      },
+      "related-product": {
+        "type": "related-product",
+        "settings": {
+          "show_related_products": true,
+          "related_grid_num": 4,
+          "related_grid_row": 1
+        }
+      },
+      "password-header": {
+        "type": "password-header",
+        "settings": {
+          "logo": "",
+          "logo_max_width": "100",
+          "header": "Coming Soon"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "newsletter_enable": true,
+          "newsletter_form_heading": "Be the first to know when we launch.",
+          "newsletter_placeholder": "Email address",
+          "newsletter_button_text": "Notify me"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "grid": 4,
+          "rows": 4,
+          "show_collection_image": false,
+          "enable_parallax": true,
+          "show_vendor": false,
+          "sort_enable": true,
+          "tags_enable": true,
+          "on_desktop_title_set": "title_set_line_trim",
+          "desktop_text_limit": 20,
+          "on_mobile_title_set": "mobile_title_set_line_full",
+          "mobile_text_limit": 5
+        }
+      },
+      "releted_upsell_popup": {
+        "type": "releted_upsell_popup",
+        "blocks": {
+          "1547119056980": {
+            "type": "pro_to_pro_upsell",
+            "settings": {
+              "upsell_related_product": "",
+              "upsell_suggested_product": ""
+            }
+          }
+        },
+        "block_order": [
+          "1547119056980"
+        ],
+        "settings": {
+          "enable_related_upsell": false
+        }
+      },
+      "1522671586612": {
+        "type": "collection-list",
+        "blocks": {
+          "1522671586612-1": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "watches",
+              "image": "shopify:\/\/shop_images\/oaay12.jpg"
+            }
+          },
+          "1522671586612-0": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "bracelets-1",
+              "image": ""
+            }
+          },
+          "1575315101607": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "hats-scarves",
+              "image": ""
+            }
+          }
+        },
+        "block_order": [
+          "1522671586612-1",
+          "1522671586612-0",
+          "1575315101607"
+        ],
+        "settings": {
+          "layout": "full_with_spacing",
+          "title": "Collection list",
+          "grid": 3
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "heading_title": "News Detail",
+          "show_blog_image": true,
+          "enable_parallax": true,
+          "image": "",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_share_buttons": true
+        }
+      },
+      "1522671213521": {
+        "type": "rich-text",
+        "disabled": true,
+        "settings": {
+          "full_width": true,
+          "section_title": "",
+          "text": "",
+          "text_size": "large"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "buy_it_now_action": "direct_to_cart",
+          "show_saved_amount": true,
+          "enable_default_variant": false,
+          "show_quantity_selector": true,
+          "show_vendor": false,
+          "enable_zoom": false,
+          "shake_effect_enable": true,
+          "readmore_enable": false,
+          "enable_progressbar_text": true,
+          "enable_timer_top_message": true,
+          "enable_progressbartimer_text": true,
+          "enable_shipping": false,
+          "show_tags": false,
+          "show_social": true,
+          "enable_timer_stg_on": "enable_timer_stg_off",
+          "enable_payment_button": false,
+          "variant_swacth": "one",
+          "swatch_option": "with_background",
+          "color_style": "square_box",
+          "product_review": true,
+          "visitor_counter_enable": true,
+          "visitor_counter_number": "1-15",
+          "show_del_time": true,
+          "delivery_time_number": "7-14",
+          "product_description": "under_the_timer",
+          "enable_sticky": true,
+          "sticky_button": "show_progress_bar",
+          "enable_trust_badges": true,
+          "enable_trust_badges_image": ""
+        }
+      },
+      "password-footer": {
+        "type": "password-footer",
+        "settings": {
+          "show_share_buttons": true,
+          "social_message": "Spread the word"
+        }
+      },
+      "1522671286117": {
+        "type": "collection",
+        "settings": {
+          "title": "BEST SELLERS",
+          "collection": "best-sellers",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": true,
+          "full_btn": true,
+          "transparent_btn": true,
+          "mobile_grid": "on_mobile_set_row_two"
+        }
+      },
+      "contact-page": {
+        "type": "contact-page",
+        "settings": {
+          "show_blog_image": true,
+          "enable_parallax": false,
+          "image": ""
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "show_blog_image": true,
+          "enable_parallax": true,
+          "image": "",
+          "layout": "grid",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_comment_count": true
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "remove_space": true,
+          "align_logo": "center",
+          "logo": "shopify:\/\/shop_images\/resized_logo.png",
+          "desktop_logo_size": "100%",
+          "logo_mobile": "shopify:\/\/shop_images\/resized_logo.png",
+          "mobile_logo_size": "100%",
+          "main_linklist": "main-menu",
+          "disable_header_strip": false,
+          "disable_search": false,
+          "disable_social_media_header_icons": false,
+          "disable_cart": false,
+          "shopping_icon": "fa-shopping-cart",
+          "header_strip_text_contact": "",
+          "header_strip_text_email": "support@cerchionero.com",
+          "header_strip_text_link_name": "Free Delivery On All Orders"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": false,
+          "saved_price": true,
+          "cart_enable": true,
+          "cart_timer_minute": 1500,
+          "cart_timer_color": "#f30909",
+          "shopping_payment": true,
+          "cart_left_image": "",
+          "cart_right_image": ""
+        }
+      },
+      "map": {
+        "type": "map",
+        "settings": {
+          "imagelogo": "",
+          "desktop_logo_size": "30%",
+          "address": "<p>123 Fake St.<br>Toronto, Canada<\/p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm<\/p>",
+          "map_address": "80 Spadina Ave, Toronto",
+          "button_text": "Get directions",
+          "show_pin": true,
+          "api_key": "",
+          "background_image": "",
+          "background_image_position": "center center"
+        }
+      },
+      "1522671815227": {
+        "type": "instagram",
+        "disabled": true,
+        "settings": {
+          "instagram_client_id": "",
+          "instagram_title": "Instagram",
+          "instagram_count": 4,
+          "rows": 1
+        }
+      },
+      "map-contact": {
+        "type": "map-contact",
+        "settings": {
+          "hide_map": true,
+          "imagelogo": "",
+          "desktop_logo_size": "30%",
+          "address": "<p>123 Fake St.<br>Toronto, Canada<\/p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm<\/p>",
+          "map_address": "80 Spadina Ave, Toronto",
+          "button_text": "Get directions",
+          "show_pin": true,
+          "api_key": "",
+          "background_image": "",
+          "background_image_position": "center center"
+        }
+      },
+      "1569077742317": {
+        "type": "hero",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/im-1.jpg",
+          "enable_parallax": false,
+          "alignment": "center",
+          "text_alignment": "center",
+          "title": "",
+          "heading_divider": "none",
+          "text": "<p>THE STORE FOR THE MODERN MAN<\/p>",
+          "hero_size": "medium",
+          "text_size": "medium",
+          "button_label": "SHOP NOW",
+          "button_link": "shopify:\/\/collections\/all",
+          "full_btn": false,
+          "transparent_btn": true,
+          "button_size": "small"
+        }
+      },
+      "1574409686127": {
+        "type": "hero",
+        "disabled": true,
+        "settings": {
+          "image": "shopify:\/\/shop_images\/40743.jpg",
+          "enable_parallax": true,
+          "alignment": "center",
+          "text_alignment": "center",
+          "title": "BLACK FRIDAY LIVE  NOW",
+          "heading_divider": "none",
+          "text": "<p><strong>UP TO 70% OFF<\/strong><\/p>",
+          "hero_size": "x-small",
+          "text_size": "large",
+          "button_label": "",
+          "button_link": "",
+          "full_btn": false,
+          "transparent_btn": false,
+          "button_size": "small"
+        }
+      }
+    },
+    "content_for_index": [
+      "1574409686127",
+      "1569077742317",
+      "1522671586612",
+      "1522671213521",
+      "1522671286117",
+      "1522671815227"
+    ]
+  },
+  "presets": {
+    "Jupiter": {
+      "imgsldover_sub_size": 22,
+      "popup_randomly_collection": "homepage",
+      "ano_color_bg": "#ededed",
+      "tophead_text_color_hover": "#4a4a4a",
+      "color_price_text": "#3a4247",
+      "popup_disable_mobile": false,
+      "product_key": "",
+      "imgsldover_sub_title": "Poppins",
+      "discount_popup_enable": true,
+      "imgsldover_title_space": 2,
+      "heading_font_size": 14,
+      "type_header_family": "Poppins",
+      "enable_timer_stg_custom": 1500,
+      "product_price_size": 18,
+      "head_color_text": "#ffffff",
+      "title_font_space": 0,
+      "sale_button_option__text_one_color": "#ffffff",
+      "discount_bg_color": "#ffffff",
+      "checkout_accent_color": "#1990c6",
+      "fetured_prd_title": 24,
+      "timer_font_family": "Poppins",
+      "checkout_logo_size": "medium",
+      "color_text_field": "#fff",
+      "strip_font_size": 14,
+      "icon_side": "left",
+      "delivery_font_size": 12,
+      "type_header_base_size_1": 26,
+      "klaviyo_link": "",
+      "timer_top_message_value_after": "LEFT",
+      "menu_font_style": "Google_Poppins_400_sans",
+      "color_small_button_text": "#3d4246",
+      "color_text": "#3d4246",
+      "discount_popup_time": "exit_popup",
+      "menu_font_size": 11,
+      "timer_top_message_value_num": 130,
+      "megamenu_color_text": "#08aa00",
+      "search_result": "only_product",
+      "mobile_grid_1": "on_mobile_set_row_two",
+      "checkout_body_background_image": "",
+      "type_title_base_size_1": "26",
+      "color_body_bg": "#fff",
+      "subhead_space": 0,
+      "background_color": "#dcdcdc",
+      "logo_icon": "fa-flag",
+      "timer_top_message_value_before": "Only",
+      "icon_logo_space": 3,
+      "discount_btn_color": "#00ba1d",
+      "badges_color": "#000000",
+      "type_base_family": "Poppins",
+      "default_currency": "CAD",
+      "color_header": "#ffffff",
+      "newsletter_header": "#000000",
+      "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "color_button": "#08aa00",
+      "enable_related_upsell": "true",
+      "color_small_button": "#fff",
+      "heading_font_style": "Poppins",
+      "info_subfont_size": 17,
+      "social_instagram_link": "#",
+      "menu_font_trans": "uppercase",
+      "checkout_body_background_color": "#fff",
+      "checkout_sidebar_background_image": "",
+      "color_product_title": "#494343",
+      "discount_popup_title": "20% OFF",
+      "btn_text": "View All",
+      "discount_btn_txt_color": "#ffffff",
+      "sub_font_size": 16,
+      "popup_enable": true,
+      "imgsldover_title": "Poppins",
+      "mega_menu_5": "false",
+      "mega_menu_4": "false",
+      "mega_menu_3": "false",
+      "delivery_text_color": "#000000",
+      "imgsldover_sub_trans": "uppercase",
+      "sections": {
+        "1522671853847": {
+          "settings": {
+            "section_height": "medium"
+          },
+          "blocks": {
+            "1522671853847-2": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            },
+            "1522671853847-0": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            },
+            "1522671853847-1": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            }
+          },
+          "type": "image-bar",
+          "block_order": [
+            "1522671853847-0",
+            "1522671853847-1",
+            "1522671853847-2"
+          ]
+        },
+        "1522671309651": {
+          "settings": {
+            "image": "",
+            "hero_size": "medium",
+            "enable_parallax": false,
+            "text_alignment": "center",
+            "title": "Image with text overlay",
+            "button_size": "small",
+            "heading_divider": "none",
+            "text_size": "medium",
+            "full_btn": false,
+            "transparent_btn": false,
+            "button_link": "",
+            "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+            "button_label": "",
+            "alignment": "center"
+          },
+          "type": "hero"
+        },
+        "footer": {
+          "settings": {
+            "pay_american_express": true,
+            "pay_diners_club": true,
+            "pay_master": true,
+            "pay_visa": true,
+            "pay_discover": true,
+            "display_payment_methods": true,
+            "pay_paypal": true,
+            "shop_name": "",
+            "display_shopify_by": true
+          },
+          "blocks": {
+            "1520514625558": {
+              "settings": {
+                "logo_footer": true,
+                "social_icons_footer": true,
+                "logo": "shopify:\/\/shop_images\/booster_1.png",
+                "title": "",
+                "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+                "desktop_logo_size": "50%"
+              },
+              "type": "text"
+            },
+            "1521520287493": {
+              "settings": {
+                "social_icons_footer": false,
+                "menu": "main-menu"
+              },
+              "type": "link_list"
+            },
+            "1521800689906": {
+              "settings": {
+                "social_icons_footer": false
+              },
+              "type": "customer_shopify"
+            },
+            "1520514274895": {
+              "settings": {
+                "social_icons_footer": false,
+                "menu": "footer"
+              },
+              "type": "link_list"
+            }
+          },
+          "type": "footer",
+          "block_order": [
+            "1520514625558",
+            "1521520287493",
+            "1520514274895",
+            "1521800689906"
+          ]
+        },
+        "related-product": {
+          "settings": {
+            "related_grid_row": 1,
+            "related_grid_num": 4,
+            "show_related_products": true
+          },
+          "type": "related-product"
+        },
+        "password-header": {
+          "settings": {
+            "logo_max_width": "100",
+            "logo": "",
+            "header": "Coming Soon"
+          },
+          "type": "password-header"
+        },
+        "article-template": {
+          "settings": {
+            "image": "shopify:\/\/shop_images\/woman-in-black-trench-in-winter-woods.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true,
+            "show_share_buttons": true,
+            "heading_title": "News Detail",
+            "blog_show_date": true,
+            "blog_show_author": true
+          },
+          "type": "article-template"
+        },
+        "1522671213521": {
+          "settings": {
+            "full_width": false,
+            "section_title": "Talk about your brand",
+            "text_size": "medium",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          },
+          "type": "rich-text"
+        },
+        "product-template": {
+          "settings": {
+            "variant_swacth": "two",
+            "sticky_button": "show_progress_bar",
+            "visitor_counter_enable": true,
+            "show_del_time": true,
+            "product_review": true,
+            "visitor_counter_number": "1-15",
+            "delivery_time_number": "14-30",
+            "enable_sticky": true,
+            "show_saved_amount": true,
+            "enable_default_variant": true,
+            "enable_trust_badges_image": "shopify:\/\/shop_images\/Booster-badges.png",
+            "show_social": true,
+            "color_style": "round_shape",
+            "enable_progressbar_text": true,
+            "buy_it_now_action": "direct_to_checkout",
+            "show_vendor": false,
+            "swatch_option": "without_background",
+            "enable_shipping": true,
+            "show_tags": false,
+            "enable_zoom": true,
+            "enable_trust_badges": true,
+            "readmore_enable": true,
+            "product_description": "under_the_timer",
+            "show_quantity_selector": true
+          },
+          "type": "product-template"
+        },
+        "password-footer": {
+          "settings": {
+            "show_share_buttons": true,
+            "social_message": "Spread the word"
+          },
+          "type": "password-footer"
+        },
+        "1522671286117": {
+          "settings": {
+            "show_vendor": false,
+            "grid": 4,
+            "full_btn": false,
+            "mobile_grid": "on_mobile_set_row_two",
+            "transparent_btn": false,
+            "collection": "",
+            "title": "",
+            "rows": 2,
+            "show_view_all": false
+          },
+          "type": "collection"
+        },
+        "blog-template": {
+          "settings": {
+            "layout": "grid",
+            "image": "shopify:\/\/shop_images\/waffles-and-fruit-breakfast.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true,
+            "show_comment_count": true,
+            "blog_show_date": true,
+            "blog_show_author": true
+          },
+          "type": "blog-template"
+        },
+        "1522671161106": {
+          "settings": {
+            "heading_divider": "none",
+            "autoplay_speed": "5000",
+            "autoplay": true,
+            "slideshow_height": "small"
+          },
+          "blocks": {
+            "1522671161106-0": {
+              "settings": {
+                "image": "",
+                "link": "",
+                "button_label": "",
+                "alignment": "top",
+                "title": "Image slide",
+                "subheading": "Tell your brand's story through video and images"
+              },
+              "type": "image"
+            },
+            "1522671161106-1": {
+              "settings": {
+                "image": "",
+                "link": "",
+                "button_label": "",
+                "alignment": "top",
+                "title": "Image slide",
+                "subheading": "Tell your brand's story through video and images"
+              },
+              "type": "image"
+            }
+          },
+          "type": "slideshow",
+          "block_order": [
+            "1522671161106-0",
+            "1522671161106-1"
+          ]
+        },
+        "cart-template": {
+          "settings": {
+            "shopping_payment": true,
+            "cart_timer_minute": 5000,
+            "cart_left_image": "shopify:\/\/shop_images\/Booster-badges.png",
+            "cart_timer_color": "#f30909",
+            "cart_right_image": "shopify:\/\/shop_images\/Booster-badges_fdb54f46-a7ce-4299-b3eb-afecd0e53813.png",
+            "cart_enable": true,
+            "cart_notes_enable": true,
+            "saved_price": true
+          },
+          "type": "cart-template"
+        },
+        "map": {
+          "settings": {
+            "background_image": "",
+            "show_pin": true,
+            "address": "<p>123 Fake St.<br>Toronto, Canada<\/p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm<\/p>",
+            "imagelogo": "",
+            "api_key": "",
+            "background_image_position": "center center",
+            "map_address": "80 Spadina Ave, Toronto",
+            "button_text": "Get directions",
+            "desktop_logo_size": "30%"
+          },
+          "type": "map"
+        },
+        "1522671815227": {
+          "settings": {
+            "instagram_client_id": "",
+            "instagram_count": 4,
+            "instagram_title": "Instagram",
+            "rows": 1
+          },
+          "type": "instagram"
+        },
+        "1522671482965": {
+          "settings": {
+            "layout": "full"
+          },
+          "blocks": {
+            "1522671482965-1": {
+              "settings": {
+                "layout": "right",
+                "image": "",
+                "full_btn": false,
+                "text_alignment": "left",
+                "transparent_btn": false,
+                "button_link": "",
+                "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                "button_label": "",
+                "title": "Image with text"
+              },
+              "type": "image_with_text_1"
+            },
+            "1522671482965-0": {
+              "settings": {
+                "layout": "left",
+                "image": "",
+                "full_btn": false,
+                "text_alignment": "left",
+                "transparent_btn": false,
+                "button_link": "",
+                "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                "button_label": "",
+                "title": "Image with text"
+              },
+              "type": "image_with_text_1"
+            }
+          },
+          "type": "feature-row",
+          "block_order": [
+            "1522671482965-0",
+            "1522671482965-1"
+          ]
+        },
+        "1522671638827": {
+          "settings": {
+            "title": "Testimonials"
+          },
+          "blocks": {
+            "1522671638827-2": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            },
+            "1522671638827-1": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            },
+            "1522671638827-0": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            }
+          },
+          "type": "quotes",
+          "block_order": [
+            "1522671638827-0",
+            "1522671638827-1",
+            "1522671638827-2"
+          ]
+        },
+        "list-collections-template": {
+          "settings": {
+            "display_type": "all",
+            "grid": "3",
+            "sort": "alphabetical",
+            "show_view_all": true,
+            "btn_text": "View All"
+          },
+          "type": "list-collections-template"
+        },
+        "1522671769410": {
+          "settings": {
+            "image": "",
+            "section_title": "Subscribe to our newsletter",
+            "display_last_name": false,
+            "enable_parallax": false,
+            "display_first_name": false,
+            "newsletter_section_text_align": "center",
+            "subheading": "A short sentence describing what someone will receive by subscribing"
+          },
+          "type": "newsletter"
+        },
+        "password-content": {
+          "settings": {
+            "newsletter_enable": true,
+            "newsletter_form_heading": "Be the first to know when we launch.",
+            "newsletter_placeholder": "Email address",
+            "newsletter_button_text": "Notify me"
+          },
+          "type": "password-content"
+        },
+        "collection-template": {
+          "settings": {
+            "tags_enable": true,
+            "show_vendor": false,
+            "enable_parallax": true,
+            "grid": 4,
+            "show_collection_image": true,
+            "rows": 2,
+            "sort_enable": true
+          },
+          "type": "collection-template"
+        },
+        "releted_upsell_popup": {
+          "settings": {
+            "enable_related_upsell": true
+          },
+          "blocks": {
+            "1523081370482": {
+              "settings": {
+                "upsell_related_product": "cydney-plaid",
+                "upsell_suggested_product": "derby-tier-backpack"
+              },
+              "type": "pro_to_pro_upsell"
+            }
+          },
+          "type": "releted_upsell_popup",
+          "block_order": [
+            "1523081370482"
+          ]
+        },
+        "1522671586612": {
+          "settings": {
+            "layout": "full_without_spacing",
+            "grid": 4,
+            "title": "Collection list"
+          },
+          "blocks": {
+            "1522671586612-0": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-3": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-1": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-2": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            }
+          },
+          "type": "collection-list",
+          "block_order": [
+            "1522671586612-0",
+            "1522671586612-1",
+            "1522671586612-2",
+            "1522671586612-3"
+          ]
+        },
+        "contact-page": {
+          "settings": {
+            "image": "shopify:\/\/shop_images\/waffles-and-fruit-breakfast.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true
+          },
+          "type": "contact-page"
+        },
+        "header": {
+          "settings": {
+            "disable_cart": false,
+            "disable_social_media_header_icons": false,
+            "remove_space": true,
+            "shopping_icon": "fa-shopping-cart",
+            "main_linklist": "main-menu",
+            "disable_search": false,
+            "desktop_logo_size": "70%",
+            "logo_mobile": "shopify:\/\/shop_images\/booster_1.png",
+            "header_strip_text_contact": "044-4444-4444",
+            "header_strip_text_link_name": "free shipping this Week On order over 75$",
+            "mobile_logo_size": "50%",
+            "align_logo": "center",
+            "logo": "shopify:\/\/shop_images\/booster_1.png",
+            "disable_header_strip": false,
+            "header_strip_text_email": "MY@SHOP.MYSHOP"
+          },
+          "type": "header"
+        }
+      },
+      "cap_font_weight": "bold",
+      "related_popup_heading_font_size": "30",
+      "title_weight": "600",
+      "type_base_size": "16px",
+      "info_main_space": 1,
+      "discount_icon": "",
+      "product_title_size": 17,
+      "checkout_sidebar_background_color": "#fafafa",
+      "dil_font_size": 14,
+      "type_bold_product_price": true,
+      "imgsldover_font_space": 0,
+      "hover_color": "#000",
+      "currency_format": "money_format",
+      "dil_font_family": "Montserrat",
+      "logo_font_style": "Google_Poppins_400_sans",
+      "mega_menu_2": "false",
+      "social_tumblr_link": "",
+      "mega_menu_1": "false",
+      "tim_lbl_family": "Poppins",
+      "icon_logo_size": 16,
+      "head_text_color": "#0f0f0f",
+      "menu_font_weight": "bold",
+      "related_popup_heading_font_color": "#0dbd21",
+      "share_pinterest": true,
+      "newsletter_subheading": "#000000",
+      "show_multiple_currencies": true,
+      "custom_text_color": "#000000",
+      "color_borders": "#ebebeb",
+      "strip_font_style": "Google_Poppins_400_sans",
+      "imgsldover_title_size": 50,
+      "SO_sub_heading_font_style": "Poppins",
+      "checkout_body_font": "Helvetica Neue",
+      "social_youtube_link": "#",
+      "type_header_base_size": "26px",
+      "menu_font_space": 2,
+      "type_base_size_1": 15,
+      "delivery_font_family": "Poppins",
+      "show_view_all": true,
+      "menu_logo_size": 10,
+      "imgsldover_trans": "uppercase",
+      "checkout_header_image": "",
+      "title_position": "center",
+      "sale_button_option": "sale_button_option_one",
+      "heading_font_weight": "lighter",
+      "sale_button_option_one_color": "#00ba1d",
+      "r_view_cart_color": "#6c756c",
+      "share_facebook": true,
+      "type_bold_product_titles": true,
+      "color_sale_text": "#00ba1d",
+      "color_button_text": "#ffffff",
+      "hover_opacity": 50,
+      "imgsldover_sub_weight": "400",
+      "strip_font_weight": "bold",
+      "checkout_button_color": "#1990c6",
+      "type_title_base_size": 26,
+      "discount_border_color": "#000000",
+      "enable_timer_reset_every_day": "10:00:00",
+      "share_twitter": true,
+      "share_image": "",
+      "type_title_family": "Poppins",
+      "title_trans": "uppercase",
+      "info_font_space": 0,
+      "related_popup_text_font_color": "#000000",
+      "checkout_input_background_color_mode": "white",
+      "text_font_style": "Poppins",
+      "menu_logo_space": 0,
+      "subhead_font": "Poppins",
+      "social_pinterest_link": "#",
+      "discount_bold_text_color": "#00ba1d",
+      "imgsldover_weight": "600",
+      "checkout_heading_font": "Helvetica Neue",
+      "product_family": "Google_Work+Sans_400_sans",
+      "mailchimp_link": "",
+      "discount_image_enable": true,
+      "social_vimeo_link": "",
+      "enable_inventory_stock_number": "enable_stock_number_random",
+      "subhead_font_trans": "none",
+      "discount_popup_disable_mobile": false,
+      "color_image_overlay_text": "#ffffff",
+      "imgsldover_sub_space": 0,
+      "notification_popup_time": "10000",
+      "heading_font_trans": "none",
+      "heading_weight": "600",
+      "social_title": "Follow Us",
+      "logo_font_weight": "bold",
+      "color_text_field_text": "#000",
+      "related_popup_text_font_family": "Ek Mukta",
+      "discount_popup_description1": "Sign up to our newsletter for 10% off additional your first order!",
+      "tim_font_family": "Poppins",
+      "related_popup_text_font_size": "20",
+      "buttom_message": "Someone purchased a",
+      "expire_time": 2,
+      "discount_popup_link_text": "CLOSE THIS PAGE",
+      "strip_main_space": 2,
+      "timer_cookies_set_type": "timer_cookies_set_diff",
+      "SO_heading_font_style": "Poppins",
+      "r_continue_shoping_color": "#ffffff",
+      "discount_normal_text_color": "#000000",
+      "color_topheader-text": "#000000",
+      "content_for_index": [
+        "1522671161106",
+        "1522671213521",
+        "1522671286117",
+        "1522671482965",
+        "1522671309651",
+        "1522671586612",
+        "1522671638827",
+        "1522671769410",
+        "1522671815227",
+        "1522671853847"
+      ],
+      "color_image_overlay": "#5c5c5c",
+      "transparent_btn": true,
+      "checkout_logo_position": "left",
+      "social_twitter_link": "#",
+      "related_popup_heading_font_family": "Arial",
+      "checkout_logo_image": "",
+      "logo_font_trans": "uppercase",
+      "sp_button": "#0dbd21",
+      "enable_timer_top_message": true,
+      "secondary_newsletter_banner": true,
+      "text_font_size": 14,
+      "r_checkout_color": "#002500",
+      "sp_button_txt": "#ffffff",
+      "color_body_text": "#000000",
+      "discount_popup_submit_text": "<span>Thank you !<\/span>",
+      "search_free_page": false,
+      "enable_timer_stg": "enable_timer_custom_cookies",
+      "checkout_error_color": "#ff6d6d",
+      "timer_sub_font_family": "Poppins",
+      "image_overlay_opacity": 25,
+      "disable_timer_use_tag": true,
+      "on_related_upsell": true,
+      "favicon": "",
+      "social_facebook_link": "#",
+      "enable_timer_stg_on": "enable_timer_stg_on",
+      "social_snapchat_link": "",
+      "popup_disable_close": false,
+      "full_btn": false,
+      "heading_trans": "uppercase",
+      "heading_font_space": 1,
+      "popup_ago_custom_time": true,
+      "subhead_weight": "normal",
+      "strip_font_trans": "uppercase"
+    },
+    "Venus": {
+      "imgsldover_sub_size": 22,
+      "popup_randomly_collection": "homepage",
+      "ano_color_bg": "#f042a8",
+      "tophead_text_color_hover": "#4a4a4a",
+      "color_price_text": "#3a4247",
+      "popup_disable_mobile": false,
+      "product_key": "",
+      "imgsldover_sub_title": "Google_Ubuntu_400_sans",
+      "discount_popup_enable": true,
+      "imgsldover_title_space": 2,
+      "heading_font_size": 14,
+      "type_header_family": "Google_Ubuntu_400_sans",
+      "enable_timer_stg_custom": 5000,
+      "product_price_size": 18,
+      "head_color_text": "#ffffff",
+      "title_font_space": 0,
+      "sale_button_option__text_one_color": "#ffffff",
+      "discount_bg_color": "#ffffff",
+      "checkout_accent_color": "#1990c6",
+      "fetured_prd_title": 24,
+      "timer_font_family": "Poppins",
+      "checkout_logo_size": "medium",
+      "color_text_field": "#ffffff",
+      "strip_font_size": 14,
+      "icon_side": "left",
+      "delivery_font_size": 14,
+      "type_header_base_size_1": 26,
+      "klaviyo_link": "",
+      "timer_top_message_value_after": "LEFT",
+      "menu_font_style": "Google_Ubuntu_400_sans",
+      "color_small_button_text": "#3d4246",
+      "color_text": "#3d4246",
+      "discount_popup_time": "0.30",
+      "menu_font_size": 11,
+      "timer_top_message_value_num": 130,
+      "megamenu_color_text": "#f042a8",
+      "search_result": "only_product",
+      "mobile_grid_1": "on_mobile_set_row_two",
+      "checkout_body_background_image": "",
+      "type_title_base_size_1": "26",
+      "color_body_bg": "#ffffff",
+      "subhead_space": 0,
+      "background_color": "#dcdcdc",
+      "logo_icon": "fa-heart",
+      "timer_top_message_value_before": "Only",
+      "icon_logo_space": 3,
+      "discount_btn_color": "#f042a8",
+      "badges_color": "#000000",
+      "type_base_family": "Poppins",
+      "default_currency": "CAD",
+      "color_header": "#ffffff",
+      "newsletter_header": "#000000",
+      "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "color_button": "#f042a8",
+      "enable_related_upsell": "true",
+      "color_small_button": "#fff",
+      "heading_font_style": "Poppins",
+      "info_subfont_size": 17,
+      "social_instagram_link": "#",
+      "menu_font_trans": "uppercase",
+      "checkout_body_background_color": "#fff",
+      "checkout_sidebar_background_image": "",
+      "color_product_title": "#494343",
+      "discount_popup_title": "20% OFF",
+      "btn_text": "View All",
+      "discount_btn_txt_color": "#ffffff",
+      "sub_font_size": 16,
+      "popup_enable": true,
+      "imgsldover_title": "Google_Ubuntu_400_sans",
+      "mega_menu_5": "false",
+      "mega_menu_4": "false",
+      "mega_menu_3": "false",
+      "delivery_text_color": "#000000",
+      "imgsldover_sub_trans": "uppercase",
+      "sections": {
+        "1522671853847": {
+          "settings": {
+            "section_height": "medium"
+          },
+          "blocks": {
+            "1522671853847-2": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            },
+            "1522671853847-0": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            },
+            "1522671853847-1": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            }
+          },
+          "type": "image-bar",
+          "block_order": [
+            "1522671853847-0",
+            "1522671853847-1",
+            "1522671853847-2"
+          ]
+        },
+        "1522671309651": {
+          "settings": {
+            "image": "",
+            "hero_size": "medium",
+            "enable_parallax": false,
+            "text_alignment": "center",
+            "title": "Image with text overlay",
+            "button_size": "small",
+            "heading_divider": "none",
+            "text_size": "medium",
+            "full_btn": false,
+            "transparent_btn": false,
+            "button_link": "",
+            "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+            "button_label": "",
+            "alignment": "center"
+          },
+          "type": "hero"
+        },
+        "footer": {
+          "settings": {
+            "pay_american_express": true,
+            "pay_diners_club": true,
+            "pay_master": true,
+            "pay_visa": true,
+            "pay_discover": true,
+            "display_payment_methods": true,
+            "pay_paypal": true,
+            "shop_name": "",
+            "display_shopify_by": true
+          },
+          "blocks": {
+            "1520514625558": {
+              "settings": {
+                "logo_footer": true,
+                "social_icons_footer": true,
+                "logo": "shopify:\/\/shop_images\/booster_1.png",
+                "title": "",
+                "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+                "desktop_logo_size": "50%"
+              },
+              "type": "text"
+            },
+            "1521520287493": {
+              "settings": {
+                "social_icons_footer": false,
+                "menu": "main-menu"
+              },
+              "type": "link_list"
+            },
+            "1521800689906": {
+              "settings": {
+                "social_icons_footer": false
+              },
+              "type": "customer_shopify"
+            },
+            "1520514274895": {
+              "settings": {
+                "social_icons_footer": false,
+                "menu": "footer"
+              },
+              "type": "link_list"
+            }
+          },
+          "type": "footer",
+          "block_order": [
+            "1520514625558",
+            "1521520287493",
+            "1520514274895",
+            "1521800689906"
+          ]
+        },
+        "related-product": {
+          "settings": {
+            "related_grid_row": 1,
+            "related_grid_num": 4,
+            "show_related_products": true
+          },
+          "type": "related-product"
+        },
+        "password-header": {
+          "settings": {
+            "logo_max_width": "100",
+            "logo": "",
+            "header": "Coming Soon"
+          },
+          "type": "password-header"
+        },
+        "article-template": {
+          "settings": {
+            "image": "shopify:\/\/shop_images\/woman-in-black-trench-in-winter-woods.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true,
+            "show_share_buttons": true,
+            "heading_title": "News Detail",
+            "blog_show_date": true,
+            "blog_show_author": true
+          },
+          "type": "article-template"
+        },
+        "1522671213521": {
+          "settings": {
+            "full_width": false,
+            "section_title": "Talk about your brand",
+            "text_size": "medium",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          },
+          "type": "rich-text"
+        },
+        "product-template": {
+          "settings": {
+            "variant_swacth": "two",
+            "sticky_button": "show_progress_bar",
+            "visitor_counter_enable": true,
+            "show_del_time": true,
+            "product_review": true,
+            "visitor_counter_number": "1-15",
+            "delivery_time_number": "14-30",
+            "enable_sticky": true,
+            "show_saved_amount": true,
+            "enable_default_variant": true,
+            "enable_trust_badges_image": "shopify:\/\/shop_images\/Booster-badges.png",
+            "show_social": true,
+            "color_style": "round_shape",
+            "enable_progressbar_text": true,
+            "buy_it_now_action": "direct_to_checkout",
+            "show_vendor": false,
+            "swatch_option": "without_background",
+            "enable_shipping": true,
+            "show_tags": false,
+            "enable_zoom": true,
+            "enable_trust_badges": true,
+            "readmore_enable": true,
+            "product_description": "under_the_timer",
+            "show_quantity_selector": true
+          },
+          "type": "product-template"
+        },
+        "password-footer": {
+          "settings": {
+            "show_share_buttons": true,
+            "social_message": "Spread the word"
+          },
+          "type": "password-footer"
+        },
+        "1522671286117": {
+          "settings": {
+            "show_vendor": false,
+            "grid": 4,
+            "full_btn": false,
+            "mobile_grid": "on_mobile_set_row_two",
+            "transparent_btn": false,
+            "collection": "",
+            "title": "Featured collection",
+            "rows": 2,
+            "show_view_all": false
+          },
+          "type": "collection"
+        },
+        "blog-template": {
+          "settings": {
+            "layout": "grid",
+            "image": "shopify:\/\/shop_images\/waffles-and-fruit-breakfast.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true,
+            "show_comment_count": true,
+            "blog_show_date": true,
+            "blog_show_author": true
+          },
+          "type": "blog-template"
+        },
+        "1522671161106": {
+          "settings": {
+            "heading_divider": "none",
+            "autoplay_speed": "5000",
+            "autoplay": true,
+            "slideshow_height": "small"
+          },
+          "blocks": {
+            "1522671161106-0": {
+              "settings": {
+                "image": "",
+                "link": "",
+                "button_label": "",
+                "alignment": "top",
+                "title": "Image slide",
+                "subheading": "Tell your brand's story through video and images"
+              },
+              "type": "image"
+            },
+            "1522671161106-1": {
+              "settings": {
+                "image": "",
+                "link": "",
+                "button_label": "",
+                "alignment": "top",
+                "title": "Image slide",
+                "subheading": "Tell your brand's story through video and images"
+              },
+              "type": "image"
+            }
+          },
+          "type": "slideshow",
+          "block_order": [
+            "1522671161106-0",
+            "1522671161106-1"
+          ]
+        },
+        "cart-template": {
+          "settings": {
+            "shopping_payment": true,
+            "cart_timer_minute": 5000,
+            "cart_left_image": "shopify:\/\/shop_images\/Booster-badges.png",
+            "cart_timer_color": "#f30909",
+            "cart_right_image": "shopify:\/\/shop_images\/Booster-badges_fdb54f46-a7ce-4299-b3eb-afecd0e53813.png",
+            "cart_enable": true,
+            "cart_notes_enable": true,
+            "saved_price": true
+          },
+          "type": "cart-template"
+        },
+        "map": {
+          "settings": {
+            "background_image": "",
+            "show_pin": true,
+            "address": "<p>123 Fake St.<br>Toronto, Canada<\/p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm<\/p>",
+            "imagelogo": "",
+            "api_key": "",
+            "background_image_position": "center center",
+            "map_address": "80 Spadina Ave, Toronto",
+            "button_text": "Get directions",
+            "desktop_logo_size": "30%"
+          },
+          "type": "map"
+        },
+        "1522671815227": {
+          "settings": {
+            "instagram_client_id": "",
+            "instagram_count": 4,
+            "instagram_title": "Instagram",
+            "rows": 1
+          },
+          "type": "instagram"
+        },
+        "1522671482965": {
+          "settings": {
+            "layout": "full"
+          },
+          "blocks": {
+            "1522671482965-1": {
+              "settings": {
+                "layout": "right",
+                "image": "",
+                "full_btn": false,
+                "text_alignment": "left",
+                "transparent_btn": false,
+                "button_link": "",
+                "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                "button_label": "",
+                "title": "Image with text"
+              },
+              "type": "image_with_text_1"
+            },
+            "1522671482965-0": {
+              "settings": {
+                "layout": "left",
+                "image": "",
+                "full_btn": false,
+                "text_alignment": "left",
+                "transparent_btn": false,
+                "button_link": "",
+                "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                "button_label": "",
+                "title": "Image with text"
+              },
+              "type": "image_with_text_1"
+            }
+          },
+          "type": "feature-row",
+          "block_order": [
+            "1522671482965-0",
+            "1522671482965-1"
+          ]
+        },
+        "1522671638827": {
+          "settings": {
+            "title": "Testimonials"
+          },
+          "blocks": {
+            "1522671638827-2": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            },
+            "1522671638827-1": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            },
+            "1522671638827-0": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            }
+          },
+          "type": "quotes",
+          "block_order": [
+            "1522671638827-0",
+            "1522671638827-1",
+            "1522671638827-2"
+          ]
+        },
+        "list-collections-template": {
+          "settings": {
+            "display_type": "all",
+            "grid": "3",
+            "sort": "alphabetical",
+            "show_view_all": true,
+            "btn_text": "View All"
+          },
+          "type": "list-collections-template"
+        },
+        "1522671769410": {
+          "settings": {
+            "image": "",
+            "section_title": "Subscribe to our newsletter",
+            "display_last_name": false,
+            "enable_parallax": false,
+            "display_first_name": false,
+            "newsletter_section_text_align": "center",
+            "subheading": "A short sentence describing what someone will receive by subscribing"
+          },
+          "type": "newsletter"
+        },
+        "password-content": {
+          "settings": {
+            "newsletter_enable": true,
+            "newsletter_form_heading": "Be the first to know when we launch.",
+            "newsletter_placeholder": "Email address",
+            "newsletter_button_text": "Notify me"
+          },
+          "type": "password-content"
+        },
+        "collection-template": {
+          "settings": {
+            "tags_enable": true,
+            "show_vendor": false,
+            "enable_parallax": true,
+            "grid": 5,
+            "show_collection_image": true,
+            "rows": 2,
+            "sort_enable": true
+          },
+          "type": "collection-template"
+        },
+        "releted_upsell_popup": {
+          "settings": {
+            "enable_related_upsell": false
+          },
+          "type": "releted_upsell_popup"
+        },
+        "1522671586612": {
+          "settings": {
+            "layout": "full_without_spacing",
+            "grid": 4,
+            "title": "Collection list"
+          },
+          "blocks": {
+            "1522671586612-0": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-3": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-1": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-2": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            }
+          },
+          "type": "collection-list",
+          "block_order": [
+            "1522671586612-0",
+            "1522671586612-1",
+            "1522671586612-2",
+            "1522671586612-3"
+          ]
+        },
+        "contact-page": {
+          "settings": {
+            "image": "shopify:\/\/shop_images\/waffles-and-fruit-breakfast.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true
+          },
+          "type": "contact-page"
+        },
+        "header": {
+          "settings": {
+            "disable_cart": false,
+            "disable_social_media_header_icons": false,
+            "remove_space": true,
+            "shopping_icon": "fa-shopping-cart",
+            "main_linklist": "main-menu",
+            "disable_search": false,
+            "desktop_logo_size": "70%",
+            "logo_mobile": "",
+            "header_strip_text_contact": "044-4444-4444",
+            "header_strip_text_link_name": "free shipping this Week On order over 75$",
+            "mobile_logo_size": "50%",
+            "align_logo": "center",
+            "logo": "",
+            "disable_header_strip": false,
+            "header_strip_text_email": "MY@SHOP.MYSHOP"
+          },
+          "type": "header"
+        }
+      },
+      "cap_font_weight": "bold",
+      "related_popup_heading_font_size": "30",
+      "title_weight": "600",
+      "type_base_size": "16px",
+      "info_main_space": 1,
+      "discount_icon": "",
+      "product_title_size": 17,
+      "checkout_sidebar_background_color": "#fafafa",
+      "dil_font_size": 14,
+      "type_bold_product_price": true,
+      "imgsldover_font_space": 0,
+      "hover_color": "#000",
+      "currency_format": "money_format",
+      "dil_font_family": "Montserrat",
+      "logo_font_style": "Google_Ubuntu_400_sans",
+      "mega_menu_2": "false",
+      "social_tumblr_link": "",
+      "mega_menu_1": "false",
+      "tim_lbl_family": "Poppins",
+      "icon_logo_size": 16,
+      "head_text_color": "#212121",
+      "menu_font_weight": "bold",
+      "related_popup_heading_font_color": "#f042a8",
+      "share_pinterest": true,
+      "newsletter_subheading": "#000000",
+      "show_multiple_currencies": true,
+      "custom_text_color": "#000000",
+      "color_borders": "#ebebeb",
+      "strip_font_style": "Google_Ubuntu_400_sans",
+      "imgsldover_title_size": 50,
+      "SO_sub_heading_font_style": "Poppins",
+      "checkout_body_font": "Helvetica Neue",
+      "social_youtube_link": "#",
+      "type_header_base_size": "26px",
+      "menu_font_space": 2,
+      "type_base_size_1": 15,
+      "delivery_font_family": "Poppins",
+      "show_view_all": true,
+      "menu_logo_size": 10,
+      "imgsldover_trans": "uppercase",
+      "checkout_header_image": "",
+      "title_position": "center",
+      "sale_button_option": "sale_button_option_one",
+      "heading_font_weight": "lighter",
+      "sale_button_option_one_color": "#f042a8",
+      "r_view_cart_color": "#6c756c",
+      "share_facebook": true,
+      "type_bold_product_titles": true,
+      "color_sale_text": "#f042a8",
+      "color_button_text": "#ffffff",
+      "hover_opacity": 50,
+      "imgsldover_sub_weight": "400",
+      "strip_font_weight": "bold",
+      "checkout_button_color": "#1990c6",
+      "type_title_base_size": 26,
+      "discount_border_color": "#000000",
+      "enable_timer_reset_every_day": "10:00:00",
+      "share_twitter": true,
+      "share_image": "",
+      "type_title_family": "Google_Ubuntu_400_sans",
+      "title_trans": "uppercase",
+      "info_font_space": 0,
+      "related_popup_text_font_color": "#000000",
+      "checkout_input_background_color_mode": "white",
+      "text_font_style": "Poppins",
+      "menu_logo_space": 0,
+      "subhead_font": "Poppins",
+      "social_pinterest_link": "#",
+      "discount_bold_text_color": "#f042a8",
+      "imgsldover_weight": "600",
+      "checkout_heading_font": "Helvetica Neue",
+      "product_family": "Google_Work+Sans_400_sans",
+      "mailchimp_link": "",
+      "discount_image_enable": true,
+      "social_vimeo_link": "",
+      "enable_inventory_stock_number": "enable_stock_number_random",
+      "subhead_font_trans": "none",
+      "discount_popup_disable_mobile": false,
+      "color_image_overlay_text": "#ffffff",
+      "imgsldover_sub_space": 0,
+      "notification_popup_time": "10000",
+      "heading_font_trans": "none",
+      "heading_weight": "600",
+      "social_title": "Follow Us",
+      "logo_font_weight": "bold",
+      "color_text_field_text": "#000",
+      "related_popup_text_font_family": "Ek Mukta",
+      "discount_popup_description1": "Sign up to our newsletter for 10% off additional your first order!",
+      "tim_font_family": "Poppins",
+      "related_popup_text_font_size": "20",
+      "buttom_message": "Someone purchased a",
+      "expire_time": 2,
+      "discount_popup_link_text": "CLOSE THIS PAGE",
+      "strip_main_space": 2,
+      "timer_cookies_set_type": "timer_cookies_set_common",
+      "SO_heading_font_style": "Poppins",
+      "r_continue_shoping_color": "#ffffff",
+      "discount_normal_text_color": "#000000",
+      "color_topheader-text": "#ffffff",
+      "content_for_index": [
+        "1522671161106",
+        "1522671213521",
+        "1522671286117",
+        "1522671309651",
+        "1522671482965",
+        "1522671586612",
+        "1522671638827",
+        "1522671769410",
+        "1522671815227",
+        "1522671853847"
+      ],
+      "color_image_overlay": "#5c5c5c",
+      "transparent_btn": true,
+      "checkout_logo_position": "left",
+      "social_twitter_link": "#",
+      "related_popup_heading_font_family": "Arial",
+      "checkout_logo_image": "",
+      "logo_font_trans": "uppercase",
+      "sp_button": "#f042a8",
+      "enable_timer_top_message": true,
+      "secondary_newsletter_banner": true,
+      "text_font_size": 14,
+      "r_checkout_color": "#002500",
+      "sp_button_txt": "#ffffff",
+      "color_body_text": "#000000",
+      "discount_popup_submit_text": "<span>Thank you !<\/span>",
+      "search_free_page": false,
+      "enable_timer_stg": "enable_timer_custom",
+      "checkout_error_color": "#ff6d6d",
+      "timer_sub_font_family": "Poppins",
+      "image_overlay_opacity": 25,
+      "disable_timer_use_tag": true,
+      "on_related_upsell": true,
+      "favicon": "",
+      "social_facebook_link": "#",
+      "enable_timer_stg_on": "enable_timer_stg_on",
+      "social_snapchat_link": "",
+      "popup_disable_close": false,
+      "full_btn": false,
+      "heading_trans": "uppercase",
+      "heading_font_space": 1,
+      "popup_ago_custom_time": true,
+      "subhead_weight": "normal",
+      "strip_font_trans": "uppercase"
+    },
+    "Mercury": {
+      "imgsldover_sub_size": 22,
+      "popup_randomly_collection": "homepage",
+      "ano_color_bg": "#fea244",
+      "tophead_text_color_hover": "#4a4a4a",
+      "color_price_text": "#3a4247",
+      "popup_disable_mobile": false,
+      "product_key": "",
+      "imgsldover_sub_title": "Google_Ubuntu_400_sans",
+      "discount_popup_enable": true,
+      "imgsldover_title_space": 2,
+      "heading_font_size": 14,
+      "type_header_family": "Google_Ubuntu_400_sans",
+      "enable_timer_stg_custom": 5000,
+      "product_price_size": 18,
+      "head_color_text": "#ffffff",
+      "title_font_space": 0,
+      "sale_button_option__text_one_color": "#ffffff",
+      "discount_bg_color": "#ffffff",
+      "checkout_accent_color": "#1990c6",
+      "fetured_prd_title": 24,
+      "timer_font_family": "Poppins",
+      "checkout_logo_size": "medium",
+      "color_text_field": "#ffffff",
+      "strip_font_size": 14,
+      "icon_side": "left",
+      "delivery_font_size": 14,
+      "type_header_base_size_1": 26,
+      "klaviyo_link": "",
+      "timer_top_message_value_after": "LEFT",
+      "menu_font_style": "Google_Ubuntu_400_sans",
+      "color_small_button_text": "#3d4246",
+      "color_text": "#3d4246",
+      "discount_popup_time": "0.30",
+      "menu_font_size": 11,
+      "timer_top_message_value_num": 130,
+      "megamenu_color_text": "#fea244",
+      "search_result": "only_product",
+      "mobile_grid_1": "on_mobile_set_row_two",
+      "checkout_body_background_image": "",
+      "type_title_base_size_1": "26",
+      "color_body_bg": "#ffffff",
+      "subhead_space": 0,
+      "background_color": "#dcdcdc",
+      "logo_icon": "fa-fire",
+      "timer_top_message_value_before": "Only",
+      "icon_logo_space": 3,
+      "discount_btn_color": "#fea244",
+      "badges_color": "#000000",
+      "type_base_family": "Poppins",
+      "default_currency": "CAD",
+      "color_header": "#ffffff",
+      "newsletter_header": "#000000",
+      "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "color_button": "#fea244",
+      "enable_related_upsell": "true",
+      "color_small_button": "#fff",
+      "heading_font_style": "Poppins",
+      "info_subfont_size": 17,
+      "social_instagram_link": "#",
+      "menu_font_trans": "uppercase",
+      "checkout_body_background_color": "#fff",
+      "checkout_sidebar_background_image": "",
+      "color_product_title": "#494343",
+      "discount_popup_title": "20% OFF",
+      "btn_text": "View All",
+      "discount_btn_txt_color": "#ffffff",
+      "sub_font_size": 24,
+      "popup_enable": true,
+      "imgsldover_title": "Google_Ubuntu_400_sans",
+      "mega_menu_5": "false",
+      "mega_menu_4": "false",
+      "mega_menu_3": "false",
+      "delivery_text_color": "#000000",
+      "imgsldover_sub_trans": "uppercase",
+      "sections": {
+        "1522671853847": {
+          "settings": {
+            "section_height": "medium"
+          },
+          "blocks": {
+            "1522671853847-2": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            },
+            "1522671853847-0": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            },
+            "1522671853847-1": {
+              "settings": {
+                "image": "",
+                "cta_label": "",
+                "link": "",
+                "alignment": "center"
+              },
+              "type": "image"
+            }
+          },
+          "type": "image-bar",
+          "block_order": [
+            "1522671853847-0",
+            "1522671853847-1",
+            "1522671853847-2"
+          ]
+        },
+        "1522671309651": {
+          "settings": {
+            "image": "",
+            "hero_size": "medium",
+            "enable_parallax": false,
+            "text_alignment": "center",
+            "title": "Image with text overlay",
+            "button_size": "small",
+            "heading_divider": "none",
+            "text_size": "medium",
+            "full_btn": false,
+            "transparent_btn": false,
+            "button_link": "",
+            "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+            "button_label": "",
+            "alignment": "center"
+          },
+          "type": "hero"
+        },
+        "footer": {
+          "settings": {
+            "pay_american_express": true,
+            "pay_diners_club": true,
+            "pay_master": true,
+            "pay_visa": true,
+            "pay_discover": true,
+            "display_payment_methods": true,
+            "pay_paypal": true,
+            "shop_name": "",
+            "display_shopify_by": true
+          },
+          "blocks": {
+            "1520514625558": {
+              "settings": {
+                "logo_footer": true,
+                "social_icons_footer": true,
+                "logo": "shopify:\/\/shop_images\/booster_1.png",
+                "title": "",
+                "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+                "desktop_logo_size": "50%"
+              },
+              "type": "text"
+            },
+            "1521520287493": {
+              "settings": {
+                "social_icons_footer": false,
+                "menu": "main-menu"
+              },
+              "type": "link_list"
+            },
+            "1521800689906": {
+              "settings": {
+                "social_icons_footer": false
+              },
+              "type": "customer_shopify"
+            },
+            "1520514274895": {
+              "settings": {
+                "social_icons_footer": false,
+                "menu": "footer"
+              },
+              "type": "link_list"
+            }
+          },
+          "type": "footer",
+          "block_order": [
+            "1520514625558",
+            "1521520287493",
+            "1520514274895",
+            "1521800689906"
+          ]
+        },
+        "related-product": {
+          "settings": {
+            "related_grid_row": 1,
+            "related_grid_num": 4,
+            "show_related_products": true
+          },
+          "type": "related-product"
+        },
+        "password-header": {
+          "settings": {
+            "logo_max_width": "100",
+            "logo": "",
+            "header": "Coming Soon"
+          },
+          "type": "password-header"
+        },
+        "article-template": {
+          "settings": {
+            "image": "shopify:\/\/shop_images\/woman-in-black-trench-in-winter-woods.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true,
+            "show_share_buttons": true,
+            "heading_title": "News Detail",
+            "blog_show_date": true,
+            "blog_show_author": true
+          },
+          "type": "article-template"
+        },
+        "1522671213521": {
+          "settings": {
+            "full_width": false,
+            "section_title": "Talk about your brand",
+            "text_size": "medium",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          },
+          "type": "rich-text"
+        },
+        "product-template": {
+          "settings": {
+            "variant_swacth": "two",
+            "sticky_button": "show_progress_bar",
+            "visitor_counter_enable": true,
+            "show_del_time": true,
+            "product_review": true,
+            "visitor_counter_number": "1-15",
+            "delivery_time_number": "14-30",
+            "enable_sticky": true,
+            "show_saved_amount": true,
+            "enable_default_variant": true,
+            "enable_trust_badges_image": "shopify:\/\/shop_images\/Booster-badges.png",
+            "show_social": true,
+            "color_style": "round_shape",
+            "enable_progressbar_text": true,
+            "buy_it_now_action": "thank_you_message",
+            "show_vendor": false,
+            "swatch_option": "without_background",
+            "enable_shipping": true,
+            "show_tags": false,
+            "enable_zoom": true,
+            "enable_trust_badges": true,
+            "readmore_enable": true,
+            "product_description": "under_the_timer",
+            "show_quantity_selector": true
+          },
+          "type": "product-template"
+        },
+        "password-footer": {
+          "settings": {
+            "show_share_buttons": true,
+            "social_message": "Spread the word"
+          },
+          "type": "password-footer"
+        },
+        "1522671286117": {
+          "settings": {
+            "show_vendor": false,
+            "grid": 4,
+            "full_btn": false,
+            "mobile_grid": "on_mobile_set_row_two",
+            "transparent_btn": false,
+            "collection": "",
+            "title": "Featured collection",
+            "rows": 2,
+            "show_view_all": false
+          },
+          "type": "collection"
+        },
+        "blog-template": {
+          "settings": {
+            "layout": "grid",
+            "image": "shopify:\/\/shop_images\/waffles-and-fruit-breakfast.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true,
+            "show_comment_count": true,
+            "blog_show_date": true,
+            "blog_show_author": true
+          },
+          "type": "blog-template"
+        },
+        "1522671161106": {
+          "settings": {
+            "heading_divider": "none",
+            "autoplay_speed": "5000",
+            "autoplay": true,
+            "slideshow_height": "small"
+          },
+          "blocks": {
+            "1522671161106-0": {
+              "settings": {
+                "image": "",
+                "link": "",
+                "button_label": "",
+                "alignment": "top",
+                "title": "Image slide",
+                "subheading": "Tell your brand's story through video and images"
+              },
+              "type": "image"
+            },
+            "1522671161106-1": {
+              "settings": {
+                "image": "",
+                "link": "",
+                "button_label": "",
+                "alignment": "top",
+                "title": "Image slide",
+                "subheading": "Tell your brand's story through video and images"
+              },
+              "type": "image"
+            }
+          },
+          "type": "slideshow",
+          "block_order": [
+            "1522671161106-0",
+            "1522671161106-1"
+          ]
+        },
+        "cart-template": {
+          "settings": {
+            "shopping_payment": true,
+            "cart_timer_minute": 5000,
+            "cart_left_image": "shopify:\/\/shop_images\/Booster-badges.png",
+            "cart_timer_color": "#f30909",
+            "cart_right_image": "shopify:\/\/shop_images\/Booster-badges_fdb54f46-a7ce-4299-b3eb-afecd0e53813.png",
+            "cart_enable": true,
+            "cart_notes_enable": true,
+            "saved_price": true
+          },
+          "type": "cart-template"
+        },
+        "map": {
+          "settings": {
+            "background_image": "",
+            "show_pin": true,
+            "address": "<p>123 Fake St.<br>Toronto, Canada<\/p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm<\/p>",
+            "imagelogo": "",
+            "api_key": "",
+            "background_image_position": "center center",
+            "map_address": "80 Spadina Ave, Toronto",
+            "button_text": "Get directions",
+            "desktop_logo_size": "30%"
+          },
+          "type": "map"
+        },
+        "1522671815227": {
+          "settings": {
+            "instagram_client_id": "",
+            "instagram_count": 4,
+            "instagram_title": "Instagram",
+            "rows": 1
+          },
+          "type": "instagram"
+        },
+        "1522671482965": {
+          "settings": {
+            "layout": "full"
+          },
+          "blocks": {
+            "1522671482965-1": {
+              "settings": {
+                "layout": "right",
+                "image": "",
+                "full_btn": false,
+                "text_alignment": "left",
+                "transparent_btn": false,
+                "button_link": "",
+                "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                "button_label": "",
+                "title": "Image with text"
+              },
+              "type": "image_with_text_1"
+            },
+            "1522671482965-0": {
+              "settings": {
+                "layout": "left",
+                "image": "",
+                "full_btn": false,
+                "text_alignment": "left",
+                "transparent_btn": false,
+                "button_link": "",
+                "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                "button_label": "",
+                "title": "Image with text"
+              },
+              "type": "image_with_text_1"
+            }
+          },
+          "type": "feature-row",
+          "block_order": [
+            "1522671482965-0",
+            "1522671482965-1"
+          ]
+        },
+        "1522671638827": {
+          "settings": {
+            "title": "Testimonials"
+          },
+          "blocks": {
+            "1522671638827-2": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            },
+            "1522671638827-1": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            },
+            "1522671638827-0": {
+              "settings": {
+                "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+                "author": "Author's name",
+                "t_image": ""
+              },
+              "type": "quote"
+            }
+          },
+          "type": "quotes",
+          "block_order": [
+            "1522671638827-0",
+            "1522671638827-1",
+            "1522671638827-2"
+          ]
+        },
+        "list-collections-template": {
+          "settings": {
+            "display_type": "all",
+            "grid": "3",
+            "sort": "alphabetical",
+            "show_view_all": true,
+            "btn_text": "View All"
+          },
+          "type": "list-collections-template"
+        },
+        "1522671769410": {
+          "settings": {
+            "image": "",
+            "section_title": "Subscribe to our newsletter",
+            "display_last_name": false,
+            "enable_parallax": false,
+            "display_first_name": false,
+            "newsletter_section_text_align": "center",
+            "subheading": "A short sentence describing what someone will receive by subscribing"
+          },
+          "type": "newsletter"
+        },
+        "password-content": {
+          "settings": {
+            "newsletter_enable": true,
+            "newsletter_form_heading": "Be the first to know when we launch.",
+            "newsletter_placeholder": "Email address",
+            "newsletter_button_text": "Notify me"
+          },
+          "type": "password-content"
+        },
+        "collection-template": {
+          "settings": {
+            "tags_enable": true,
+            "show_vendor": false,
+            "enable_parallax": true,
+            "grid": 5,
+            "show_collection_image": true,
+            "rows": 2,
+            "sort_enable": true
+          },
+          "type": "collection-template"
+        },
+        "releted_upsell_popup": {
+          "settings": {
+            "enable_related_upsell": true
+          },
+          "blocks": {
+            "1523004891335": {
+              "settings": {
+                "upsell_related_product": "cydney-plaid",
+                "upsell_suggested_product": "5-panel-hat"
+              },
+              "type": "pro_to_pro_upsell"
+            }
+          },
+          "type": "releted_upsell_popup",
+          "block_order": [
+            "1523004891335"
+          ]
+        },
+        "1522671586612": {
+          "settings": {
+            "layout": "full_without_spacing",
+            "grid": 4,
+            "title": "Collection list"
+          },
+          "blocks": {
+            "1522671586612-0": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-3": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-1": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            },
+            "1522671586612-2": {
+              "settings": {
+                "image": "",
+                "collection": ""
+              },
+              "type": "featured_collection"
+            }
+          },
+          "type": "collection-list",
+          "block_order": [
+            "1522671586612-0",
+            "1522671586612-1",
+            "1522671586612-2",
+            "1522671586612-3"
+          ]
+        },
+        "contact-page": {
+          "settings": {
+            "image": "shopify:\/\/shop_images\/waffles-and-fruit-breakfast.jpg",
+            "enable_parallax": true,
+            "show_blog_image": true
+          },
+          "type": "contact-page"
+        },
+        "header": {
+          "settings": {
+            "disable_cart": false,
+            "disable_social_media_header_icons": false,
+            "remove_space": true,
+            "shopping_icon": "fa-shopping-cart",
+            "main_linklist": "main-menu",
+            "disable_search": false,
+            "desktop_logo_size": "70%",
+            "logo_mobile": "",
+            "header_strip_text_contact": "044-4444-4444",
+            "header_strip_text_link_name": "free shipping this Week On order over 75$",
+            "mobile_logo_size": "50%",
+            "align_logo": "center",
+            "logo": "",
+            "disable_header_strip": false,
+            "header_strip_text_email": "MY@SHOP.MYSHOP"
+          },
+          "type": "header"
+        }
+      },
+      "cap_font_weight": "bold",
+      "related_popup_heading_font_size": "30",
+      "title_weight": "600",
+      "type_base_size": "16px",
+      "info_main_space": 1,
+      "discount_icon": "",
+      "product_title_size": 17,
+      "checkout_sidebar_background_color": "#fafafa",
+      "dil_font_size": 14,
+      "type_bold_product_price": true,
+      "imgsldover_font_space": 0,
+      "hover_color": "#000",
+      "currency_format": "money_format",
+      "dil_font_family": "Montserrat",
+      "logo_font_style": "Google_Ubuntu_400_sans",
+      "mega_menu_2": "false",
+      "social_tumblr_link": "",
+      "mega_menu_1": "false",
+      "tim_lbl_family": "Poppins",
+      "icon_logo_size": 16,
+      "head_text_color": "#212121",
+      "menu_font_weight": "bold",
+      "related_popup_heading_font_color": "#fea244",
+      "share_pinterest": true,
+      "newsletter_subheading": "#000000",
+      "show_multiple_currencies": true,
+      "custom_text_color": "#000000",
+      "color_borders": "#ebebeb",
+      "strip_font_style": "Google_Ubuntu_400_sans",
+      "imgsldover_title_size": 50,
+      "SO_sub_heading_font_style": "Poppins",
+      "checkout_body_font": "Helvetica Neue",
+      "social_youtube_link": "#",
+      "type_header_base_size": "26px",
+      "menu_font_space": 2,
+      "type_base_size_1": 15,
+      "delivery_font_family": "Poppins",
+      "show_view_all": true,
+      "menu_logo_size": 10,
+      "imgsldover_trans": "uppercase",
+      "checkout_header_image": "",
+      "title_position": "center",
+      "sale_button_option": "sale_button_option_one",
+      "heading_font_weight": "lighter",
+      "sale_button_option_one_color": "#fea244",
+      "r_view_cart_color": "#6c756c",
+      "share_facebook": true,
+      "type_bold_product_titles": true,
+      "color_sale_text": "#fea244",
+      "color_button_text": "#ffffff",
+      "hover_opacity": 50,
+      "imgsldover_sub_weight": "400",
+      "strip_font_weight": "bold",
+      "checkout_button_color": "#1990c6",
+      "type_title_base_size": 26,
+      "discount_border_color": "#000000",
+      "enable_timer_reset_every_day": "10:00:00",
+      "share_twitter": true,
+      "share_image": "",
+      "type_title_family": "Google_Ubuntu_400_sans",
+      "title_trans": "uppercase",
+      "info_font_space": 0,
+      "related_popup_text_font_color": "#000000",
+      "checkout_input_background_color_mode": "white",
+      "text_font_style": "Poppins",
+      "menu_logo_space": 0,
+      "subhead_font": "Google_Ubuntu_400_sans",
+      "social_pinterest_link": "#",
+      "discount_bold_text_color": "#fea244",
+      "imgsldover_weight": "600",
+      "checkout_heading_font": "Helvetica Neue",
+      "product_family": "Google_Work+Sans_400_sans",
+      "mailchimp_link": "",
+      "discount_image_enable": true,
+      "social_vimeo_link": "",
+      "enable_inventory_stock_number": "enable_stock_number_random",
+      "subhead_font_trans": "none",
+      "discount_popup_disable_mobile": false,
+      "color_image_overlay_text": "#ffffff",
+      "imgsldover_sub_space": 0,
+      "notification_popup_time": "10000",
+      "heading_font_trans": "none",
+      "heading_weight": "600",
+      "social_title": "Follow Us",
+      "logo_font_weight": "bold",
+      "color_text_field_text": "#000",
+      "related_popup_text_font_family": "Ek Mukta",
+      "discount_popup_description1": "Sign up to our newsletter for 10% off additional your first order!",
+      "tim_font_family": "Poppins",
+      "related_popup_text_font_size": "20",
+      "buttom_message": "Someone purchased a",
+      "expire_time": 2,
+      "discount_popup_link_text": "CLOSE THIS PAGE",
+      "strip_main_space": 2,
+      "timer_cookies_set_type": "timer_cookies_set_common",
+      "SO_heading_font_style": "Poppins",
+      "r_continue_shoping_color": "#ffffff",
+      "discount_normal_text_color": "#000000",
+      "color_topheader-text": "#ffffff",
+      "content_for_index": [
+        "1522671161106",
+        "1522671213521",
+        "1522671286117",
+        "1522671309651",
+        "1522671482965",
+        "1522671586612",
+        "1522671638827",
+        "1522671769410",
+        "1522671815227",
+        "1522671853847"
+      ],
+      "color_image_overlay": "#5c5c5c",
+      "transparent_btn": true,
+      "checkout_logo_position": "left",
+      "social_twitter_link": "#",
+      "related_popup_heading_font_family": "Arial",
+      "checkout_logo_image": "",
+      "logo_font_trans": "uppercase",
+      "sp_button": "#fea244",
+      "enable_timer_top_message": true,
+      "secondary_newsletter_banner": true,
+      "text_font_size": 14,
+      "r_checkout_color": "#002500",
+      "sp_button_txt": "#ffffff",
+      "color_body_text": "#000000",
+      "discount_popup_submit_text": "<span>Thank you !<\/span>",
+      "search_free_page": false,
+      "enable_timer_stg": "enable_timer_custom",
+      "checkout_error_color": "#ff6d6d",
+      "timer_sub_font_family": "Poppins",
+      "image_overlay_opacity": 25,
+      "disable_timer_use_tag": true,
+      "on_related_upsell": true,
+      "favicon": "",
+      "social_facebook_link": "#",
+      "enable_timer_stg_on": "enable_timer_stg_on",
+      "social_snapchat_link": "",
+      "popup_disable_close": false,
+      "full_btn": false,
+      "heading_trans": "uppercase",
+      "heading_font_space": 1,
+      "popup_ago_custom_time": true,
+      "subhead_weight": "normal",
+      "strip_font_trans": "uppercase"
+    }
+  }
+}

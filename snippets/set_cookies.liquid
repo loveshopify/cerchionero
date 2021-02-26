@@ -1,0 +1,132 @@
+<script>                         
+     var remainderTimeset ="{{ settings.enable_timer_stg_custom }}";    
+     var current_product ='';
+     var timer_cookies_set_type ="{{ settings.timer_cookies_set_type }}";
+     var enable_inventory_stock_number ="{{ settings.enable_inventory_stock_number }}";
+     var enable_stock_number_random ="{{ settings.enable_stock_number_random }}";
+ 
+     if(enable_inventory_stock_number == 'enable_stock_number_random')
+     {
+       //var current_product_random_num="random_left_number_{{ product.id }}";
+      // var current_product= "product_{{ product.id }}";      
+
+     } else{
+       var current_product_random_num="random_left_number";
+       var current_product= "product_common_id";
+     }
+     
+     
+     remainderTime= remainderTimeset*1000;                  
+
+     function setCookie(cname,cvalue,exdays,randomleftnum,currentLeftnum) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays));
+    var expires = "expires=" + d.toGMTString();
+	var endTime=d.toGMTString();
+    var randomleftnumber=currentLeftnum; 
+    document.cookie = cname + "=" + endTime + ";" + expires + ";path=/";
+    document.cookie = randomleftnum+"=" + randomleftnumber + ";";
+
+     }
+
+     function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+      
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+         
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+      }
+
+
+ var timeDate=getCookie(current_product);
+//alert(timeDate);
+  var randomNumber=getCookie(current_product_random_num);
+    if (timeDate != "") {
+      
+      //  alert("Welcome again " + user);
+    } else {
+	
+	     var dd = new Date();
+	     dd.setTime(dd.getTime() + (remainderTime));
+         var endTime=dd.toGMTString();	
+		 timeDate=endTime;
+   
+		// for randomly number start code
+      
+      var myLeftnum = ['3','4', '5', '6', '7', '8','9','10','11','12'];    
+
+      var randLeftnum = Math.floor(Math.random() * myLeftnum.length);
+
+      var currentLeftnum = myLeftnum[randLeftnum];
+
+      randomNumber=currentLeftnum;
+        // for randomly number end code
+      
+       if (timeDate != "" && timeDate != null) {
+           setCookie(current_product, timeDate, remainderTime, current_product_random_num, currentLeftnum);
+		   if(enable_inventory_stock_number == "enable_stock_number_random"){
+  
+    // $("#stock_left_num").val(currentLeftnum);
+     $(".total_stock_left_num").val(currentLeftnum);
+    // $("#counter_left").text(Math.round(Number(currentLeftnum))); 
+           } 
+       }
+    }
+	
+	  // start time with time diff.
+         var ddd = new Date();
+	     ddd.setTime(ddd.getTime());
+         var startTime=ddd.toGMTString();	                    
+         var date1 = new Date(startTime);
+         var date2 = new Date(timeDate);
+         var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+         var diffDays = Math.ceil(timeDiff / (1000)); 
+         $(".timer_time_cookies").val(diffDays);    
+  
+          // left number
+  
+  var left_number=$(".total_stock_left_num").val();
+
+
+  if( enable_inventory_stock_number == "enable_inventory_stock_number_with_not_desc" || enable_inventory_stock_number == "enable_inventory_stock_number_with_desc")
+     {
+
+     $(".cookies_Left_number").val(left_number);
+     $("#counter_left").text(Math.round(Number(left_number)));
+
+   } else if(enable_inventory_stock_number == "enable_stock_number_random"){
+    
+     $(".total_stock_left_num").val(randomNumber);
+     $("#stock_left_num").val(randomNumber);
+     $("#counter_left").text(Math.round(Number(randomNumber))); 
+
+     var getSecond=remainderTimeset/randomNumber;
+     var nowLeftnumber=diffDays/getSecond;
+
+     $(".stock_left_num").val(nowLeftnumber);
+     $("#counter_left").text(Math.round(Number(nowLeftnumber))); 
+  
+   }else{
+     
+     var getSecond=remainderTimeset/left_number;
+     var nowLeftnumber=diffDays/getSecond;
+     
+     $(".cookies_Left_number").val(nowLeftnumber);
+     $("#counter_left").text(Math.round(Number(nowLeftnumber))); 
+  }
+   
+  
+      // alert(nowLeftnumber);                        
+</script>
+  

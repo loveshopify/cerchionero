@@ -1,0 +1,9 @@
+<!-- **BEGIN** Hextom USB Integration // Cart - DO NOT MODIFY -->
+    <span class="htusb-ui-boost htusb-ui-cart-boost"
+        data-v1="{{ item.product.id }}"
+        data-v2="{{ item.product.handle }}"
+        data-v3="{{ item.product.product_type }}"
+        data-v4="{% if item.product.tags %}{% for tag in item.product.tags %}{{ tag | escape | split: "" | reverse | join: "" }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}"
+    >
+    </span>
+<!-- **END** Hextom USB Integration // Cart - DO NOT MODIFY -->

@@ -1,0 +1,168 @@
+<!-- SELL BUTTON STYLE -->
+
+ 
+{% if settings.sale_button_option == "sale_button_option_one" %}
+
+	{% assign sale_box_opt = "sale_wheel" %}
+
+{% elsif settings.sale_button_option == "sale_button_option_two" %}
+
+	{% assign sale_box_opt = "sale_wheel-two" %}
+
+{% elsif settings.sale_button_option == "sale_button_option_three" %}
+
+	{% assign sale_box_opt = "sale_wheel-three" %}
+
+{% endif %} 
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+	{% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+	{% assign sold_out = false %}
+{% endif %}
+
+{% assign product_avilable_price = product.first_available_variant.price %}
+{% assign free = false %}
+{% if product_avilable_price == 0 %}
+{% assign free = true %}
+{% endif %}
+
+
+<div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %} sale-sold">
+  {% if free and settings.show_free_badges %}
+  {% unless  sold_out %} 
+  {% if settings.sale_button_option == "sale_button_option_two" %}
+  <div class="sale_btn_2 free_badges">
+    <p class="{{ sale_box_opt  }}"></p>
+   {% else %}
+  <p class="{{ sale_box_opt  }} free_badges">
+  {% endif %}
+   <strong>{{ 'collections.tag.free_text' | t }}</strong> 
+  {% if settings.sale_button_option == "sale_button_option_two" %}  
+  </div>
+  {% else %}
+   </p>
+  {% endif %}
+  {% endunless %}
+    
+  {% elsif on_sale and settings.show_saved_amount %}
+  {% if settings.show_discount_amount == 'percent_save' %}
+  {% unless  sold_out %} 
+  {% if settings.sale_button_option == "sale_button_option_two" %}
+  <div class="sale_btn_2">
+    <p class="{{ sale_box_opt  }}"></p>
+    {% else %}
+    <p class="{{ sale_box_opt  }}">
+      {% endif %}
+      {% assign sale = product.compare_at_price | minus:  product.price | times: 100.0  %}
+      {% assign  sale = sale | divided_by:  product.compare_at_price | round %}
+      <strong>{{sale}}{{ 'products.product.on_save' | t }} </strong> 
+      {% if settings.sale_button_option == "sale_button_option_two" %}  
+  </div>
+  {% else %}
+  </p>
+  {% endif %}
+  {% endunless %}
+  {% endif %}
+  {% endif %}
+
+{% if sold_out %}
+{% if settings.sale_button_option == "sale_button_option_two" %}
+<div class="sale_btn_2">
+  <p class="{{ sale_box_opt  }}"></p>  
+  {% else %}
+  <p class="{{ sale_box_opt }} sld-out">
+    {% endif %}
+    <strong>{{ 'collections.tag.sold_out_text' | t }}</strong>
+
+    {% if settings.sale_button_option == "sale_button_option_two" %}  
+</div>
+{% else %}
+</p>
+{% endif %}
+{% endif %}   
+{% if settings.enable_collection_url %}
+<a class="grid-view-item__link grid-view-item__image-container" href="{{ product.url | within:collection }}">
+  {% else %}
+  <a class="grid-view-item__link grid-view-item__image-container" href="{{ product.url }}">
+    {% endif %} 
+    {% unless settings.show_second_image %}
+    
+    {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
+    {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
+    {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+    {% unless product.featured_image == blank %}
+    {% include 'image-style' with image: product.featured_image, width: max_height, height: max_height, small_style: true, wrapper_id: wrapper_id, img_id: img_id %}
+    {% endunless %}
+
+    <div id="{{ wrapper_id }}" class="grid-view-item__image-wrapper js">
+      <div style="padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};">
+        <img id="{{ img_id }}"
+             class="grid-view-item__image lazyload"
+             src="{{ product.featured_image | img_url: '300x300' }}"
+             data-src="{{ img_url }}"
+             data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+             data-sizes="auto"
+             alt="{{ product.featured_image.alt | escape }}">
+      </div>
+    </div>
+
+    <noscript>
+      {% capture image_size %}{{ max_height }}x{{ max_height }}{% endcapture %}
+      <img class="grid-view-item__image" src="{{ product.featured_image.src | img_url: image_size, scale: 2 }}" alt="{{ product.featured_image.alt }}" style="max-width: {{ max_height | times: product.featured_image.aspect_ratio }}px;">
+    </noscript>
+    
+    {% else %}
+    
+    <div class="reveal">
+      {% assign image_pro = '300x300'%}
+      <img src="{{ product.featured_image.src | img_url: image_pro }}" alt="{{ product.featured_image.alt | escape }}">
+      {% if product.images.size > 1 %}
+      <img class="hidden" src="{{ product.images[1] | img_url: image_pro }}" alt="{{ product.images.last.alt | escape }}" />
+      {% endif %}
+      <div class="hidden">          
+      <div class="shop-now fadeInUp animated">Shop Now &gt;</div>     
+    </div>
+    </div>
+    
+    {% endunless %}
+    
+<!-- RYVIU APP --> 
+<div class="ryviu-collection-widget" data="collection_product_reviews" product-handle="{{product.handle}}"></div>
+<!-- / RYVIU APP -->
+
+	<div class="subheading grid-view-item__title medium-up--hide ">
+      {% if section.settings.on_mobile_title_set == "mobile_title_set_line_trim" %}
+      {% assign setHlimit = section.settings.mobile_text_limit %}
+      {{ product.title | truncate:setHlimit }}
+      {% else %}
+      {{ product.title }}
+      {% endif %} 
+    </div>
+
+    <div class="subheading grid-view-item__title small--hide">
+      {% if section.settings.on_desktop_title_set == "title_set_line_trim" %}
+      {% assign setHlimit = section.settings.desktop_text_limit %}
+      {{ product.title | truncate:setHlimit }}
+      {% else %}
+      {{ product.title }}
+      {% endif %}    
+    </div>
+    {% if section.settings.show_vendor %} 
+      <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+    {% endif %}
+    <div class="grid-view-item__meta">
+      {% include 'product-price' %}
+    </div>
+  </a>
+
+<!-- **BEGIN** Hextom USB Integration // Collection Include - DO NOT MODIFY -->
+    {% include 'hextom_usb_coll' %}
+    <!-- **END** Hextom USB Integration // Collection Include - DO NOT MODIFY -->
+</div>

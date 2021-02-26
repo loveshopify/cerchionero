@@ -1,0 +1,124 @@
+<ul class="site-nav list--inline {{ nav_alignment }}" id="SiteNav">
+  {% for link in linklists[section.settings.main_linklist].links %}
+  {%- assign child_list_handle = link.title | handleize -%}
+
+  {%- assign mega_nav_names = '' -%}
+
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'mega_menu' -%}
+      {%- assign mega_nav_names = mega_nav_names | append: block.settings.navigation_mega_menu | append: ',' -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- assign mega_nav_names = mega_nav_names | downcase | split: ',' | compact -%}
+
+  {% if link.links != blank %}
+  {%- assign downcased_link_title = link.title | downcase -%}
+  <li class="site-nav--has-dropdown {% if mega_nav_names contains downcased_link_title %} site-nav--has-centered-dropdown {% else %}count_li {% endif %}{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true" aria-controls="SiteNavLabel-{{ child_list_handle }}">
+    <a href="{{ link.url }}" class="site-nav__link site-nav__link--main"{% if link.active %} aria-current="page"{% endif %} aria-expanded="false" data-dropdown-rel="{{ link.handle }}">
+      {{ link.title }}
+      {% include 'icon-chevron-down' %}
+    </a>
+
+    <div class="site-nav__dropdown{% if mega_nav_names contains downcased_link_title %} site-nav__dropdown--centered{% endif %}" id="SiteNavLabel-{{ child_list_handle }}" data-dropdown="{{ link.handle }}">
+      {% if mega_nav_names contains downcased_link_title %}
+      <div class="site-nav__childlist">
+        <ul class="site-nav__childlist-grid">
+          {% if link.links != blank %}
+
+          {% for childlink in link.links limit:5 %}
+          {% assign collection = childlink.object %}
+          <li class="site-nav__childlist-item count-column {% if childlink.links != blank %} left {% elsif collection.image or collection.products.first or childlink.type == 'product_link' %}center {% endif %}">
+            {% if childlink.links != blank %}
+            <a href="{{ childlink.url }}" class="site-nav__link site-nav__child-link site-nav__child-link--parent"{% if childlink.active %} aria-current="page"{% endif %}>
+              {{ childlink.title | escape }}
+            </a>
+            {% else %}
+            <a href="{{ childlink.url }}" class="{% if collection.image or collection.products.first or childlink.type == 'product_link' %}hide {% endif %}site-nav__link site-nav__child-link site-nav__child-link--parent"{% if childlink.active %} aria-current="page"{% endif %}>
+              {{ childlink.title | escape }}
+            </a>
+            {% endif %}
+            {% if childlink.links != blank %}
+            <ul>
+              {% for grandchildlink in childlink.links %}
+              <li>
+                <a href="{{ grandchildlink.url }}" class="site-nav__link site-nav__child-link"{% if grandchildlink.active %} aria-current="page"{% endif %}>
+                  {{ grandchildlink.title | escape }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+          	{% assign collection = childlink.object %}
+            {% if childlink.type == 'collection_link' %}
+            <div class="coll_image">
+              <a class="collection-link-menu" href="{{ childlink.url }}">
+                <div class="collection-grid-item__overlay">
+                  {% if collection.image %}
+                  <img src="{{ collection | img_url: '500x' }}"  alt="{{ collection.title | escape }}"/>
+                  {% else %}
+                  <img src="{{ collection.products.first | img_url: '500x' }}"  alt="{{ collection.title | escape }}"/>
+                  {% endif %}
+                </div>
+                <div class="collection-grid-item__title-wrapper">
+                  <h3 class="collection-grid-item__title">
+                    {{ childlink.title }}
+                  </h3>
+                  {% if settings.show_view_all %}
+                  <div class="text-center coll_all">
+                    <span class="btn_all btn">{{ settings.btn_text }}</span>
+                  </div>
+                  {% endif %}
+                </div>
+              </a>
+            </div> 
+            {% endif %}
+            {% assign product = childlink.object %}
+            {% if childlink.type == 'product_link' %} 
+            <div class="grid__item--collection-template">
+              {% include 'product-card-grid', product: product, image_pro: 'grande' %}
+            </div>
+            {% endif%}
+            {% endif %}
+
+          </li>
+          {% endfor %}
+
+          {% endif %}
+        </ul>
+      </div>
+
+      {% else %}
+      <ul>
+        {% for childlink in link.links %}
+        <li class="{% if childlink.active %}site-nav--active {% endif %}{% if childlink.links != blank %} site_nav-has-dropdown{% endif %}">
+          <a href="{{ childlink.url }}" class="site-nav__link site-nav__child-link{% if forloop.last %} site-nav__link--last{% endif %}"{% if childlink.active %} aria-current="page"{% endif %}>
+            {{ childlink.title | escape }}
+             {% if childlink.links != blank %}{% include 'icon-chevron-down' %}{% endif %}
+          </a>
+          {% if childlink.links != blank %}
+            <ul class="drop_down_nav">
+              {% for grandchildlink in childlink.links %}
+              <li>
+                <a href="{{ grandchildlink.url }}" class="site-nav__link site-nav__child-link"{% if grandchildlink.active %} aria-current="page"{% endif %}>
+                  {{ grandchildlink.title | escape }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </li>
+  {% else %}
+  <li{% if link.active %} class="site-nav--active"{% endif %}>
+    <a href="{{ link.url }}" class="site-nav__link site-nav__link--main"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+  </li>
+  {% endif %}
+  {% endfor %}
+
+</ul>
+

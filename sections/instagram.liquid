@@ -1,0 +1,84 @@
+<div class="page-width social-feeds-wrap">
+  <div class="grid grid--uniform homepage_content">
+    <div class="grid__item medium-up--one-whole">
+      <div class="section-header text-{{settings.title_position}}">
+        <h2 class="title insta">
+          {% if settings.social_instagram_link != blank %}
+          <a href="{{ settings.social_instagram_link }}" target="_blank">
+            {% endif %}
+            {{ section.settings.instagram_title }}
+            {% if settings.social_instagram_link != blank %}
+          </a>
+          {% endif %}
+        </h2>
+      </div>
+      {% if section.settings.instagram_title != blank %}
+      <div class="feature_divider"></div>
+      {% endif %}
+      {%- assign image_limit = section.settings.instagram_count | times: section.settings.rows -%}
+
+      {% if section.settings.instagram_client_id != blank %}
+
+      <div id="instafeed" class="js-instafeed" data-client-id="{{ section.settings.instagram_client_id | strip }}" data-count="{{ image_limit }}" data-limit="{{  section.settings.instagram_count }}"></div>
+      {% else %}
+      <div id="instafeed" class="clearfix placeholder-instagram">
+        {% for i in (1..image_limit) %}
+        <div class="grid__item {% if section.settings.instagram_count == 8 %}medium-up--one-eighth {% elsif section.settings.instagram_count == 6 %}medium-up--one-sixth {% elsif section.settings.instagram_count == 4 %}medium-up--one-quarter {% endif %}small--one-half inst_image">
+          <a href="#">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--instagram' }}
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Instagram",
+    "class": "social-feeds-section index-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Instagram [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002079133-How-to-setup-Instagram-section-in-Booster-2-0)"
+      },
+      {
+        "type": "text",
+        "id": "instagram_client_id",
+        "label": "Instagram Access Token ()"
+      },
+      {
+        "type": "text",
+        "id": "instagram_title",
+        "label": "Heading",
+        "default": "Instagram"
+      },
+      {
+        "type": "range",
+        "id": "instagram_count",
+        "min": 4,
+        "max": 8,
+        "step": 2,
+        "label": "Number of images per row",
+        "default": 6
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "label": "Rows",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 2
+      }
+    ],
+    "presets": [
+      {
+        "name": "Instagram",
+        "category": "Social"
+      }
+    ]
+  }
+{% endschema %}

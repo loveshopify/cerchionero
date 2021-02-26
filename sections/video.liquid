@@ -1,0 +1,110 @@
+<div id="shopify-section-{{ section.id }}" class="shopify-section video_option">
+  <div class="page-width">
+    <div class="grid product-single">
+      {% for block in section.blocks %}
+      <div class="grid__item{% if forloop.length == 2 %} medium-up--six-twelfths{% endif %}  text-center" {{ block.shopify_attributes }}>
+        <h2 class="section-header__center video_title video_1">{{  block.settings.video_title_1 }}</h2>
+        <div class="video-wrapper">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ block.settings.video_link_1 }}?autoplay={{ section.settings.video_type_1 }}&controls={{ section.settings.video_controls_1 }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h5 class="title">{{  block.settings.video_text_1 }}</h5>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Video",  
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Video [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002079333-How-to-setup-Video-section-in-Booster-2-0)"
+      },
+      {
+        "type": "select",
+        "id": "video_type_1",
+        "label": "Style",
+        "default":"0",
+        "options": [
+          {
+            "value": "1",
+            "label": "Auto play"
+          },
+          {
+            "value": "0",
+            "label": "Video with play button"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "video_controls_1",
+        "label": "Controls",
+        "default":"0",
+        "options": [
+          {
+            "value": "0",
+            "label": "No controls"
+          },
+          {
+            "value": "1",
+            "label": "Controls"
+          }
+        ]
+      }
+    ],
+	"max_blocks": 2,
+	"blocks": [
+      
+      {
+        "type": "video",
+        "name": "Video",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "enable_video_1",
+            "default": true ,
+            "label": "Enable video"
+          },
+          {
+            "type": "text",
+            "id": "video_title_1",
+            "label": "Video title"
+          },        
+          {
+            "type": "text",
+            "id": "video_link_1",
+            "default":"_9VUPq3SxOc",
+            "label": "Youtube Video ID",
+            "info": "[Find your YouTube video ID](https://docs.joeworkman.net/rapidweaver/stacks/youtube/video-id)."
+          },
+          {
+            "type": "textarea",
+            "id": "video_text_1",
+            "label": "Video description"
+          }
+      	]
+      }
+	],
+    "presets": [
+      {
+        "name": "Video",
+        "category": "Video",
+        "blocks": [
+          {
+            "type": "video"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

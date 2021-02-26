@@ -1,0 +1,13 @@
+{% comment %}
+  The contents of the cart.liquid template can be found in /sections/cart-template.liquid
+{% endcomment %}
+
+{% section 'cart-template' %}
+
+
+<p class="mlvedaCartNote" style="display:none">
+  {{ shop.name }} process all orders in {{ shop.currency }}.
+  While the content of your cart is currently displayed in
+  <span class="selected-currency"></span>,
+  you will checkout using {{ shop.currency }} at the most current exchange rate.
+</p>

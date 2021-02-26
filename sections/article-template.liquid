@@ -1,0 +1,110 @@
+
+<style>
+  {% if section.settings.enable_parallax%}
+  .collection-hero__image {  
+    position: relative;
+    height: 40vh;
+    background-attachment: fixed;
+    background-position: left center;
+    background-size: cover;
+  }
+  @media only screen and (max-width:749px) { 
+    .collection-hero__image {
+      height: 50vh;
+    }  
+  }
+  {% endif %}
+</style>
+{% if section.settings.show_blog_image %}
+<div class="collection-hero">
+  <div class="collection-hero__image ratio-container lazyload js"
+       data-bgset="{% include 'bgset', image: section.settings.image %}"
+       data-sizes="auto"
+       data-parent-fit="cover"
+       style="background-image: url('{{ section.settings.image | img_url: '1600x' }});"></div>
+  <noscript>
+    <div class="collection-hero__image" style="background-image: url({{ section.settings.image | img_url: '2048x600', crop: 'top' }});"></div>
+  </noscript>
+  <div class="collection-hero__title-wrapper">
+    <div class="over_image_content page-width text-center">
+      <h1 class="heading">{{ section.settings.heading_title}}</h1>           
+    </div>
+  </div>
+</div>
+{% endif %}
+<article class="page-width blog_details" itemscope itemtype="http://schema.org/Article">
+  <div class="grid">
+    <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
+      <div class="article_singal_img">
+        {% if article.image %}
+        {{ article | img_url: 'master' | img_tag: article.title }}
+        {% endif %}
+      </div>
+      <div class="rte" itemprop="articleBody">
+
+        {% if section.settings.blog_show_date %}
+        <span class="article__date">
+          {{ article.published_at | time_tag: format: 'month_day_year' }}
+        </span>
+        {% endif %}
+
+        {% if section.settings.blog_show_author %}
+        <span class="article__author"> • {{ 'blogs.article.by_author' | t: author: article.author }}</span>
+        {% endif %}
+        <h1 class="article__title">{{ article.title }}</h1>
+        {{ article.content }}
+      </div>
+       <hr>
+      {% if section.settings.show_share_buttons %}
+      {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+      {% endif %}
+    </div>
+  </div>
+</article>
+{% schema %}
+  {
+    "name": "Posts",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "heading_title",
+        "label": "Heading",
+        "default": "News Detail"
+      },  
+      {
+        "type": "checkbox",
+        "id": "show_blog_image",
+        "label": "Show Banner image",
+        "default": true
+      },     
+      {
+        "type": "checkbox",
+        "id": "enable_parallax",
+        "label": "Enable Parallax"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

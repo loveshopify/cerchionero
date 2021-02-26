@@ -1,0 +1,124 @@
+{% paginate search.results by 60 %}
+ {% if settings.search_result == 'only_product' %} 
+      {% assign count_pro = 0 %}
+      {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+      {% assign product = item %}
+      {% unless product.price == 0 and settings.search_free_page %}
+      {% assign count_pro = count_pro | plus:1 %}
+      {% endunless %}
+      {% endif %}
+      {% endfor %}
+{% endif %}
+<div class="page-width">
+  {% if search.results_count == 0 or search.performed == false or count_pro == 0 %}
+  <div class="empty-page-content text-center">
+    <h1 class="h2">{{ 'general.search.title' | t }}</h1>
+    {% else %}
+    <div class="section-header text-center">
+      {% if settings.search_result == 'only_product' %} 
+      {% assign count_pro = 0 %}
+      {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+      {% assign product = item %}
+      {% unless product.price == 0 and settings.search_free_page %}
+      {% assign count_pro = count_pro | plus:1 %}
+      {% endunless %}
+      {% endif %}
+      {% endfor %}     
+      {% if count_pro != 0 %}
+      <h1 class="h2">{{ 'general.search.results_with_count' | t: terms: search.terms, count: count_pro }}</h1>
+      {% endif %}
+      {% else %}
+      <h1 class="h2">{{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}</h1>
+      {% endif %}
+      {% endif %}
+      <div class="grid">
+        <div class="grid__item medium-up--two-fifths medium-up--push-three-tenths">
+          <form action="/search" method="get" role="search" class="search">
+            <div class="input-group">
+              {% if settings.search_result == 'only_product'%}
+              <input type="hidden" name="type" value="product">
+              {% endif %}
+              <input type="input"
+                     id="SearchInput"
+                     class="input-group__field search__input"
+                     name="q"
+                     value="{{ search.terms | escape }}"
+                     placeholder="{{ 'general.search.placeholder' | t }}"
+                     aria-label="{{ 'general.search.placeholder' | t }}"
+                     autofocus>
+              <span class="input-group__btn">
+                <button class="btn search__submit" type="submit">{{ 'general.search.submit' | t }}</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {% if search.performed and search.results_count == 0 or count_pro == 0 %}
+      <hr class="hr--small hr--invisible">
+      <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="page-width">
+
+    {% if search.performed %}
+
+    {% if settings.search_result == 'everything' %}
+    {% if search.results_count > 0 %}
+    <hr>
+    {% endif %}
+    <div class="list-view-items">
+      {% for item in search.results %}
+      <a href="{{ item.url }}" class="list-view-item">
+        {% if item.object_type == 'product' %}
+        {% assign product = item %}
+        {% unless product.price == 0 and settings.search_free_page %}
+        {% include 'product-card-list', product: item %}
+        {% endunless %}
+        {% else %}
+        {% if item.image %}
+        <div class="list-view-item__image-column">
+          <div class="list-view-item__image-wrapper">
+            <img class="list-view-item__image" src="{{ item.image.src | img_url: '600x600' }}" alt="{{ item.image.alt | escape }}">
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="list-view-item__title-column">
+          <div class="list-view-item__title">{{ item.title }}</div>
+          <div class="">
+            {% if item.published_at %}{{ item.published_at | date: "%b %d, %Y" }} &#8212; {% endif %}
+            {{ item.content | strip_html | truncate: 200 }}
+          </div>
+        </div>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="product_all">
+      <div class="grid grid--uniform grid--view-items">
+        {%- assign max_height = 250 -%}
+        {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+        {% assign product = item %}
+        {% unless product.price == 0 and settings.search_free_page %}
+        <div class="grid__item small--one-half medium-up--one-quarter">        
+          {% include 'product-card-grid', max_height: max_height %}          
+        </div>
+        {% endunless %} 
+        {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+    {% endif %}
+    {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+    {% endif %}
+    {% endif %}
+  </div>
+  {% endpaginate %}

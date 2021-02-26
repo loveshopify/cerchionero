@@ -1,0 +1,130 @@
+ {%comment%}
+        related product
+       {%endcomment%}
+       
+{% if section.settings.show_related_products == true %}
+<!-- <hr> -->
+<div class="page-width">
+ 
+{% comment %}
+  Number of related items per row,
+  and number of rows.
+{% endcomment %}
+
+{% assign number_of_related_products_per_row = section.settings.related_grid_num %}
+{% assign number_of_rows = section.settings.related_grid_row %}
+{% assign heading = 'cart.general.related_products' | t %}
+{% comment %}
+  Heading.
+  Leave blank if you don't need one.
+{% endcomment %}
+ 
+
+{% comment %}
+  Set either or both to true, if you want
+  to limit yourself to items with same vendor, and/or type.
+{% endcomment %}
+
+{% assign same_vendor = false %}
+{% assign same_type = false %}
+
+{% comment %}
+  Collections to ignore.
+  Never pick related items from those.
+{% endcomment %}
+
+{% assign exclusions = 'frontpage,all' | split: ',' %}
+
+{% comment %}
+  Looking for a relevant collection.
+{% endcomment %}
+
+{% if product.metafields.c_f['Related Products'] %}
+  {% assign collection = collections[product.metafields.c_f['Related Products']] %}
+{% endif %}
+
+{% assign found_a_collection = false %}
+{% if collection and collection.all_products_count > 1 %}
+  {% unless exclusions contains collection.handle %}
+    {% assign found_a_collection = true %}
+  {% endunless %}
+{% endif %}
+{% unless found_a_collection %}
+  {% for c in product.collections %}
+    {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+      {% assign found_a_collection = true %}
+      {% assign collection = c %}
+      {% break %}
+    {% endunless %}
+  {% endfor %}
+{% endunless %}
+
+{% comment %}
+  If we have a relevant collection.
+{% endcomment %}
+
+{% if found_a_collection %}
+
+  {% assign counter = 0 %}
+  {% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
+  {% assign current_product = product %}
+ 
+ {% case section.settings.related_grid_num %}
+      {% when 2 %}
+        {%- assign grid_item_width = 'medium-up--one-half' -%}
+      {% when 3 %}
+        {%- assign grid_item_width = 'medium-up--one-third' -%}
+      {% when 4 %}
+        {%- assign grid_item_width = 'medium-up--one-quarter' -%}
+      {% when 5 %}
+        {%- assign grid_item_width = 'medium-up--one-fifth' -%}
+      {% endcase %}
+
+  {% if settings.mobile_grid_1 == "on_mobile_set_row_one" %}
+    {%- assign grid_mobile = "small--one-whole" -%}
+    {% elsif settings.mobile_grid_1 == "on_mobile_set_row_two" %}
+    {%- assign grid_mobile = "small--one-half" -%}
+    {% endif %}
+  
+  {% capture related_items %}
+    {% for product in collection.products %}
+      {% unless product.handle == current_product.handle %}
+         {% unless same_vendor and current_product.vendor != product.vendor %}
+           {% unless same_type and current_product.type != product.type %}
+               <div class=" realted_product1 grid__item {{ grid_item_width }} {{grid_mobile}}">   
+              {% include 'product-card-grid', max_height: max_height %}
+               </div>
+             {% assign counter = counter | plus: 1 %}
+             {% if counter == break_at %}
+               {% break %}
+             {% endif %}
+           {% endunless %}
+        {% endunless %}
+      {% endunless %}
+    {% endfor %}
+  {% endcapture %}
+
+  {% assign related_items = related_items | trim %}
+
+  {% unless related_items == blank %}
+
+  <aside class="grid">
+    <div class="grid__item ">
+      {% unless heading == blank %}
+      <header class="section-header set_mar">
+        <h2 class="section-header__title rel_hr">{{ heading }}</h2>
+      </header>
+      {% endunless %}
+      <div class="grid grid--uniform grid--view-items">
+        {{ related_items }}
+      </div>
+    </div>
+  </aside>
+
+  {% endunless %}
+     
+{% endif %}
+  
+</div>
+{% endif %}
+ 

@@ -1,0 +1,883 @@
+<style>  
+  {% if section.settings.content_over %}
+  #shopify-section-{{section.id}} .hero__overlay::before {
+    background-color: unset;
+  }
+  {% endif %}
+  #shopify-section-{{section.id}} .custom_bg {
+    position:relative;
+    {% if section.settings.content_bg_type == 'color' %}
+    background-color:{{ settings.background_color }};
+    {% elsif section.settings.background_image12 != blank %}
+    background-image:url({{ section.settings.background_image12 | img_url:'1700x' , crop: 'center' }});
+    background-repeat: no-repeat;
+    background-size: cover;
+    {% endif %}
+  }
+  .cst-title {
+    margin-top: 30px;
+  }
+  {% for block in section.blocks %}
+  {% if block.settings.image_size == 'small'%}
+  #timertwohour  span.cokies1_timer {
+    font-size: 18px;
+  }
+  {% elsif  block.settings.image_size == 'medium'%}
+  #timertwohour  span.cokies1_timer {
+    font-size: 25px;
+  }
+  #timertwohour {
+    font-size: 18px;
+  }
+  {% elsif  block.settings.image_size == 'large'%}
+  #timertwohour  span.cokies1_timer {
+    font-size: 30px;
+  }
+  #timertwohour {
+    font-size: 18px;
+  }
+  {% elsif  block.settings.image_size == 'full'%}
+  #timertwohour  span.cokies1_timer {
+    font-size: 35px;
+  }
+  #timertwohour {
+    font-size: 20px;
+  }
+  {% endif %}
+  {% endfor %}
+  /*===== START PARALLAX CSS =====*/
+
+  {% if section.settings.enable_parallax and section.settings.background_image12 != blank%}
+  #shopify-section-{{section.id}} .custom_bg {  
+    position: relative;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+  }	
+  @media only screen and (min-width:749px) and (max-width:1024px) {
+    #shopify-section-{{section.id}} .custom_bg {
+      background-attachment: scroll;     
+    }
+  }
+  @media only screen and (max-width:749px) {
+    #shopify-section-{{section.id}} .custom_bg {
+      background-attachment: scroll; 
+    }
+  }
+  {% endif %}
+  /*===== END PARALLAX CSS =====*/
+</style>
+
+
+{% if section.settings.title != blank %}
+<div class="section-header cst-title text-{{settings.title_position}}">
+  <h4 class="title">{{ section.settings.title | escape }}</h4>
+</div>
+{% endif %}
+<div class="custom_bg hero__overlay">
+<div class="page-width">
+  <div class="custom-content">
+    
+    {% for block in section.blocks %}
+      {% case block.settings.width %}
+        {% when '25%' %}
+          {%- assign max_height = 250 -%}
+    	  {%- assign image_size = '250x250' -%}
+          {%- assign block_width = 'medium-up--one-quarter' -%}
+        {% when '33%' %}
+          {%- assign max_height = 345 -%}
+    	  {%- assign image_size = '250x250' -%}
+          {%- assign block_width = 'medium-up--one-third' -%}
+        {% when '50%' %}
+          {%- assign max_height = 530 -%}
+    	  {%- assign image_size = '250x250' -%}
+          {%- assign block_width = 'medium-up--one-half' -%}
+        {% when '66%' %}
+          {%- assign max_height = 720 -%}
+    	  {%- assign image_size = '250x250' -%}
+          {%- assign block_width = 'medium-up--two-thirds' -%}
+        {% when '75%' %}
+          {%- assign max_height = 810 -%}
+   		  {%- assign image_size = '250x250' -%}
+          {%- assign block_width = 'medium-up--three-quarters' -%}
+        {% when '100%' %}
+          {%- assign max_height = 1090 -%}
+    	  {%- assign image_size = '250x250' -%}
+          {%- assign block_width = 'one-whole' -%}
+      {% endcase %}
+
+      <div class="custom__item grid__item custom__item--{{block.id}} {{ block_width }} {% if block.settings.alignment %}align--{{ block.settings.alignment }}{% endif %}" {{ block.shopify_attributes }}>
+        <div style="margin-top: 18px;" class="custom__item-inner custom__item-inner--{{ block.type }}"{% if block.type == 'image' %} id="{{ img_wrapper_id }}"{% endif %}>
+          {% case block.type %}
+            {% when 'image' %}
+                {% if block.settings.image != blank %}
+                {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                {%- assign heightpx_tem = block.settings.height_per -%}
+                {%- assign heightpx  = max_height | times: heightpx_tem  | divided_by: 100 -%}
+                <style>
+                  .customer_imagess{{block.id}} {
+                    text-align:{{block.settings.img_align}};
+                  }
+                </style>
+                {%- assign color_from_settings = heightpx | append : 'x' |append: heightpx -%}
+                <div class="customer_imagess{{block.id}}">
+                  <img src="{{ block.settings.image | img_url: color_from_settings }}"
+                       alt="{{ block.settings.image.alt | escape }}">
+                </div>
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+            {% when 'text' %}
+              <div class="medium-up--text-{{ block.settings.align_text }}">
+                {% if block.settings.title != blank %}
+                  <h4 class="heading">{{ block.settings.title | escape }}</h4>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <div class="rte-setting">{{ block.settings.text }}</div>
+                {% endif %}
+              </div>
+            {% when 'video' %}
+              <div class="video-wrapper">
+                {% if block.settings.video_url == blank %}
+                  <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?autoplay={{ block.settings.video_type_1 }}&rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                {% else %}
+                  {% if block.settings.video_url.type == "youtube" %}
+                    <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?autoplay={{ block.settings.video_type_1 }}&rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                  {% endif %}
+                  {% if block.settings.video_url.type == "vimeo" %}
+                    <iframe src="//player.vimeo.com/video/{{ block.settings.video_url.id }}?autoplay={{ block.settings.video_type_1 }}&byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                  {% endif %}
+                {% endif %}
+              </div>
+            {% when 'sale_button' %} 
+            <style>
+             #shopify-section-{{section.id}} .custom__item--{{block.id}} .btn {
+                padding: 16px 15px !important;
+
+              }
+              #shopify-section-{{section.id}} #sale_button_home {
+                {% if block.settings.full_btn %}
+                width:100%;
+                {% endif %}
+                {% unless block.settings.transparent_btn %}
+                background: {{settings.color_button }};
+                color: {{settings.color_button_text}};
+                border: 1px solid {{settings.color_button }};
+                {% else %}
+                background: transparent;
+                color: {{ settings.color_body_text }};
+                border: 1px solid {{ settings.color_body_text }};
+                {% endunless %}
+              }
+              @media only screen and (min-width:750px) {
+               #shopify-section-{{section.id}} #sale_button_home {
+                  {% if block.settings.full_btn %}
+                  margin: 0 auto;
+                  max-width: 75%;   
+                  {% endif %}
+                }
+              }
+            </style>
+            <div class="text-center">
+              <a href="{{block.settings.button_link}}" id="sale_button_home" class="btn btn--secondary  btn--has-icon-before return-link {% if block.settings.button_size == 'medium' %} medium {% endif %}  {% if block.settings.button_size == 'large' %} large {% endif %}">
+                {{ block.settings.button_label }}
+              </a>
+            </div>
+            {% when 'product' %}
+              {%- assign product = all_products[block.settings.product] -%}
+              {% if product.title.size > 0 %}
+                {% include 'product-card-grid', max_height: max_height %}
+              {% else %}
+                {% comment %}
+                  No product yet. Show onboarding one.
+                {% endcomment %}
+                <div class="grid-view-item">
+                  <a class="grid-view-item__link" href="#">
+                    <div class="grid-view-item__image">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="grid-view-item__meta">
+                      {{ 1999 | money }}
+                    </div>
+                  </a>
+                </div>
+              {% endif %}
+            {% when 'collection' %}
+              {%- assign collection = collections[block.settings.collection] -%}
+              {% include 'collection-grid-item' %}
+            {% when 'html' %}
+              {% if block.settings.code != blank %}
+                {{ block.settings.code }}
+              {% endif %}
+           	{% when 'timer' %}
+              <div id="shopify-section-[id]" class="shopify-section sale_button" data-section-id="{{ section.id }}">
+                <div class="grid container wrapper1">
+                  <div class="grid__item timer_default_on_home">
+
+                    {% include 'custom_timer_home' %}
+
+                  </div>
+                </div>
+              </div>
+          {% endcase %}
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Custom content",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom content [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002079353-How-to-setup-Custom-Content-section-in-Booster-2-0)"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Custom content"
+      },
+      {
+        "type": "radio",
+        "id": "content_bg_type",
+        "label": "Background type",
+        "options": [
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ]
+      }, 
+      {
+        "type": "checkbox",
+        "id": "content_over",
+        "label": "Disable overlay",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image12",
+        "label": "Background image"
+      },     
+      {
+        "type": "checkbox",
+        "id": "enable_parallax",
+        "label": "Enable Parallax"
+      }
+    ],
+    "blocks": [
+      {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Talk about your brand"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "50%",
+          "options": [
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }	
+          ]
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Vertical alignment",
+          "default": "center",
+          "options": [
+            {
+              "value": "top-middle",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Middle"
+            },
+            {
+              "value": "bottom-middle", 
+              "label": "Bottom"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "align_text",
+          "label": "Horizontal alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Centered"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        }
+        ]
+      },
+      {
+        "type": "sale_button",
+        "name": "sale button",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+          	]
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button text",
+            "default": "YES, I WANT TO GET THIS OFFER NOW !"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "header",
+            "content": "Button Style"
+          },
+          {
+            "type": "checkbox",
+            "id": "full_btn",
+            "label": "Full Button",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "transparent_btn",
+            "label": "Transparent Button"
+          },
+          {
+            "type": "select",
+            "id": "button_size",
+            "label": "Button size",
+            "default": "medium",
+            "options": [
+              {
+                "value": "small",
+                "label": "small"
+              },
+              {
+                "value": "medium",
+                "label": "medium"
+              },
+              {
+                "value": "large",
+                "label": "large"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "height_per",
+            "label": "Image size",
+            "default": "100",
+            "options": [
+              {
+                "value": "10",
+                "label": "20%"
+              },
+              {
+                "value": "30",
+                "label": "30%"
+              },
+              {
+                "value": "40",
+                "label": "40%"
+              },
+              {
+                "value": "50",
+                "label": "50%"
+              },
+              {
+                "value": "60",
+                "label": "60%"
+              },
+              {
+                "value": "70",
+                "label": "70%"
+              },
+              {
+                "value": "80",
+                "label": "80%"
+              },
+              {
+                "value": "90",
+                "label": "90%"
+              },
+              {
+                "value": "100",
+                "label": "100%"
+              }
+          	]
+          },
+          {
+            "type": "select",
+            "id": "img_align",
+            "label": "Image alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              } 
+          	]
+          } 
+        ]
+      },
+      {
+        "type": "video",
+        "name": "Video",
+        "settings": [
+          {
+            "type": "video_url",
+            "id": "video_url",
+            "label": "YouTube or Vimeo link",
+            "accept": ["youtube", "vimeo"]
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "100%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+          	]
+          },
+          {
+            "type": "select",
+            "id": "video_type_1",
+            "label": "Style",
+            "default":"0",
+            "options": [
+              {
+                "value": "1",
+                "label": "Auto play"
+              },
+              {
+                "value": "0",
+                "label": "Video with play button"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "top-middle",
+            "options": [
+              {
+                "value": "top-middle",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom"
+              }
+          	]
+          }
+        ]
+      },
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+          	]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "top-middle",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "timer",
+        "name": "Timer",
+        "limit": 1,
+        "settings": [
+          {
+            "type":"header",
+            "content":"Timer"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content" : "Enable timer reset every day(custom left number)- So you can set that at (22:00:00) it reset every day"  
+          }, 
+          {
+            "type": "text",
+            "id": "enable_timer_reset_every_day",
+            "label": "Enable timer  reset every day(HH:mm:ss)",
+            "default": "10:00:00",
+            "info": "user put time 24 hours- example: 15:00:00 ,09:09:10, 01:01:01"
+          }, 
+          {
+            "type": "header",
+            "content": "timer setting"
+          },         
+          {
+            "type": "select",
+            "id": "image_size",
+            "label": "timer size",
+            "options": [
+              {
+                "value": "small",
+                "label": "Small"
+              },
+              {
+                "value": "medium",
+                "label": "Medium"
+              },
+              {
+                "value": "large",
+                "label": "Large"
+              },
+              {
+                "value": "full",
+                "label": "Full-width"
+              }
+            ],
+            "default": "medium"
+          }
+        ]
+      },
+      {
+        "type": "html",
+        "name": "Custom HTML",
+        "settings": [
+          {
+            "type": "html",
+            "id": "code",
+            "label": "HTML"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]	
+          }
+        ]	
+	  }
+    ],
+    "presets": [
+      {
+        "name": "Custom content",
+        "category": "Advanced layout",
+        "blocks": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

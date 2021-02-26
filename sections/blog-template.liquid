@@ -1,0 +1,286 @@
+{% paginate blog.articles by 12 %}
+
+<style>
+  {% if section.settings.enable_parallax%}
+  .collection-hero__image {  
+    position: relative;
+    height: 40vh;
+    background-attachment: fixed;
+    background-position: left center;
+    background-size: cover;
+  }
+  @media only screen and (max-width:749px) { 
+    .collection-hero__image {
+      height: 50vh;
+    }  
+  }
+  {% endif %}
+</style>
+{% if section.settings.show_blog_image %}
+<div class="collection-hero">
+        <div class="collection-hero__image ratio-container lazyload js"
+             data-bgset="{% include 'bgset', image: section.settings.image %}"
+             data-sizes="auto"
+             data-parent-fit="cover"
+             style="background-image: url('{{ section.settings.image | img_url: '1600x' }});"></div>
+        <noscript>
+          <div class="collection-hero__image" style="background-image: url({{ section.settings.image | img_url: '2048x600', crop: 'top' }});"></div>
+        </noscript>
+        <div class="collection-hero__title-wrapper">
+          <div class="over_image_content page-width text-center">
+          	<h1 class="heading">{{ page_title }}</h1>           
+          </div>
+        </div>
+      </div>
+      {% if blog.tags.size > 0 %}
+      <select id="BlogTagFilter">
+        <option value="/blogs/{{ blog.handle }}">{{ 'blogs.article.all_topics' | t }}</option>
+        {% for tag in blog.all_tags %}
+        <option value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
+        {% endfor %}
+      </select>
+      {% endif %}
+{% else %}
+<div class="page-width">
+  <header class="section-header text-center">
+    <h1>{{ page_title }}</h1>
+    {% if blog.tags.size > 0 %}
+      <select id="BlogTagFilter">
+        <option value="/blogs/{{ blog.handle }}">{{ 'blogs.article.all_topics' | t }}</option>
+        {% for tag in blog.all_tags %}
+          <option value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
+        {% endfor %}
+      </select>
+    {% endif %}
+  </header>
+</div>
+{% endif %}
+<div class="blog_grid {% if section.settings.layout == 'list' %}blog--list-view{% endif %}">
+  {% if section.settings.layout == 'grid' %}
+    <div class="page-width">
+      <div class="grid grid--uniform grid--blog">
+        {% for article in blog.articles %}
+          <div class="grid__item medium-up--one-third">
+            {% if article.image %}
+              {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+              {% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
+              {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            {% include 'image-style' with image: article.image, small_style: true, width: 600, height: 600, wrapper_id: img_wrapper_id, img_id: img_id %}
+            <div id="{{ img_wrapper_id }}" class="article__grid-image-wrapper js">
+              <a href="{{ article.url }}" class="article__grid-image-container" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                <img id="{{ img_id }}"
+                     class="article__grid-image lazyload"
+                     src="{{ article.image | img_url: 'grande' }}"
+                     data-src="{{ img_url }}"
+                     data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                     data-aspectratio="{{ article.image.aspect_ratio }}"
+                     data-sizes="auto"
+                     alt="{{ article.image.alt | escape }}">
+              </a>
+            </div>
+            <noscript>
+              <a href="{{ article.url }}" class="article__grid-image-wrapper">
+                {{ article | img_url: '345x345', scale: 2 | img_tag: article.title, 'article__grid-image' }}
+              </a>
+            </noscript>
+            {% endif %}
+
+            <div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+              {% if section.settings.blog_show_date %}
+              <span class="article__date">
+                {{ article.published_at | time_tag: format: 'month_day_year' }}
+              </span>
+              {% endif %}
+
+            {% if section.settings.blog_show_author %}
+            <span class="article__author"> • {{ 'blogs.article.by_author' | t: author: article.author }}</span>
+            {% endif %}
+            {% if blog.comments_enabled? and article.comments_count > 0 and section.settings.show_comment_count %}
+            <span class="comment_box">
+              <a href="{{ article.url }}#comments" class="btn btn--small btn--link">
+                {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }} <i class="fas fa-comment"></i>
+              </a>
+            </span>
+            {% endif %}
+           
+            <h2 class="subheading article__title">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+            <div class="rte article__grid-excerpt">
+              {% if article.excerpt.size > 0 %}
+                {{ article.excerpt }}
+              {% else %}
+                {{ article.content | strip_html | truncate: 150 }}
+              {% endif %}
+            </div>
+
+              {% if article.tags.size > 0 %}
+                <div class="article__tags rte">
+                  {% for tag in article.tags %}
+                    <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag">{{ tag }}</a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <ul class="list--inline article__meta-buttons">
+              <li>
+                <a href="{{ article.url }}" class="btn_read">
+                  {{ 'blogs.article.read_more' | t }} {% include 'icon-chevron-right' %}
+                </a>
+              </li>
+            </ul>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    {% for article in blog.articles %}
+      <div class="border-top">
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
+              <div class="article--listing">
+                <h2 class="article__title h3"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                {% if section.settings.blog_show_date %}
+                <span class="article__date">
+                  {{ article.published_at | time_tag: format: 'month_day_year' }}
+                </span>
+                {% endif %}
+
+                {% if section.settings.blog_show_author %}
+                <span class="article__author"> • {{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                {% endif %}
+                {% if blog.comments_enabled? and article.comments_count > 0 and section.settings.show_comment_count %}
+                <span class="comment_box">
+                  <a href="{{ article.url }}#comments" class="btn btn--small btn--link">
+                    {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }} <i class="fas fa-comment"></i>
+                  </a>
+                </span>
+                {% endif %}
+                
+                {% if article.image %}
+                  {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+                  {% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
+                  {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+                  {% include 'image-style' with image: article.image, small_style: false, width: 905, height: 600, wrapper_id: img_wrapper_id, img_id: img_id %}
+
+                  <div id="{{ img_wrapper_id }}" class="article__list-image-wrapper js">
+                    <a href="{{ article.url }}" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;" class="article__list-image-container">
+                      <img id="{{ img_id }}"
+                           class="article__list-image lazyload"
+                           src="{{ article.image | img_url: 'grande' }}"
+                           data-src="{{ img_url }}"
+                           data-widths="[180, 360, 540, 720, 905, 1090, 1296, 1512, 1728, 2048]"
+                           data-aspectratio="{{ article.image.aspect_ratio }}"
+                           data-sizes="auto"
+                           alt="{{ article.image.alt | escape }}">
+                    </a>
+                  </div>
+
+                  <noscript>
+                    <p>
+                      <a href="{{ article.url }}">
+                        {{ article | img_url: '455x300', scale: 2 | img_tag: article.title }}
+                      </a>
+                    </p>
+                  </noscript>
+                {% endif %}
+
+                <div class="rte">
+                  {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt }}
+                  {% else %}
+                    {{ article.content | strip_html | truncate: 150 }}
+                  {% endif %}
+                </div>
+
+                {% if article.tags.size > 0 %}
+                  <div class="article__tags article__tags--list rte">
+                    {{ 'blogs.article.posted_in' | t }}
+                    {% for tag in article.tags %}
+                      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                <ul class="list--inline article__meta-buttons">
+                  <li>
+                    <a href="{{ article.url }}" class="btn_read">
+                      {{ 'blogs.article.read_more' | t }} {% include 'icon-chevron-right' %}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+</div>
+
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_blog_image",
+        "label": "Show Banner image",
+        "default": true
+      },     
+      {
+        "type": "checkbox",
+        "id": "enable_parallax",
+        "label": "Enable Parallax"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Image"
+      },  
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "list",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid"
+          },
+          {
+            "value": "list",
+            "label": "List"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_comment_count",
+        "label": "Show comment count",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

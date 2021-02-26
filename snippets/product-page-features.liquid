@@ -1,0 +1,48 @@
+<!--prouct-count-->
+ {% unless section.settings.show_quantity_selector and section.settings.enable_payment_button %}
+{% if section.settings.enable_progressbar_text  or  section.settings.enable_timer_top_message %}
+{% include 'product-progress-bar' %} 
+{% endif %}
+{% endunless %}
+{% include 'product-addtocart' %}
+{% if section.settings.enable_timer_stg_on == 'enable_timer_stg_on' and template == 'product' %}
+  {% if current_variant.compare_at_price > current_variant.price %}
+  	{% include 'product-timer' %}
+  {% else %}
+    {% unless settings.disable_timer_regular_price %}
+    	{% include 'product-timer' %}
+    {% endunless %}
+  {% endif %}
+{% endif %}
+
+<style>
+
+  {% unless section.settings.enable_progressbar_text %}
+  #progressBar
+  {
+     display: none;
+  }
+  #progressBar1
+  {
+    display: none;
+  }
+  
+  {% endunless %}
+</style>
+
+<script type="text/javascript">
+{% if settings.enable_inventory_stock_number == "enable_inventory_stock_number_with_not_desc"  %}
+	var livestock = true;
+{% else %}
+	var livestock = false; 
+{% endif %} 
+  
+ 
+</script>
+
+
+<script type="text/javascript">
+  $(".progressBar_back").animate({
+    width: 137.5
+  }, 1000);
+</script>

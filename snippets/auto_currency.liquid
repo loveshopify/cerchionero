@@ -1,0 +1,37 @@
+<div class="hide">
+<!--   <span class="currency-picker__label">Pick a currency</span> -->
+  <select class="currency-picker" name="currencies" data-default-shop-currency="{{ shop.currency }}">
+  {% assign codes = 'USD,EUR,GBP,CAD,AUD,ILS,INR,AFN,ALL,AZN,DZD,AOA,ARS,AMD,AWG,BSD,BHD,BDT,BBD,BYN,BZD,BMD,BTN,BOB,BAM,BWP,BRL,BND,BGN,BIF,KHR,CVE,XAF,XOF,XPF,CZK,KYD,CLP,CNY,COP,KMF,CDF,CRC,HRK,CUC,CUP,DKK,DJF,DOP,XCD,EGP,ERN,ETB,FKP,FJD,GMD,GEL,GHS,GIP,XAU,GTQ,GGP,GNF,GYD,HTG,HNL,HKD,HUF,ISK,XDR,IDR,IRR,IQD,IMP,JMD,JPY,JEP,JOD,KZT,KES,KWD,KGS,LAK,LVL,LBP,LSL,LRD,LYD,LTL,MOP,MKD,MGA,MWK,MYR,MVR,MRO,MUR,MXN,MDL,MNT,MAD,MZN,MMK,NAD,NPR,ANG,TWD,NZD,NIO,NGN,KPW,NOK,OMR,PKR,PAB,PGK,PYG,PEN,PHP,PLN,QAR,RON,RUB,RWF,SHP,WST,STD,SVC,SAR,RSD,SCR,SLL,XAG,SGD,SBD,SOS,ZAR,KRW,LKR,SDG,SRD,SZL,SEK,CHF,SYP,TJS,TZS,THB,TOP,TTD,TND,TMT,TRY,UGX,UAH,AED,UYU,UZS,VUV,VEF,VND,YER,ZMW' | split: ',' %}
+  {% assign country_nam = 'United-States,European-Union,United-Kingdom,Canada,Australia,Israel,India,Afghanistan,Albania,Azerbaijan,Algeria,Angola,Argentina,Armenia,Aruba,Bahamas,Bahrain,Bangladesh,Barbados,Belarus,Belize,Bermuda,Bhutan,Bolivia,Bosnia-and-Herzegovina,Botswana,Brazil,Brunei,Bulgaria,Burundi,Cambodia,Cape-Verde,Gabon,Burkina-Faso,Wallis-and-Futuna,Czech-Republic,Cayman-Islands,Chile,China,Colombia,Comoros,Congo-Democratic,Costa-Rica,Croatia,Cuba,Cuba,Denmark,Djibouti,Dominican-Republic,Saint-Vincent-and-the-Grenadines,Egypt,Eritrea,Ethiopia,Falkland-Islands,Fiji,Gambia,Georgia,Ghana,Gibraltar,XAU,Guatemala,Guernsey,Guinea,Guyana,Haiti,Honduras,Hong-Kong,Hungary,Iceland,IMF,Indonesia,Iran,Iraq,Isle-of-Man,Jamaica,Japan,Jersey,Jordan,Kazakhstan,Kenya,Kuwait,Kyrgyzstan,Laos,Latvia,Lebanon,Lesotho,Liberia,Libya,Lithuania,Macao,Macedonia,Madagascar,Malawi,Malaysia,Maldives,Mauritania,Mauritius,Mexico,Moldova,Mongolia,Morocco,Mozambique,Myanmar,Namibia,Nepal,Curacao,Taiwan,New-Zealand,Nicaragua,Nigeria,Korea-North,Norway,Oman,Pakistan,Panama,Papua-New-Guinea,Paraguay,Peru,Philippines,Poland,Qatar,Romania,Russia,Rwanda,Saint-Helena,Samoa,Sao-Tome-and-Principe,El-Salvador,Saudi-Arabia,Serbia,Seychelles,Sierra-Leone,XAG,Singapore,Solomon-Islands,Somalia,South-Africa,Korea-South,Sri-Lanka,Sudan,Suriname,Swaziland,Sweden,Switzerland,Syria,Tajikistan,Tanzania,Thailand,Tonga,Trinidad-and-Tobago,Tunisia,Turkmenistan,Turkey,Uganda,Ukraine,United-Arab-Emirates,Uruguay,Uzbekistan,Vanuatu,Venezuela,Vietnam,Yemen,Zambia' | split: ',' %}
+  {% assign currency_nam = 'US Dollar,Euro,British Pound Sterling,Canadian Dollar,Australian Dollar,Israeli New Shekel,Indian Rupee,Afghan Afghani,Albanian Lek,Azerbaijani Manat,Algerian Dinar,Angolan Kwanza,Argentine Peso,Armenian Dram,Aruban Florin,Bahamian Dollar,Bahraini Dinar,Bangladeshi Taka,Barbadian Dollar,Belarusian Ruble,Belize Dollar,Bermudan Dollar,Bhutanese Ngultrum,Bolivian Boliviano,Bosnia-Herzegovina Convertible Mark,Botswanan Pula,Brazilian Real,Brunei Dollar,Bulgarian Lev,Burundian Franc,Cambodian Riel,Cape Verdean Escudo,Central African CFA Franc,CFA Franc BCEAO,CFP Franc,Czech Republic Koruna,Cayman Islands Dollar,Chilean Peso,Chinese Yuan,Colombian Peso,Comorian Franc,Congolese Franc,Costa Rican Colon,Croatian Kuna,Cuban Convertible Peso,Cuban Peso,Danish Krone,Djiboutian Franc,Dominican Peso,East Caribbean Dollar,Egyptian Pound,Eritrean Nakfa,Ethiopian Birr,Falkland Islands Pound,Fijian Dollar,Gambian Dalasi,Georgian Lari,Ghanaian Cedi,Gibraltar Pound,Gold Ounce,Guatemalan Quetzal,Guernsey Pound,Guinean Franc,Guyanaese Dollar,Haitian Gourde,Honduran Lempira,Hong Kong Dollar,Hungarian Forint,Icelandic Krona,IMF Special Drawing Rights,Indonesian Rupiah,Iranian Rial,Iraqi Dinar,Isle of Man Pound,Jamaican Dollar,Japanese Yen,Jersey Pound,Jordanian Dinar,Kazakhstani Tenge,Kenyan Shilling,Kuwaiti Dinar,Kyrgystani Som,Laotian Kip,Latvian Lats,Lebanese Pound,Lesotho Loti,Liberian Dollar,Libyan Dinar,Lithuanian Litas,Macanese Pataca,Macedonian Denar,Malagasy Ariary,Malawian Kwacha,Malaysian Ringgit,Maldivian Rufiyaa,Mauritanian Ouguiya,Mauritian Rupee,Mexican Peso,Moldovan Leu,Mongolian Tugrik,Moroccan Dirham,Mozambican Metical,Myanmar Kyat,Namibian Dollar,Nepalese Rupee,Netherlands Antillean Guilder,New Taiwan Dollar,New Zealand Dollar,Nicaraguan Cordoba,Nigerian Naira,North Korean Won,Norwegian Krone,Omani Rial,Pakistani Rupee,Panamanian Balboa,Papua New Guinean Kina,Paraguayan Guarani,Peruvian Nuevo Sol,Philippine Peso,Polish Zloty,Qatari Rial,Romanian Leu,Russian Ruble,Rwandan Franc,Saint Helena Pound,Samoan Tala,Sao Tome and Principe Dobra,Salvadoran Colon,Saudi Riyal,Serbian Dinar,Seychellois Rupee,Sierra Leonean Leone,Silver Ounce,Singapore Dollar,Solomon Islands Dollar,Somali Shilling,South African Rand,South Korean Won,Sri Lankan Rupee,Sudanese Pound,Surinamese Dollar,Swazi Lilangeni,Swedish Krona,Swiss Franc,Syrian Pound,Tajikistani Somoni,Tanzanian Shilling,Thai Baht,Tongan Paʻanga,Trinidad and Tobago Dollar,Tunisian Dinar,Turkmenistani Manat,Turkish Lira,Ugandan Shilling,Ukrainian Hryvnia,United Arab Emirates Dirham,Uruguayan Peso,Uzbekistan Som,Vanuatu Vatu,Venezuelan Bolivar,Vietnamese Dong,Yemeni Rial,Zambian Kwacha' | split: ','  %} 
+  <option value="{{ shop.currency }}" selected="selected">{{ shop.currency }}</option>
+  {% for code in codes %}
+  
+    <option value="{{ code }}" data-country='{{country_nam[forloop.index0]}}'>{{ currency_nam[forloop.index0] }}</option>
+ 
+  {% endfor %}
+  </select>{% include 'icon-chevron-down' %}
+</div>
+<div class="top-bar-left" id="auto__currency">    
+<ul class="tbl-list lisi-inline mar-zero">         
+    <li class="currency dropdown-parent uppercase currency-block">
+      <a data-toggle="dropdown" href="javascript:;" class="currency_wrapper dropdown-toggle">
+        <span class="currency_code">
+     	  <span class="flags flags-{{ shop.currency }}"></span>
+          <span class="country_cod">{{ shop.currency }}</span>
+        </span>
+ {% include 'icon-chevron-down' %}
+      </a>
+      <ul class="currencies dropdown-menu">
+          {% for code in codes %}
+              <li class="currencies option" data-value="{{ code }}" data-country='{{country_nam[forloop.index0]}}' data-currency_nam='{{ currency_nam[forloop.index0] }}'>
+                 <a href="javascript:;"><span class="flags flags-{{ code }}"></span><span class="country_cod">{{ currency_nam[forloop.index0] }}</span></a>
+                   <input type="hidden" value="{{ code }}">
+              </li>
+          {% endfor %}    
+      </ul>
+    </li>
+</ul>
+</div>
+
+

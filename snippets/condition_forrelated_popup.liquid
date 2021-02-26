@@ -1,0 +1,34 @@
+{% assign loop_brk = 0 %}
+
+{% for block in section.blocks %}
+ {%- assign attribute = block.shopify_attributes -%}
+
+{% if block.type == "coll_to_coll_upsell" %}
+{% for collection in product.collections %}
+{%- assign collectio_with_dash = collection.handle -%}
+    {% if collectio_with_dash == block.settings.upsell_related_collection %}
+
+        {%- assign collection1 = collections[block.settings.upsell_related_collection] -%}
+        {%- assign collection2 = collections[block.settings.upsell_suggested_collection] -%}
+        {% assign loop_brk = 1 %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% endif %}
+{% if block.type == "pro_to_pro_upsell" %}
+{%- assign product_with_dash = product.handle -%}
+
+    {% if product_with_dash == block.settings.upsell_related_product %}
+
+        {%- assign product1 = all_products[block.settings.upsell_related_product] -%}
+        {%- assign product2 = all_products[block.settings.upsell_suggested_product] -%}
+ 
+        {% assign loop_brk = 1 %}
+        {% break %}
+    {% endif %}
+{% endif %}
+
+    {% if loop_brk == 1 %}
+        {% break %}
+    {% endif %}
+  {% endfor %}

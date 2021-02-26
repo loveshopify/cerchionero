@@ -1,0 +1,111 @@
+<style>
+  {% if section.settings.enable_parallax%}
+  .collection-hero__image {  
+    position: relative;
+    height: 40vh;
+    background-attachment: fixed;
+    background-position: left center;
+    background-size: cover;
+  }
+  @media only screen and (max-width:749px) { 
+    .collection-hero__image {
+      height: 50vh;
+    }  
+  }
+  {% endif %}
+</style>
+{% if section.settings.show_blog_image %}
+<div class="collection-hero">
+  <div class="collection-hero__image ratio-container lazyload js"
+       data-bgset="{% include 'bgset', image: section.settings.image %}"
+       data-sizes="auto"
+       data-parent-fit="cover"
+       style="background-image: url('{{ section.settings.image | img_url: '1600x' }});"></div>
+  <noscript>
+    <div class="collection-hero__image" style="background-image: url({{ section.settings.image | img_url: '2048x600', crop: 'top' }});"></div>
+  </noscript>
+  <div class="collection-hero__title-wrapper">
+    <div class="over_image_content page-width text-center">
+      <h1 class="heading">{{ page.title }}</h1>           
+    </div>
+  </div>
+</div>
+{% endif %}
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
+      {% unless section.settings.show_blog_image %}
+      <div class="section-header text-center">
+        <h1>{{ page.title }}</h1>
+      </div>
+      {% endunless %}
+      {% if page.content.size > 0 %}
+        <div class="rte">
+          {{ page.content }}
+        </div>
+      {% endif %}
+
+      <div class="contact-form contact_page form-vertical">
+        {% form 'contact' %}
+
+          {% if form.posted_successfully? %}
+            <p class="note form-success">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+			<h2 class="subheading contact_comment">{{ 'blogs.comments.title' | t }}</h2>
+          <div class="grid grid--half-gutters">
+            <div class="grid__item">
+              <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+              <input type="text" id="ContactFormName" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+            </div>
+            <div class="grid__item">
+              <label for="ContactFormEmail" class="{% if form.errors contains 'email' %}label--error{% endif %}">{{ 'contact.form.email' | t }}</label>
+              <input type="email" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="{% if form.errors contains 'email' %}input--error{% endif %}">
+            </div>
+          </div>
+
+          <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+          <input type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+          <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+          <textarea rows="10" id="ContactFormMessage" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+          <input type="submit" class="btn" value="{{ 'contact.form.submit' | t }}">
+
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Contact Us",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_blog_image",
+        "label": "Show Banner image",
+        "default": true
+      },     
+      {
+        "type": "checkbox",
+        "id": "enable_parallax",
+        "label": "Enable Parallax"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Image"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

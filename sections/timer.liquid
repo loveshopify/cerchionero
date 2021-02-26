@@ -1,0 +1,140 @@
+<style>
+    .timer_default_on_home{
+      text-align: center !important;
+      margin: 0 auto;
+      float: none;
+    }
+    .home_tm_lbl_cok
+    {
+      width: 15%;
+      float: left;
+    }
+    span.home_tm_sap_cok
+    {
+/*       font-size: 30px; */
+      float: left;
+      width: 10%;
+    }
+  {% if section.settings.image_size == 'small'%}
+    #shopify-section-{{ section.id }} #timertwohour  span.cokies1_timer
+    {
+      font-size: 18px;
+    }
+    {% elsif  section.settings.image_size == 'medium'%}
+   #shopify-section-{{ section.id }}  #timertwohour  span.cokies1_timer
+    {
+      font-size: 25px;
+    }
+  #shopify-section-{{ section.id }} #timertwohour {
+    font-size: 18px;
+  }
+  {% elsif  section.settings.image_size == 'large'%}
+  #shopify-section-{{ section.id }} #timertwohour  span.cokies1_timer
+  {
+    font-size: 30px;
+  }
+  #shopify-section-{{ section.id }} #timertwohour {
+    font-size: 18px;
+  }
+    {% elsif  section.settings.image_size == 'full'%}
+  #shopify-section-{{ section.id }} #timertwohour  span.cokies1_timer
+  {
+    font-size: 35px;
+  }
+  #shopify-section-{{ section.id }} #timertwohour {
+    font-size: 20px;
+  }
+  {% endif %}
+  
+</style>
+
+
+
+
+{% case section.settings.image_size %}
+    {% when 'small' %}
+      {%- assign product_image_width = 'medium-up--one-third' -%}
+   
+    {% when 'medium' %}
+      {%- assign product_image_width = 'medium-up--one-half' -%}
+    
+    {% when 'large' %}
+      {%- assign product_image_width = 'medium-up--two-thirds' -%}
+ 
+    {% when 'full' %}
+      {%- assign product_image_width = '' -%}
+    
+  {% endcase %}
+
+<div class="timer-section page-width" data-section-id="{{ section.id }}">
+  <div class="grid">
+    <div class="grid__item {{ product_image_width }} timer_default_on_home">
+
+    {% include 'defualt_timer_home' %}
+  
+    </div>
+  </div></div>
+
+{% schema %}
+  {
+    "name": "Timer",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Timer [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002081274-How-to-setup-Timer-Countdown-section-in-Booster-2-0)"
+      },
+      {
+        "type": "paragraph",
+        "content" : "Enable timer reset every day(custom left number)- So you can set that at (22:00:00) it reset every day"  
+      }, 
+      {
+        "type": "text",
+        "id": "enable_timer_reset_every_day",
+        "label": "Enable timer  reset every day(HH:mm:ss)",
+        "default": "10:00:00",
+        "info": "user put time 24 hours- example: 15:00:00 ,09:09:10, 01:01:01"
+      }, 
+      {
+        "type": "header",
+        "content": "timer setting"
+      },         
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "timer size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          },
+          {
+            "value": "full",
+            "label": "Full-width"
+          }
+        ],
+        "default": "medium"
+      }
+    ], 
+    "presets":[
+      {
+		"name": "Timer setting",
+      	"category": "Timer"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

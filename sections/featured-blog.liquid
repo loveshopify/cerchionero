@@ -1,0 +1,242 @@
+<style>
+    #shopify-section-{{section.id}} .blog_button_view {
+    {% if section.settings.full_btn %}
+    width:100%;
+    {% endif %}
+    {% unless section.settings.transparent_btn %}
+    background: {{settings.color_button }};
+    color: {{settings.color_button_text}};
+    border: 1px solid {{settings.color_button }};
+    {% else %}
+    background: transparent;
+    color: {{ settings.color_body_text }};
+    border: 1px solid {{ settings.color_body_text }};
+    {% endunless %}
+  }
+  @media only screen and (min-width:750px) {
+    #shopify-section-{{section.id}} .blog_button_view {
+      {% if section.settings.full_btn %}
+      margin: 0 auto;
+      max-width: 75%;   
+      {% endif %}
+    }
+  }
+  </style>
+<div class="page-width">
+  {% if section.settings.title != blank %}
+    <header class="section-header text-{{settings.title_position}}">
+      <h2 class="title">{{ section.settings.title | escape }}</h2>
+    </header>
+  {% endif %}
+
+  {%- assign blog = blogs[section.settings.blog] -%}
+
+  {% if section.settings.blog != blank %}
+    <div class="grid grid--uniform grid--blog">
+      {% for article in blog.articles limit: section.settings.post_limit %}
+        <div class="grid__item {% if section.settings.post_limit == 4 %}medium-up--one-quarter{% elsif section.settings.post_limit == 3 %}medium-up--one-third{% elsif section.settings.post_limit == 2 %}medium-up--one-half{% endif %}">
+          {% if article.image and section.settings.show_featured_image %}
+            {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+            {% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
+            {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+            {% include 'image-style' with image: article.image, small_style: true, width: 600, height: 600, wrapper_id: img_wrapper_id, img_id: img_id %}
+            <div id="{{ img_wrapper_id }}" class="article__grid-image-wrapper js">
+              <a href="{{ article.url }}" class="article__grid-image-container" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                <img id="{{ img_id }}"
+                     class="article__grid-image lazyload"
+                     src="{{ article.image | img_url: 'grande' }}"
+                     data-src="{{ img_url }}"
+                     data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                     data-aspectratio="{{ article.image.aspect_ratio }}"
+                     data-sizes="auto"
+                     alt="{{ article.image.alt | escape }}">
+              </a>
+            </div>
+            <noscript>
+              <a href="{{ article.url }}" class="article__grid-image-wrapper">
+                {{ article | img_url: '345x345', scale: 2 | img_tag: article.title, 'article__grid-image' }}
+              </a>
+            </noscript>
+          {% endif %}
+
+          <div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+            {% if section.settings.blog_show_date %}
+              <span class="article__date">
+                {{ article.published_at | time_tag: format: 'month_day_year' }}
+              </span>
+            {% endif %}
+
+            {% if section.settings.blog_show_author %}
+            <span class="article__author"> • {{ 'blogs.article.by_author' | t: author: article.author }}</span>
+            {% endif %}
+            {% if blog.comments_enabled? and article.comments_count > 0 and section.settings.show_comment_count %}
+            <span class="comment_box">
+              <a href="{{ article.url }}#comments" class="btn btn--small btn--link">
+                {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }} <i class="fas fa-comment"></i>
+              </a>
+            </span>
+            {% endif %}
+           
+            <h2 class="heading article__title">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+            <div class="rte article__grid-excerpt">
+              {% if article.excerpt.size > 0 %}
+                {{ article.excerpt }}
+              {% else %}
+                {{ article.content | strip_html | truncate: 150 }}
+              {% endif %}
+            </div>
+
+            {% if article.tags.size > 0 %}
+              <div class="article__tags rte">
+                {% for tag in article.tags %}
+                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag">{{ tag }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <ul class="list--inline article__meta-buttons">
+              <li>
+                <a href="{{ article.url }}" class="btn_read">
+                  {{ 'blogs.article.read_more' | t }} {% include 'icon-chevron-right' %}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="grid grid--uniform grid--blog">
+      {% for i in (1..section.settings.post_limit) %}
+        <div class="grid__item {% if section.settings.post_limit == 4 %}medium-up--one-quarter{% elsif section.settings.post_limit == 3 %}medium-up--one-third{% elsif section.settings.post_limit == 2 %}medium-up--one-half{% endif %}">
+          {% if section.settings.show_featured_image %}
+          <div class="article__grid-image-wrapper">
+            <a href="#" class="article__grid-image-container">
+           {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </a>
+          </div>
+          {% endif %}
+          <div class="article__grid-meta">
+            {% if section.settings.blog_show_author %}
+              <span class="article__author">{{ 'homepage.onboarding.blog_author' | t }}</span>
+            {% endif %}
+            <h2 class="h3 article__title">
+              <a href="#">{{ 'homepage.onboarding.blog_title' | t }}</a>
+            </h2>
+
+            <div class="rte article__grid-excerpt">
+              {{ 'homepage.onboarding.blog_excerpt' | t }}
+            </div>
+
+            <ul class="list--inline article__meta-buttons">
+              <li>
+                <a href="{{ article.url }}" class="btn_read">
+                  {{ 'blogs.article.read_more' | t }} {% include 'icon-chevron-right' %}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_view_all %}
+    <hr class="hr--invisible"></hr>
+    <div class="text-center">
+      <a href="{{ blog.url }}" class="btn blog_button_view">
+        {{ 'blogs.article.view_all' | t }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Blog posts",
+    "class": "index-section",
+    "settings": [
+  	  {
+        "type": "header",
+        "content": "Blog posts [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002078813-How-to-setup-Blog-section-in-Booster-2-0)"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Blog posts"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "range",
+        "id": "post_limit",
+        "label": "Posts",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "checkbox",
+        "id": "show_featured_image",
+        "label": "Show featured image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_comment_count",
+        "label": "Show comment count",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label": "Show 'View all' button",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Button Style"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_btn",
+        "label": "Full Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "transparent_btn",
+        "label": "Transparent Button"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts",
+        "category": "Blog",
+        "settings": {
+          "blog": "",
+          "post_limit": 3
+        }
+      }
+    ]
+  }
+{% endschema %}

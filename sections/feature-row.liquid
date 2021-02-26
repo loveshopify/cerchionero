@@ -1,0 +1,234 @@
+<style>
+  {% if section.settings.layout == 'full'%}
+  #shopify-section-{{section.id}}.index-section {
+    margin-top:0;
+    margin-bottom:0;
+  }
+  
+  {% endif %}
+  
+  #shopify-section-{{section.id}} .feature-row__image-wrapper .feature-row__image {
+      position: relative;
+      top: 0;
+  }
+  </style>
+
+{% if section.settings.layout == 'container'%}
+<div class="page-width">
+  {% else %}
+  <div class="page-width_1">  
+    {% endif %}
+{% for block in section.blocks %} 
+  <style>
+    .img_btn-{{ block.id }} {
+      {% if block.settings.full_btn %}
+      width:100%;
+      {% endif %}
+      {% if block.settings.transparent_btn %}
+      background: transparent;
+      color:{{ settings.color_body_text }};
+      border: 1px solid {{ settings.color_body_text }};
+      {% endif %}
+    }
+ 
+  </style>
+  {% capture image_layout %}
+    <div class="feature-row__item" {{ block.shopify_attributes }}>
+      {% if block.settings.image != blank %}
+        {% capture img_id %}FeatureRowImage-{{ block.id }}{% endcapture %}
+        {% capture wrapper_id %}FeatureRowImageWrapper-{{ block.id }}{% endcapture %}
+        {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        {% include 'image-style' with image: block.settings.image, width:4000, height: 4000, small_style: true, wrapper_id: wrapper_id, img_id: img_id %}
+        <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js">
+          <div class="small--hide" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+            <img id="{{ img_id }}"
+                 class="feature-row__image lazyload"
+                 src="{{ block.settings.image | img_url: 'master' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[200, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                 data-sizes="auto"
+                 alt="{{ block.settings.image.alt | escape }}">
+          </div>
+          <div class="medium-up--hide" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+            <img id="{{ img_id }}"
+                 class="feature-row__image lazyload"
+                 src="{{ block.settings.image | img_url: 'master' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[200, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                 data-sizes="auto"
+                 alt="{{ block.settings.image.alt | escape }}">
+          </div>
+        </div>
+
+        <noscript>
+          {{ block.settings.image | img_url: 'master', scale: 2 | img_tag: block.settings.image.alt, 'feature-row__image' }}
+        </noscript>
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {% endcapture %}
+
+  <div class="feature-row">
+    {% if block.settings.layout == 'left' %}
+      {{ image_layout }}
+    {% endif %}
+{{ block.index }}
+    <div class="{% if block.settings.text_alignment == 'left'%}text-left feature-row__text--{{ block.settings.text_alignment }} {% elsif block.settings.text_alignment == 'center'%}text-center feature-row__text--{{ block.settings.text_alignment }} {% elsif block.settings.text_alignment == 'right'%}text-right feature-row__text--{{ block.settings.text_alignment }} {% endif %}
+                feature-row__item feature-row__text">
+      {% if block.settings.title != blank %}
+        <h2 class="heading">{{ block.settings.title | escape }}</h2>
+      {% endif %}
+      {% if block.settings.text != blank %}
+        <div class="rte-setting featured-row__subtext">{{ block.settings.text }}</div>
+      {% endif %}
+      {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+        <a href="{{ block.settings.button_link }}" class="btn img_btn-{{ block.id }}">
+          {{ block.settings.button_label | escape }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if block.settings.layout == 'right' %}
+      {{ image_layout }}
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  </div>
+
+{% schema %}
+  {
+    "name": "Image with text",
+    "class": "index-section",
+    "settings": [
+  	  {
+        "type": "header",
+        "content": "Image with text [NEED HELP?](https:\/\/help.boostertheme.com\/hc/en-us\/articles\/360002078893-How-to-setup-Image-with-Text-section-in-Booster-2-0)"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Boxed"
+          },
+          {
+            "value": "full",
+            "label": "Wide"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image_with_text_1",
+        "name": "Image",
+        "settings": [       
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "layout",
+            "label": "Image alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image with text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "header",
+            "content": "Button Style"
+          },
+		  {
+            "type": "checkbox",
+            "id": "full_btn",
+            "label": "Full Button"
+          },
+		  {
+            "type": "checkbox",
+            "id": "transparent_btn",
+            "label": "Transparent Button"
+          }
+	   	]
+	  }
+    ],
+    "presets": [
+      {
+        "name": "Image with text",
+        "category": "Image",
+        "blocks":[
+          {
+            "type": "image_with_text_1",
+  			"settings": {
+              "layout": "left"
+            }
+          },
+ 		  {
+            "type": "image_with_text_1",
+            "settings": {
+            "layout": "right"
+            }
+          }
+		]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,175 @@
+/*===== START MAIN MENU =====*/
+{% if settings.menu_font_style contains 'Google' %}
+  {% assign type_header_parts = settings.menu_font_style | split: '_' %}
+  {% assign type_header_name = type_header_parts[1] %}
+  {% capture menu_family %}"{{ type_header_name | split: ':' | first | replace: '+', ' ' }}"{% if type_header_parts.last == 'serif' %}, serif {% else %}, "HelveticaNeue", "Helvetica Neue", sans-serif{% endif %}{% endcapture %}
+{% else %}
+  {% assign menu_family = settings.text_font_style %}
+{% endif %}
+
+.site-nav__link--main, .site-nav__link.site-nav__child-link
+{
+  font-size: {{ settings.menu_font_size }}px;
+  font-family: {{ menu_family }};
+  font-weight: {{ settings.menu_font_weight }};
+  letter-spacing: {{ settings.menu_font_space }}px;
+  text-transform: {{ settings.menu_font_trans }};
+}
+.mobile-nav__link,
+.mobile-nav__sublist-link {
+  font-family: {{ menu_family }};
+  font-weight: {{ settings.menu_font_weight }};
+  letter-spacing: {{ settings.menu_font_space }}px;
+}
+#desktop_currency .currency-picker
+{
+  font-size: {{ settings.menu_font_size }}px;
+  font-family: {{ menu_family }};
+  font-weight: {{ settings.menu_font_weight }};
+  letter-spacing: {{ settings.menu_font_space }}px;
+  text-transform: {{ settings.menu_font_trans }};
+}
+.right_side
+{
+  font-size: {{ settings.menu_font_size }}px;
+  font-family: {{ menu_family }};
+  font-weight: {{ settings.menu_font_weight }};
+  letter-spacing: {{ settings.menu_font_space }}px;
+  text-transform: {{ settings.menu_font_trans }};
+}
+.head-crt-icon
+{
+  font-size: {{ settings.menu_font_size }}px;
+  vertical-align: text-bottom;
+}
+/*===== END MAIN MENU =====*/
+
+/*===== START IMAGE OVERLAY AND SLIDER HEADING =====*/
+
+{% if settings.imgsldover_title contains 'Google' %}
+  {% assign type_header_parts = settings.imgsldover_title | split: '_' %}
+  {% assign type_header_name = type_header_parts[1] %}
+  {% capture imgsldover_family %}"{{ type_header_name | split: ':' | first | replace: '+', ' ' }}"{% if type_header_parts.last == 'serif' %}, serif {% else %}, "HelveticaNeue", "Helvetica Neue", sans-serif{% endif %}{% endcapture %}
+{% else %}
+  {% assign imgsldover_family = settings.imgsldover_title %}
+{% endif %}
+
+
+.imgsldover
+{
+  font-size: {{ settings.imgsldover_title_size }}px;
+  font-family: {{ imgsldover_family }};
+  font-weight: {{ settings.imgsldover_weight }};
+  letter-spacing: {{ settings.imgsldover_title_space }}px;
+  text-transform: {{ settings.imgsldover_trans }};
+  @media only screen and (max-width: 750px) {
+    font-size: {{ settings.mobile_imgsldover_title_size }}px;
+  }
+}
+
+/*===== END IMAGE OVERLAY AND SLIDER HEADING =====*/
+
+/*===== START IMAGE OVERLAY AND SLIDER SUBHEADING =====*/
+
+{% if settings.imgsldover_sub_title contains 'Google' %}
+  {% assign type_header_parts = settings.imgsldover_sub_title | split: '_' %}
+  {% assign type_header_name = type_header_parts[1] %}
+  {% capture imgsldover_sub_family %}"{{ type_header_name | split: ':' | first | replace: '+', ' ' }}"{% if type_header_parts.last == 'serif' %}, serif {% else %}, "HelveticaNeue", "Helvetica Neue", sans-serif{% endif %}{% endcapture %}
+{% else %}
+  {% assign imgsldover_sub_family = settings.imgsldover_title %}
+{% endif %}
+
+
+.imgsldover_sub
+{
+  font-size: {{ settings.imgsldover_sub_size }}px;
+  font-family: {{ imgsldover_sub_family }};
+  font-weight: {{ settings.imgsldover_sub_weight }};
+  letter-spacing: {{ settings.imgsldover_sub_space }}px;
+  text-transform: {{ settings.imgsldover_sub_trans }};
+  @media only screen and (max-width: 750px) {
+    font-size: {{ settings.mobile_imgsldover_sub_size }}px;
+  }
+}
+
+
+/*===== END IMAGE OVERLAY AND SLIDER SUBHEADING =====*/
+
+/*===== START TITLE =====*/
+
+{% if settings.type_title_family contains 'Google' %}
+  {% assign type_header_parts = settings.type_title_family | split: '_' %}
+  {% assign type_header_name = type_header_parts[1] %}
+  {% capture title_family %}"{{ type_header_name | split: ':' | first | replace: '+', ' ' }}"{% if type_header_parts.last == 'serif' %}, serif {% else %}, "HelveticaNeue", "Helvetica Neue", sans-serif{% endif %}{% endcapture %}
+{% else %}
+  {% assign title_family = settings.type_title_family %}
+{% endif %}
+
+
+.title
+{
+  font-size: {{ settings.type_title_base_size }}px;
+  font-family: {{ title_family }};
+  font-weight: {{ settings.title_weight }};
+  letter-spacing: {{ settings.title_font_space }}px;
+  text-transform: {{ settings.title_trans }};
+}
+
+
+
+
+/*===== END TITLE =====*/
+
+
+/*===== START HEADING =====*/
+{% if settings.type_header_family contains 'Google' %}
+  {% assign type_header_parts = settings.type_header_family | split: '_' %}
+  {% assign type_header_name = type_header_parts[1] %}
+  {% capture heading_family %}"{{ type_header_name | split: ':' | first | replace: '+', ' ' }}"{% if type_header_parts.last == 'serif' %}, serif {% else %}, "HelveticaNeue", "Helvetica Neue", sans-serif{% endif %}{% endcapture %}
+{% else %}
+  {% assign heading_family = settings.type_header_family %}
+{% endif %}
+
+.heading
+{
+  font-size: {{ settings.type_header_base_size_1 }}px;
+  font-family: {{ heading_family }};
+  font-weight: {{ settings.heading_weight }};
+  letter-spacing: {{ settings.heading_font_space }}px;
+  text-transform: {{ settings.heading_trans }};
+}
+.heading_with_nosize
+{
+  font-family: {{ heading_family }};
+  font-weight: {{ settings.heading_weight }};
+  text-transform: {{ settings.heading_trans }};
+}
+
+/*===== END HEADING =====*/
+
+
+/*===== START SUBHEADING =====*/
+{% if settings.subhead_font contains 'Google' %}
+  {% assign type_header_parts = settings.subhead_font | split: '_' %}
+  {% assign type_header_name = type_header_parts[1] %}
+  {% capture subheading_family %}"{{ type_header_name | split: ':' | first | replace: '+', ' ' }}"{% if type_header_parts.last == 'serif' %}, serif {% else %}, "HelveticaNeue", "Helvetica Neue", sans-serif{% endif %}{% endcapture %}
+{% else %}
+  {% assign subheading_family = settings.subhead_font %}
+{% endif %}
+
+
+.subheading
+{
+  font-size: {{ settings.sub_font_size }}px;
+  font-family: {{ subheading_family }};
+  font-weight: {{ settings.subhead_weight }};
+  letter-spacing: {{ settings.subhead_space }}px;
+  text-transform: {{ settings.subhead_font_trans }};
+}
+.info_title
+{
+  font-family: {{ subheading_family }};
+}
+
+/*===== END HEADING =====*/
+

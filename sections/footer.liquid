@@ -1,0 +1,579 @@
+{% assign design_link = 'http://boostertheme.com/' %}
+<footer class="site-footer" role="contentinfo">
+  <div class="page-width">
+    <div class="grid grid--no-gutters">
+      {% for block in section.blocks %}
+        <div class="grid__item seaction_gape {% if forloop.length >= 4 %}large-up--one-quarter medium--one-third{% elsif forloop.length == 3 %}medium-up--one-third{% elsif forloop.length == 2 %}medium-up--one-half{% endif %}" {{ block.shopify_attributes }}>
+          {% if block.type == 'logo' %}
+          <style>
+            .footer_logo .desktop_logo img{
+              width:{{block.settings.desktop_logo_size}};
+            }
+          </style>
+          <ul class="footer_logo">
+            {% if template.name == 'index' %}
+            <h1 class="h2 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+              {% else %}
+              <div class="h2 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+                {% endif %}
+                {% if block.settings.logo %}
+                {%- assign img_url = block.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <a href="/" itemprop="url" class="desktop_logo site-header__logo-image">
+                  {% capture logo_alt %}{{ block.settings.logo.alt | default: shop.name }}{% endcapture %}
+                  <img class="lazyload js"
+                       src="{{ block.settings.logo | img_url: '300x300' }}"
+                       data-src="{{ img_url }}"
+                       data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ block.settings.logo.aspect_ratio }}"
+                       data-sizes="auto"
+                       alt="{{ logo_alt | escape }}"
+                       >
+                  <noscript>
+                    {% capture image_size %}300x{% endcapture %}
+                    <img src="{{ block.settings.logo | img_url: image_size }}"
+                         srcset="{{ block.settings.logo | img_url: image_size }} 1x, {{ block.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                         alt="{{ block.settings.logo.alt | default: shop.name }}"
+                         itemprop="logo"
+                         >
+                  </noscript>
+                </a>
+                {% else %}
+                <a class="site-header__logo-link" href="/" itemprop="url">{{ shop.name }}</a>
+                {% endif %}
+                {% if template.name == 'index' %}
+                </h1>
+              {% else %}
+              </div>
+            {% endif %}
+
+
+          </ul>
+
+          {% elsif block.type == 'link_list' %}
+            <div class="footer_menu site-footer__linklist">
+              {% if block.settings.menu != blank %}
+                <h5 class="footer_title">{{ linklists[block.settings.menu].title }}</h5>
+                <div class="toggle_content">
+                  <ul>
+                    {% for link in linklists[block.settings.menu].links %}
+                      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% else %}
+                <h6>Menu title<span class="right icon-down-arrow"></span></h6>
+                <div class="toggle_content">
+                  <ul>
+                    <li><p>{{ 'homepage.onboarding.no_content' | t }}</p></li>
+                  </ul>
+                </div>
+              {% endif %}
+            </div>
+
+          {% elsif block.type == 'text' %}
+            <div class="footer_content">
+              {% if block.settings.logo_footer%}
+              <style>
+                .footer_logo-1 .desktop_logo img{
+                  width:{{block.settings.desktop_logo_size}};
+                }
+              </style>
+              <ul class="footer_logo-1">
+                {% if template.name == 'index' %}
+                <h1 class="h2 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+                  {% else %}
+                  <div class="h2 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+                    {% endif %}
+                    {% if block.settings.logo %}
+                    {%- assign img_url = block.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <a href="/" itemprop="url" class="desktop_logo site-header__logo-image">
+                      {% capture logo_alt %}{{ block.settings.logo.alt | default: shop.name }}{% endcapture %}
+                      <img class="lazyload js"
+                           src="{{ block.settings.logo | img_url: '300x300' }}"
+                           data-src="{{ img_url }}"
+                           data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                           data-aspectratio="{{ block.settings.logo.aspect_ratio }}"
+                           data-sizes="auto"
+                           alt="{{ logo_alt | escape }}"
+                           >
+                      <noscript>
+                        {% capture image_size %}300x{% endcapture %}
+                        <img src="{{ block.settings.logo | img_url: image_size }}"
+                             srcset="{{ block.settings.logo | img_url: image_size }} 1x, {{ block.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                             alt="{{ block.settings.logo.alt | default: shop.name }}"
+                             itemprop="logo"
+                             >
+                      </noscript>
+                    </a>
+                    {% else %}
+                    <a class="site-header__logo-link" href="/" itemprop="url">{{ shop.name }}</a>
+                    {% endif %}
+                    {% if template.name == 'index' %}
+                    </h1>
+                  {% else %}
+                  </div>
+                {% endif %}
+
+
+              </ul>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <h5 class="footer_title">{{ block.settings.title }}</h5>
+               {% endif %}
+              {% if block.settings.content != blank %}
+                <div class="toggle_content">
+                  {{ block.settings.content }}
+                </div>  
+              {% endif %}
+            </div>
+      
+          {% elsif block.type == 'customer_shopify' %}
+          
+          {% if settings.mailchimp_link != blank %}
+
+          <div class="site-footer__newsletter newsletter">
+            <span class="message"></span>
+
+            <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="contact_form" target="_blank">
+              <label for="Email" class="h5">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+              <div class="input-group">
+                <input type="email" id="Email" class="input-group__field newsletter__input" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+                <span class="input-group__btn">
+                  <button type="submit" class="btn newsletter__submit" name="subscribe" id="Subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+                    <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+                  </button>
+                </span>                
+              </div>
+            </form>       
+
+          </div>
+
+          {% elsif settings.klaviyo_link != blank %}
+
+          <div class="site-footer__newsletter newsletter">
+         
+            <form action="//manage.kmail-lists.com/subscriptions/subscribe" method="post" class="klaviyo_styling klaviyo_standard_embed_{{settings.klaviyo_link}}" id="email_signup" target="_blank" novalidate="novalidate">
+              <input type="hidden" name="g" value="{{settings.klaviyo_link}}">
+              <input type="hidden" name="$fields" value="firstName,lastName"/>
+              <label for="Email" class="h5">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+              <div class="input-group klaviyo_field_group">
+                <input type="email" id="k_id_email" class="input-group__field contact_email newsletter__input" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+                <div class="klaviyo_messages">
+                  <div class="success_message" style="display:none;"></div>
+                  <div class="error_message" style="display:none;"></div>
+                </div>
+                <span class="input-group__btn">
+                  <button type="submit" class="btn newsletter__submit klaviyo_submit_button" name="subscribe" id="btnSubmit" value="{{ 'general.newsletter_form.submit' | t }}">
+                    <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+                  </button>
+                </span>                
+              </div>
+            </form>
+  
+          </div>
+
+          {% else %}
+          
+          <div class="site-footer__newsletter newsletter">
+            <span class="message"></span>
+            {% form 'customer' %}
+            {{ form.errors | default_errors }}
+            {% if form.posted_successfully? %}
+            <span class="message">{{ 'general.newsletter_form.confirmation' | t }}</span>
+            {% else %}
+            <label for="Email" class="h5">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+            <div class="input-group">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input type="hidden" name="challenge" value="false" />
+              <input type="email"
+                     name="contact[email]"
+                     id="Email"
+                     class="input-group__field newsletter__input"
+                     value="{% if customer %}{{ customer.email }}{% endif %}"
+                     placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                     autocorrect="off"
+                     autocapitalize="off">
+              <span class="input-group__btn">
+                <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+                  <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+                </button>
+              </span>
+            </div>
+            {% endif %}
+            {% endform %}
+          </div>
+          {% endif %}
+          
+          {% elsif block.type == 'empty' %}
+            <div class="empty-column"></div>
+
+          {% endif %}
+
+          {% assign social_media_column = section.settings.social_media_column | plus: 0  %}
+
+          {% if block.settings.social_icons_footer %}
+            {% assign social_icons = true %}
+            <div class="footer-social-icons">
+              {% include 'social-icons' %}
+            </div>
+          {% endif %}
+
+        </div>
+       
+      {% endfor %}
+
+      
+    </div>
+    <div class="grid">
+    <div class="grid__item medium-up--one-whole footer_credits">
+        <p class="credits">
+          &copy; {{ "now" | date: "%Y" }} 
+          {% if section.settings.shop_name != blank %}
+          <a href="/">{{ section.settings.shop_name }}</a>
+          {% else %}
+           {{ shop.name | link_to: '/' }}
+          {% endif %}
+
+          <a href='{{ design_link }}' rel="nofollow">{{ 'general.copyright_credit.designer_credits_html' | t }}</a>
+          
+          {% if section.settings.display_shopify_by %} &
+          <a rel="nofollow" href="https://www.shopify.in/?ref=limitless-theme&utm_campaign=footer-link" target="_blank">Powered by shopify</a>.
+          {% endif %}
+        </p>
+
+        {% if section.settings.display_payment_methods %}
+        <div class="site-footer__payment-icons site-footer__payment-icons--right">
+          <ul class="payment-icons list--inline">
+            {% if section.settings.pay_discover %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'discover' | replace: '_',' '}}">
+                {% include 'icon-discover' %}
+                <span class="fallback-text">{{ 'discover' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_diners_club %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'diners_club' | replace: '_',' '}}">
+                {% include 'icon-diners_club' %}
+                <span class="fallback-text">{{ 'diners_club' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_american_express %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'american_express' | replace: '_',' '}}">
+                {% include 'icon-american_express' %}
+                <span class="fallback-text">{{ 'american_express' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_paypal %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'paypal' | replace: '_',' '}}">
+                {% include 'icon-paypal' %}
+                <span class="fallback-text">{{ 'paypal' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_master %}   
+            <li>
+              <span class="icon-fallback-text">
+                {% include 'icon-master' %}
+                <span class="fallback-text">{{ 'master' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_visa %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'visa' | replace: '_',' '}}">
+                {% include 'icon-visa' %}
+                <span class="fallback-text">{{ 'visa' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+          </ul>		
+        </div>
+      
+        {% endif %}
+      </div>
+    </div><!--end footer_credits-->
+  </div>
+</footer>
+
+{% schema %}
+
+{
+  "name": "Footer",
+  "class": "footer-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Footer [NEED HELP?](https:\/\/help.boostertheme.com\/hc/en-us\/articles\/360002081334-How-to-setup-the-Footer-in-Booster-2-0)"
+    },
+    {
+      "type": "text",
+      "id": "shop_name",
+      "label": "Shop Name"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_shopify_by",
+      "label": "Show theme powered by shopify",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_payment_methods",
+      "label": "Show payment method icons",
+      "default": true
+    },
+	{
+      "type": "header",
+      "content": "Payment icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_visa",
+      "label": "Show Visa",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_master",
+      "label": "Show Mastercard",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_american_express",
+      "label": "Show American Express",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_paypal",
+      "label": "Show PayPal",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_diners_club",
+      "label": "Show Diners Club",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_discover",
+      "label": "Show Discover",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Desktop Logo"
+        },
+        {
+          "type": "select",
+          "id": "desktop_logo_size",
+          "label": "Logo size in %",
+          "options": [
+            {
+              "value": "30%",
+              "label": "30"
+            },
+            {
+              "value": "35%",
+              "label": "35"
+            },
+            {
+              "value": "50%",
+              "label": "50"
+            },
+            {
+              "value": "60%",
+              "label": "60"
+            },
+            {
+              "value": "70%",
+              "label": "70"
+            },
+            {
+              "value": "75%",
+              "label": "75"
+            },
+            {
+              "value": "90%",
+              "label": "90"
+            },
+            {
+              "value": "100%",
+              "label": "100"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+  		  "default": "footer"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+	{
+      "type": "customer_shopify",
+      "name": "Newsletter",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      	},
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+		{
+          "type": "checkbox",
+          "id": "logo_footer",
+          "label": "Enable logo",
+          "default": false
+        },
+		{
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Desktop Logo"
+        },
+        {
+          "type": "select",
+          "id": "desktop_logo_size",
+          "label": "Logo size in %",
+          "options": [
+            {
+              "value": "30%",
+              "label": "30"
+            },
+            {
+              "value": "35%",
+              "label": "35"
+            },
+            {
+              "value": "50%",
+              "label": "50"
+            },
+            {
+              "value": "60%",
+              "label": "60"
+            },
+            {
+              "value": "70%",
+              "label": "70"
+            },
+            {
+              "value": "75%",
+              "label": "75"
+            },
+            {
+              "value": "90%",
+              "label": "90"
+            },
+            {
+              "value": "100%",
+              "label": "100"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "empty",
+      "name": "Empty column",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "logo"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+
+{% endschema %}
+
+
+
+

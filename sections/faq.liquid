@@ -1,0 +1,83 @@
+
+<div class="faq page-width">
+    
+    <div class="row">
+      {% if section.settings.faq_title_heading != blank %}
+      <header class="section-header text-{{settings.title_position}}">
+        <h2 class="title">{{ section.settings.faq_title_heading | escape }}</h2>
+      </header>
+    {% endif %} 
+      
+       
+      {%- assign i = 2 -%}
+      <div class="masonry">
+        {% for block in section.blocks %}
+        <div class="item" {{ block.shopify_attributes }}> 
+          <h2 class="faq_title"><span class="for-qicon"><i class="fa fa-question"></i></span><span class="subheading">{{ block.settings.faq_title }}</span></h2>
+          <div class="faq_text">{{block.settings.faq_text}}</div>
+        </div>
+        {% endfor %}
+      </div>
+      
+  </div>
+    
+</div>
+
+{% schema %}
+  {
+    "name": "FAQ",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "FAQ [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002079173-How-to-setup-FAQ-section-in-Booster-2-0)"
+      },
+      {
+        "type": "text",
+        "id": "faq_title_heading",
+        "label": "Heading",
+        "default": "FAQ"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "Faq",
+        "settings":[
+          {
+            "type": "text",
+            "id": "faq_title",
+            "default": "Put your question here !",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "faq_text",
+            "default": "<p>Put the answer here !</p>",
+            "label": "Text"
+          }
+        ]
+      }
+	],
+    "presets": [
+      {
+        "name": "Faq",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "faq"
+          },
+          {
+            "type": "faq"
+          },
+          {
+            "type": "faq"
+          },
+          {
+            "type": "faq"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

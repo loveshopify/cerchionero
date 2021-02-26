@@ -1,0 +1,113 @@
+<!--Timer with progess disable using product tag-->
+<div class="bar_adjustment {% unless current_variant.available %} unvble_hide {% endunless%} {% if section.settings.sticky_button == 'show_progress_bar' and section.settings.enable_sticky %}small--hide{% endif %}">
+ {% assign tg = 'show' %}
+
+{% if settings.disable_timer_use_tag %}
+  {% for tag in product.tags %}
+    {% if "no-timer" == tag %}
+    	{% assign tg = 'hide' %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if section.settings.enable_timer_top_message %}
+<div id="progress_bar1" class="progress-container items-count">
+ 
+<p class="progress_bar_text">{{ 'products.product.only_left_text_1' | t }} 
+
+{% if settings.enable_inventory_stock_number == "enable_stock_number_random" %}     
+
+    {% assign leftNumber='' %}
+    <input type="hidden" id="stock_left_num" class="cookies_Left_number stock_left_num" value="" />
+
+  {% else %}     
+
+    {% assign total = 0 %}
+    {% assign infinity = false %}
+    {% for variant in product.variants %}
+
+    {% if variant.inventory_management != 'shopify' %}  
+    {% assign infinity = true %}
+    {% elsif infinity == false %}
+    {% capture temp %}{{ total | plus: variant.inventory_quantity }}{% endcapture %}
+    {% assign total = temp %}
+    {% endif %}
+    {% endfor %}
+
+
+    {% if infinity == true %}
+    {% assign leftNumber = '130' %}
+    {% elsif total == 0 %}
+    {% assign leftNumber = '1' %}
+    {% else %}
+    {% assign leftNumber = total %}
+    {% endif %}
+
+
+{% endif %}
+  <span id="counter_left" class="count">{{ leftNumber }}</span>
+   {{ 'products.product.only_left_text_2' | t }}</p>
+  <input type="hidden" class="timer_time" value="{{ settings.enable_timer_stg_custom }}" />
+  <input type="hidden" id="stock_left_num" class="stock_left_num" value="{{ leftNumber }}" />
+  <input type="hidden"  id="stock_final_num" value="{{ leftNumber }}" />
+  
+</div>
+{% endif %}
+<div id="progressBar" class="progress progress-striped active progress-bar-success">
+  <div class="progress-bar progress-bar-success" style="padding: 0px 6px;width: 100%;font-size: 0px;"></div>
+</div>
+
+<div id="progressBar_back" class="progress progress-striped active">
+  <div class="progressBar_back progress-bar progress-bar-success" style="width: 100%;"></div>
+</div>
+
+{% if settings.enable_inventory_stock_number == "enable_stock_number_random" %}     
+
+    {% assign leftNumber='' %}
+    <input type="hidden" id="stock_left_num" class="cookies_Left_number stock_left_num" value="" />
+
+  {% else %}     
+
+    {% assign total = 0 %}
+    {% assign infinity = false %}
+    {% for variant in product.variants %}
+
+    {% if variant.inventory_management != 'shopify' %}  
+    {% assign infinity = true %}
+    {% elsif infinity == false %}
+    {% capture temp %}{{ total | plus: variant.inventory_quantity }}{% endcapture %}
+    {% assign total = temp %}
+    {% endif %}
+    {% endfor %}
+
+
+    {% if infinity == true %}
+    {% assign leftNumber = '130' %}
+    {% elsif total == 0 %}
+    {% assign leftNumber = '1' %}
+    {% else %}
+    {% assign leftNumber = total %}
+    {% endif %}
+
+
+{% endif %}
+  
+  
+  <input type="hidden" class="timer_time" value="{{ settings.enable_timer_stg_custom }}" />
+  <input type="hidden" id="stock_left_num" class="stock_left_num" value="{{ leftNumber }}" />
+  <input type="hidden"  id="stock_final_num" value="{{ leftNumber }}" />
+
+<style>
+div#progress_bar1, .bar_adjustment {clear: both;width: 100%;}
+.top_div_counter div#progress_bar1 {float: left;width: 100%;}
+.top_div_counter div#progressBar {float: left;width: 100%;}
+.top_div_counter div#progressBar_back {float: left;width: 100%;}
+.top_div_counter .counter_box {float: left;width: 100%;}
+.top_div_counter div#progress_bar_text {float: left;width: 100%;}
+div#progressBar_back {position: relative; top: -31px;z-index: -1;display:none !important;}
+div#progressBar {position: relative;width: 100%;padding-right: 70%;}
+div#progressBar{border-radius: 0px !important;  }
+.template-product .progress {background-color: #eae9e9;height: 11px !important;border-radius: 0px;}
+.progress-bar.progress-bar-success{border-radius: 0px !important;background-image: none !important;}
+</style>
+</div>

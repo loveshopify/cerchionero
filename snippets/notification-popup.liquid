@@ -1,0 +1,116 @@
+{% if settings.popup_enable %}
+<script>
+  $(function() {
+
+    $('#someone-purchased').show();
+    var mytimeAgo = ['0', '1', '5', '10', '12', '14', '16', '18', '20', '25', '30', '35', '40','42','45', '50', '60'];  
+    var randomlytimeAgo = Math.floor(Math.random() * mytimeAgo.length);
+    var currentmytimeAgo = mytimeAgo[randomlytimeAgo];
+
+    $(".timeAgo").text(currentmytimeAgo+" {{ 'cart.general.minutes_ago' | t}}"); 
+    $("#someone-purchased > div:gt(0)").hide();
+
+    setInterval(function() {
+      $('#someone-purchased > div:first')
+      .fadeOut(0)
+      .next()
+      .fadeIn(0)
+      .end()
+      .appendTo('#someone-purchased');
+
+      var mytimeAgo = ['0', '1', '5', '10', '12', '14', '16', '18', '20', '25', '30', '35', '40','42','45', '50', '60'];  
+      var randomlytimeAgo = Math.floor(Math.random() * mytimeAgo.length);
+      var currentmytimeAgo = mytimeAgo[randomlytimeAgo];
+      $(".timeAgo").text(currentmytimeAgo+" {{ 'cart.general.minutes_ago' | t}}"); 
+       },  20000);
+
+
+
+      setInterval(function() {
+        $('#someone-purchased').fadeIn(function() {   
+          $(this).removeClass("fade-out"); 
+        }).delay(4000)
+        .fadeIn( function() {  
+          $(this).addClass("fade-out"); 
+        }).delay({{settings.notification_popup_time }}); 
+      }, 9000);
+
+      $(".close_notification").click(function(){
+     
+        $('#someone-purchased').find('div:first').hide();
+      });
+ 
+   $(window).scroll(function() {
+
+    if ($(this).scrollTop()>0)
+     {
+      $("#someone-purchased").addClass("fade-out");      
+       setTimeout(function(){
+         $('#someone-purchased').find('div:first').hide();   
+         $("#someone-purchased").hide();
+       }, 2000);
+     } else {
+     $("#someone-purchased").removeClass('fade-out'); 
+       setTimeout(function(){
+         $('#someone-purchased').find('div:first').hide();   
+         $("#someone-purchased").show();
+       }, 2000);
+     }
+   });
+
+    });
+</script>
+
+
+{% comment %}
+{{ 'buttom_popup.scss.css' | asset_url | stylesheet_tag }}
+{% endcomment %}
+
+{% assign randomly_collection = collections[settings.popup_randomly_collection] %}
+
+{% unless settings.popup_disable_mobile %}
+<style>
+@media only screen and (max-width: 749px) {
+  #someone-purchased{
+  display:none !important;
+  }
+} 
+</style>
+{% endunless %}
+
+<div id="someone-purchased" class="customized fade-in" style="display:none;">
+
+
+  {% capture index %}{{ 'now' | date: '%S' | times: randomly_collection.products.size | divided_by: 60 }}{% endcapture %}
+  {% for product in randomly_collection.products offset:index limit:1000 %}
+  <div>
+    <a href="{{ product.url }}">
+      {% if settings.enable_product_variant_image %}
+
+      <img src="{% if product.first_available_variant.image %} {{ product.first_available_variant.image | img_url: '120x85' }} {% else %} {{ product | img_url: '120x85' }} {%endif%}" alt="{{ product.featured_image.alt | escape }}" >
+      {% else %}
+      <img src="{{ product | img_url: '120x85' }}" alt="{{ product.featured_image.alt | escape }}">
+      {% endif %}
+      <p>      
+        {{ settings.buttom_message }}
+        <span>
+          {{ product.title }}
+        </span>
+        {% if settings.popup_ago_custom_time %}
+        <small class="timeAgo"></small>
+        {% endif %}
+      </p>
+      </a>
+      {% unless settings.popup_disable_close %}
+      <span class="close_notification"><i class="fas fa-times-circle"></i></span>
+      {% endunless %}
+    
+  </div>
+
+  {% endfor %}
+
+</div>
+
+{% endif %}
+
+

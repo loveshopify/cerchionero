@@ -1,0 +1,327 @@
+
+<style>
+  
+  #bottom_blocks .bottom-block {
+    border-radius: 5px;
+    float: left;
+    margin-bottom: 10px;
+    padding: 15px 10px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  #bottom_blocks .mar_bottom { margin-bottom:10px;}
+
+  .block-logo .fa {
+    font-size:{{ section.settings.badges_size }};
+    color:{{ settings.badges_color }};
+  }
+  .block-logo {
+    margin-top: 6px;
+    text-align: center;
+  }
+  .flex-item {
+    -webkit-flex: auto;
+    -moz-flex: auto;
+    -ms-flex: auto;
+    flex: auto;
+  }
+  @media only screen and (max-width: 749px) {
+    .block-logo {
+      margin-top: 0px;
+      margin-bottom: 10px;
+    } 
+    .block-content {
+      text-align: center;
+    }  
+
+  }
+  @media only screen and (min-width: 750px) and (max-width: 979px){
+    .block-logo .fa {font-size:30px;}
+  }
+</style>
+<div class="shipping_info_page">
+  <div class="page-width">
+  
+      <div id="bottom_blocks" class="grid grid--uniform grid--no-gutters">
+        {% for block in section.blocks %}
+        {% if block.settings.shipping_icon != blank %}
+        <div class=" grid__item mar_bottom{% if section.blocks.size == 3 %} medium-up--one-third small--one-half{% else %} medium-up--one-quarter small--one-half{% endif %}" {{ block.shopify_attributes }}>
+          <div data-delay="300" data-animate="fadeInLeft " class="bottom-block fadeInLeft animated" >
+            <div class="grid__item medium-up--one-quarter block-logo">
+		       <i class="fa {{ block.settings.shipping_icon }}"></i>                  
+            </div>
+
+            <div class="grid__item medium-up--three-quarters block-content">
+              <div class="info_title">{{ block.settings.badges_title }}</div>
+              <p>{{ block.settings.badges_text | slice :0,70}}</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+  </div>
+  
+</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "Info Badges",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Info Badges [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002079013-How-to-setup-Info-Badge-section-in-Booster-2-0)"
+      },
+      {
+        "type": "select",
+        "id": "badges_size",
+        "label": "Shipping badges size",
+        "options": [
+          {
+            "value": "20px",
+            "label": "20px"
+          },
+          {
+            "value": "25px",
+            "label": "25px"
+          },
+          {
+            "value": "30px",
+            "label": "30px"
+          },
+          {
+            "value": "35px",
+            "label": "35px"
+          },
+          {
+            "value": "40px",
+            "label": "40px"
+          }
+        ]
+      }
+	],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Info Badges",
+        "settings": [
+          {
+            "type": "select",
+            "id": "shipping_icon",
+            "label": "Heading font style",
+            "default": "fa-plane",
+            "options": [
+              {
+                "value": "fa-bullhorn",
+                "label": "Bullhorn"
+              },
+              {
+                "value": "fa-bullseye",
+                "label": "Bullseye"
+              },
+              {
+                "value": "fa-calendar-check",
+                "label": "Calendar-check"
+              },
+              {
+                "value": "fa-calculator",
+                "label": "Calculator"
+              },
+              {
+                "value": "fa-cart-arrow-down",
+                "label": "Cart-Arrow-Down"
+              },
+              {
+                "value": "fa-cart-plus",
+                "label": "Cart-Plus"
+              },
+              {
+                "value": "fa-certificate",
+                "label": "Certificate"
+              },
+              {
+                "value": "fa-chart-line",
+                "label": "Chart-line"
+              },
+              {
+                "value": "fa-check-circle",
+                "label": "Check-circle"
+              },
+              {
+                "value": "fa-child",
+                "label": "Child"
+              },
+              {
+                "value": "fa-circle-notch",
+                "label": "Circle-Notch"
+              },
+              {
+                "value": "fa-coffee",
+                "label": "Coffee"
+              },
+              {
+                "value": "fa-credit-card",
+                "label": "Credit-card"
+              },
+              {
+                "value": "fa-expand",
+                "label": "Expand"
+              },
+              {
+                "value": "fa-fighter-jet",
+                "label": "Fighter-Jet"
+              },
+              {
+                "value": "fa-fire",
+                "label": "Fire"
+              },
+              {
+                "value": "fa-flag",
+                "label": "Flag"
+              },
+              {
+                "value": "fa-gem",
+                "label": "Gem"
+              },
+              {
+                "value": "fa-leaf",
+                "label": "Flag"
+              },
+              {
+                "value": "fa-map",
+                "label": "Map"
+              },
+              {
+                "value": "fa-shield-alt",
+                "label": "Shield-alt"
+              },
+              {
+                "value": "fa-shirtsinbulk",
+                "label": "Shirtsinbulk"
+              },
+              {
+                "value": "fa-shopping-bag",
+                "label": "Shopping-Bag"
+              },
+              {
+                "value": "fa-shopping-basket",
+                "label": "Shopping-Basket"
+              },
+              {
+                "value": "fa-shopping-cart",
+                "label": "Shopping-cart"
+              },
+              {
+                "value": "fa-tag",
+                "label": "Tag"
+              },
+              {
+                "value": "fa-tags",
+                "label": "Tags"
+              },
+              {
+                "value": "fa-telegram-plane",
+                "label": "Telegram-plane"
+              },
+              {
+                "value": "fa-thumbs-up",
+                "label": "Thumbs-up"
+              },
+              {
+                "value": "fa-tree",
+                "label": "Tree"
+              },
+              {
+                "value": "fa-keyboard",
+                "label": "Keyboard"
+              },
+              {
+                "value": "fa-key",
+                "label": "Key"
+              },
+              {
+                "value": "fa-info",
+                "label": "Info"
+              },
+              {
+                "value": "fa-heart",
+                "label": "Heart"
+              },
+              {
+                "value": "fa-envelope",
+                "label": "Envelope"
+              },
+              {
+                "value": "fa-envelope-open",
+                "label": "Envelope-Open"
+              },
+              {
+                "value": "fa-comment-alt",
+                "label": "Comment-Alt"
+              },
+              {
+                "value": "fa-comments",
+                "label": "Comments"
+              },
+              {
+                "value": "fa-phone-square",
+                "label": "Phone-Square"
+              },
+              {
+                "value": "fa-phone-volume",
+                "label": "Phone-Volume"
+              },
+              {
+                "value": "fa-plane",
+                "label": "Plane"
+              },
+              {
+                "value": "fa-phone",
+                "label": "Phone"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "badges_title",
+            "label": "Heading",
+            "default": "FREE SHIPPING"
+          },
+          {
+            "type": "text",
+            "id": "badges_text",
+            "label": "Text",
+            "default": "Get free shipping on every order over 75$",
+            "info": "First 80 character will display"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Info Badges",
+        "category": "Shipping info",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

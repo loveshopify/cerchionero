@@ -1,0 +1,304 @@
+<style>
+  /*===== START BORDER STYLE CSS =====*/
+  {% unless section.settings.heading_divider == 'none'%}
+  #shopify-section-{{section.id}} .hero .border_width {
+    {% if section.settings.heading_divider == 'small' %}
+    width:33.333%;
+    border-top:3px solid {{settings.color_image_overlay_text}};
+    display: inline-block;
+    position: relative;
+    top: -5px;
+    {% elsif section.settings.heading_divider == 'full' %}
+    width:100%;
+    border-top:3px solid {{settings.color_image_overlay_text}};
+    display: inline-block;
+    margin-top: 14px;
+    margin-bottom: 0px;
+    {% endif %}
+  }
+  {% if section.settings.heading_divider == 'medium' %}  
+  #shopify-section-{{section.id}}  .hero .mega-title {
+    border-bottom: 3px solid {{settings.color_image_overlay_text}};
+    display: inline-block;
+    padding-bottom: 14px;
+    margin-bottom: 5px;
+}
+  }
+  {% endif %}
+  {% endunless %}
+   /*===== END BORDER STYLE CSS =====*/
+  
+  /*===== START PARALLAX CSS =====*/
+  
+  {% if section.settings.enable_parallax%}
+   #shopify-section-{{section.id}} .hero {  
+    position: relative;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+  }	
+  @media only screen and (min-width:749px) and (max-width:1024px) {
+    #shopify-section-{{section.id}} .hero {
+      background-attachment: scroll;     
+    }
+  }
+  @media only screen and (max-width:749px) {
+     #shopify-section-{{section.id}} .hero {
+      background-attachment: scroll; 
+    }
+  }
+  {% endif %}
+  /*===== END PARALLAX CSS =====*/
+  
+ .hero .mega-subtitle {
+    margin: 0;
+    display: inline-block;
+  }
+
+  #shopify-section-{{section.id}} .hero__btn {
+    {% if section.settings.full_btn %}
+    width:100%;
+    {% endif %}
+    {% if section.settings.transparent_btn %}
+    background: transparent;
+    color: {{ settings.color_image_overlay_text }};
+    border: 1px solid {{ settings.color_image_overlay_text }};
+    {% endif %}
+  }
+  @media only screen and (min-width:750px) {
+    #shopify-section-{{section.id}} .hero__btn {
+      {% if section.settings.full_btn %}
+      margin: 27.5px auto 0;
+      max-width: 75%;   
+    {% endif %}
+    }
+  }
+ 
+</style>
+<div class="hero hero--{{ section.settings.hero_size }}{% if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank %} hero__overlay{% endif %} box ratio-container lazyload js"
+     {% if section.settings.image %}
+     data-bgset="{% include 'bgset', image: section.settings.image %}"
+     data-sizes="auto"
+     data-parent-fit="cover"
+     style="background-position: {{ section.settings.alignment }}; background-image: url('{{ section.settings.image | img_url: '300x300' }}');"
+     {% endif %}>
+  {% if section.settings.image == blank %}
+    <div class="placeholder-background">
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {% endif %}
+  <div class="hero__inner">
+    <div class="page-width text-{{section.settings.text_alignment}}">
+      {% if section.settings.title != blank %}
+        <h2 class="h1 hero_title mega-title imgsldover {% if section.settings.text_size == 'large' %} mega-title--large{% endif %}">{{ section.settings.title | escape }}</h2>
+      <div class="border_width"></div>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="rte-setting hero_sub_title mega-subtitle imgsldover_sub imgsldover_sub{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">{{ section.settings.text }}</div>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <div class="btn_hero">  
+      <a href="{{ section.settings.button_link }}" class="btn hero__btn{% if section.settings.button_size == 'medium' %} medium {% elsif section.settings.button_size == 'large' %} large{% endif %}">
+          {{ section.settings.button_label | escape }}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<noscript>
+  <div class="hero hero--{{ section.settings.hero_size }}{% if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank %} hero__overlay{% endif %}"{% if section.settings.image %} style="background-image: url('{{ section.settings.image | img_url: '2048x' }}'); background-position: center {{ section.settings.alignment }};"{% endif %}></div>
+</noscript>
+
+{% schema %}
+  {
+    "name": "Image with text overlay",
+    "settings": [
+  	  {
+        "type": "header",
+        "content": "Image with text overlay [NEED HELP?](https:\/\/help.boostertheme.com\/hc/en-us\/articles\/360002080854-How-to-setup-Image-with-text-Overlay-section-in-Booster-2-0)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },     
+      {
+        "type": "checkbox",
+        "id": "enable_parallax",
+        "label": "Enable Parallax"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Image alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text overlay"
+      },
+      {
+        "type": "select",
+        "id": "heading_divider",
+        "label": "Heading Divider",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "1/3 Title"
+          },
+          {
+            "value": "medium",
+            "label": "Title wide"
+          },
+          {
+            "value": "full",
+            "label": "Section width"
+          }
+        ]
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
+      },
+      {
+        "type": "select",
+        "id": "hero_size",
+        "label": "Section height",
+        "default": "medium",
+        "options": [
+          {
+            "label": "Extra Small",
+            "value": "x-small"
+          },
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          },
+          {
+            "label": "Extra Large",
+            "value": "x-large"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_size",
+        "label": "Text size",
+        "default": "medium",
+        "options": [
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "header",
+        "content": "Button Style"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_btn",
+        "label": "Full Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "transparent_btn",
+        "label": "Transparent Button"
+      },
+      {
+        "type": "select",
+        "id": "button_size",
+        "label": "Button size",
+        "default": "small",
+        "options": [
+          {
+            "value": "small",
+            "label": "small"
+          },
+          {
+            "value": "medium",
+            "label": "medium"
+          },
+          {
+            "value": "large",
+            "label": "large"
+          }
+      	]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text overlay",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

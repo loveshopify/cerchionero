@@ -1,0 +1,51 @@
+
+{{ 'jquery.countdownTimer_2hours.js' | asset_url | script_tag }}
+
+<script>
+  var myMinutevar=document.getElementById("myMinute").value;
+
+  var time_minute=myMinutevar/60 ;
+  //   alert(time_minute);
+  var hours = Math.floor( time_minute / 60);          
+  var minutes = Math.floor(time_minute % 60);     
+
+  $(function(){
+    $('#hm_timer').countdowntimer({
+      hours : hours,
+      minutes :minutes,
+      seconds :00,
+      size : "lg"
+    });
+  });
+</script>
+
+<table id="timertwohour">
+  <tr>
+    <td colspan="3"><span id="hm_timer"></span></td>
+  </tr>
+  <tr>
+    <td>
+      <span class="tm_lbl text-left">{{ 'products.timer.hour' | t }}</span>
+      <span class="tm_sap">&nbsp;</span>
+      <span class="tm_lbl">{{ 'products.timer.minute' | t }}</span>
+      <span class="tm_sap">&nbsp;</span>
+      <span class="tm_lbl text-right">{{ 'products.timer.second' | t }}</span>
+    </td>
+  </tr>
+</table>
+
+
+<script>
+  var myMinutevar=document.getElementById("myMinute").value;
+  var time_minute=myMinutevar/60 ;
+  //   alert(time_minute);
+  var hours = Math.floor( time_minute / 60);          
+  var minutes = Math.floor(time_minute % 60);      
+  $(function(){
+    $('#hm_timer1201').countdowntimer({
+      hours : hours,
+      minutes :minutes,
+      seconds :00
+    });
+  });
+</script>

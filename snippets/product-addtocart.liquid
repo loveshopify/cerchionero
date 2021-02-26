@@ -1,0 +1,222 @@
+{% assign price_var=current_variant.price | withoutmoney %}  
+
+<div class="grid__item row_grid_qnt"{% if section_onboarding %} style="margin-top:20px;"{% endif %}>
+{% if section.settings.show_quantity_selector %}
+  <div class="grid__item pad_zero prod_qty_desktop small--hide {% if section.settings.image_size == "full"  %} full-qty {% endif %} {% if section.settings.image_size == "large"  %} large {% endif %} {% if section.settings.image_size == "medium" or section.settings.image_size == "small" %} cst-small-qty {% endif %}  medium--one-quarter  large-up--two-tenths product-form__item product-form__item--quantity">
+      {% if section.settings.enable_payment_button %}
+    <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+    {% endif %}
+    <div class="qty_selector">
+      <span class='qtyminus' field='quantity'>{% include 'icon-minus' %}</span>
+      <input type="number" id="Quantity" name="quantity" value="1" min="1" class="product-form__input qty" pattern="[0-9]*">
+      <span class='qtyplus' field='quantity'>{% include 'icon-plus' %}</span>
+    </div>
+  </div>
+  {% if section.settings.enable_payment_button %}
+  {% assign quantitygrid='grid__item medium--one-whole large-up--one-whole small--one-whole pad_zero' %} 
+  {% else %}
+  {% assign quantitygrid='grid__item medium--three-quarters large-up--eight-tenths  small--one-whole pad_zero' %} 
+{% endif %}
+  {% if section.settings.enable_progressbar_text or section.settings.enable_timer_top_message %}
+    {% if section.settings.enable_payment_button %}
+    {% include 'product-progress-bar' %}
+    {% endif %}
+  {% endif %}
+  <!-- allow setting after quantity-->
+{% if section.settings.move_product_desc == 'move_product_desc_quantity' %}
+
+   {% if section.settings.product_description %}
+
+    <div class="product-description rte clear-bt" itemprop="description">
+      {% if product.description contains '<!-- split -->' %}
+          {% assign mycontent = product.content | split:'<!-- split -->' %}
+          {{ mycontent[0] }}
+      {% else %}
+          {{ product.description }}
+      {% endif %}
+    </div>
+
+    {% endif %}
+{% endif %}
+
+  {% else %}
+  <input type="hidden" id="Quantity" name="quantity" value="1" class="product-form__input prod_qty_desktop">
+  {% endif %}
+
+  <div class="{{quantitygrid}}{% if section.settings.enable_sticky %} qty_stickyfor{% endif %}{% unless section.settings.enable_payment_button %} cst-small-crtbtn{% else %} more_payment_btn{% endunless %}">
+    {% if price_var == 0 %}          
+      {% if section.settings.enable_shipping %}
+        <button type="submit" name="add" id="AddToCartZero" class="btn_sp medium-up--five-eighths{% if section.settings.enable_payment_button %} dynamic_paybtn {% endif %}{% if section.settings.shake_effect_enable %} js-cartButtonPro-addToCartButton hvr-wobble-horizontal{% endif %}">
+          <span id="AddToCartText">{{ 'products.product.free_add_to_cart' | t }} </span>
+        </button>
+      {% endif %}
+    {% else %}          
+    {% assign zeroCost='' %}  
+    <button type="submit" name="add" id="AddToCart" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn_sp addtocart_btn product-form__cart-submit {% if section.settings.enable_payment_button %}dynamic_paybtn {% endif %}{% if section.settings.shake_effect_enable %}js-cartButtonPro-addToCartButton hvr-wobble-horizontal{% endif %}{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
+      <span id="AddToCartText">
+        {% unless current_variant.available %}
+        {{ 'products.product.sold_out' | t }}
+        {% else %}
+        {% if section.settings.enable_payment_button %}
+        {{ 'products.dynamic_checkout_buttons.add_to_cart_text_when_dynamic_checkout_buttons_enable' | t }}
+        {% else %}
+        {{ 'products.product.add_to_cart' | t }}
+        {% endif %}
+        {% endunless %}
+      </span>
+    </button>
+    {% if section.settings.enable_payment_button %}
+    {{ form | payment_button }}
+    {% endif %}
+    {% endif %}
+  </div>        
+</div>
+
+<!-- allow setting after add to cart-->
+{% if section.settings.move_product_desc == 'move_product_desc_addtocart' %}
+
+{% if section.settings.product_description %}
+
+<div class="product-description rte" itemprop="description">
+  {% if product.description contains '<!-- split -->' %}
+  {% assign mycontent = product.content | split:'<!-- split -->' %}
+  {{ mycontent[0] }}
+  {% else %}
+  {{ product.description }}
+  {% endif %}
+</div>
+
+{% endif %}
+
+{% endif %}
+<style>
+.qty {
+  -webkit-appearance: textfield !important;
+  -moz-appearance: textfield;
+  height: 44px;
+  width: 40px;
+  padding: 5px 5px 5px 5px;
+  display: inline-block;
+}
+span.qtyplus { width:35px; height:45px;padding: 5px 5px 5px 5px;border: none;display: inline-block; border: 1px solid #eee;border-radius: 0;background: #eee;font-size: 24px;line-height: 1em;margin-left: -4px; text-align: center;}
+span.qtyminus { width:35px; height:45px;padding: 5px 5px 5px 5px;border: none;display: inline-block;border: 1px solid #eee;border-radius: 0;background: #eee;font-size: 24px;line-height: 1em;margin-right: -4px; text-align: center;}
+.qty_selector {font-size:15px;}
+.qty_selector svg.icon {
+  width: 14px;
+}
+@media screen and (min-width:420px){
+.qty_selector svg.icon {
+  vertical-align: text-bottom;
+  height: 34px;
+}
+}
+.product-form__item input#Quantity {
+  height: 45px;
+  width: 35px;
+  text-align: center;
+  display: inline-block;
+  border-left: 0;
+  border-right: 0;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+/*   margin-left: -5px; */
+  vertical-align: top;
+  border-radius: 0;
+}
+
+.product-form__cart-submit {
+  display: block;
+  width: 100%;
+  line-height: 1.4;
+  padding-left: 5px;
+  padding-right: 5px;
+  white-space: normal;
+}
+#AddToCartZero {width:100%;}
+#AddToCartZero span, #AddToCart>span {
+    font-size: 21px !important;
+  	vertical-align: middle;
+  	display :block;
+}
+
+@media screen and (min-width:750px) and (max-width:1199px){
+.product-form__item input#Quantity {width: 30px;}
+span.qtyminus{width:26px;}
+span.qtyplus{width:26px;}  
+}
+@media screen and (max-width:749px){
+   .product-form__item input#Quantity {
+     height: 45px;
+     width: 45px;
+     padding: 0 !important;
+     border:1px solid #e8e9eb;
+   }
+}
+@media screen and (max-width:419px){
+span.qtyplus {width: 25px;height: 39px;}
+span.qtyminus {width: 25px;height: 39px;}
+     .product-form__item input#Quantity {
+     height: 39px;
+     width: 45px;
+     padding: 0 !important;
+     border:1px solid #e8e9eb;
+   }
+#AddToCartZero span, #AddToCart > span{font-size:15px !important;}
+  .shopify-payment-button__button{font-size:15px !important;padding:12px 0 !important;}
+  .product-form__item--quantity.pad_zero {padding-left:0;}
+}
+</style>
+<script>
+  // This button will increment the value
+  $('.qtyplus').click(function(e){
+    // Stop acting like a button
+    e.preventDefault();
+    // Get the field name
+    fieldName = $(this).attr('field');
+    // Get its current value
+    var currentVal = parseInt($('input[name='+fieldName+']').val());
+    // If is not undefined
+    if (!isNaN(currentVal)) {
+      // Increment
+      $('input[name='+fieldName+']').val(currentVal + 1);
+    } else {
+      // Otherwise put a 0 there
+      $('input[name='+fieldName+']').val(0);
+    }
+  });
+  // This button will decrement the value till 0
+  $(".qtyminus").click(function(e) {
+    // Stop acting like a button
+    e.preventDefault();
+    // Get the field name
+    fieldName = $(this).attr('field');
+    // Get its current value
+    var currentVal = parseInt($('input[name='+fieldName+']').val());
+    // If it isn't undefined or its greater than 0
+    if (!isNaN(currentVal) && currentVal > 0) {
+      // Decrement one
+      $('input[name='+fieldName+']').val(currentVal - 1);
+    } else {
+      // Otherwise put a 0 there
+      $('input[name='+fieldName+']').val(0);
+    }
+  });
+  {% if section.settings.shake_effect_enable %}
+  setRandomClass();
+  setInterval(function () {
+    setRandomClass();
+  }, 5000);
+  function setRandomClass() {
+    var ul = $(".btn_sp");
+    var number = ul.length; 
+    var random = Math.floor((Math.random() * number));
+
+    ul.removeClass("is-animated");
+    setTimeout(function(){
+    ul.addClass("is-animated");
+      }, 2000);
+  }
+  {% endif %}
+</script>
+<!-- for skip add to cart code-->

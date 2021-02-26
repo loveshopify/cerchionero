@@ -1,0 +1,62 @@
+{% case section.settings.related_grid_num %}
+  {% when 2 %}
+    {%- assign max_height = 530 -%}
+  {% when 3 %}
+    {%- assign max_height = 345 -%}
+  {% when 4 %}
+    {%- assign max_height = 250 -%}
+  {% when 5 %}
+    {%- assign max_height = 195 -%}
+{% endcase %}
+{% include 'related-product' %}   
+{% if collection %}
+<div class="page-width">
+  <div class="text-center return-link-wrapper">
+    <a href="{{ collection.url }}" class="btn btn--has-icon-before return-link">
+      {% include 'icon-arrow-left' %}
+      {{ 'products.product.back_to_collection' | t: title: collection.title }}
+    </a>
+  </div>
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "related product",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Related product [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360003047513-How-to-setup-the-Related-products-)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_related_products",
+        "label": "Show related products",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "related_grid_num",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "label": "Products per row (Desktop)",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "related_grid_row",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "label": "Rows per page (Desktop)",
+        "default": 1
+      }
+  	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

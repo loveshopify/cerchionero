@@ -1,0 +1,44 @@
+<!-- **BEGIN** Hextom USB Integration // Main - DO NOT MODIFY -->
+<script type="application/javascript">
+    window.hextom_usb = {
+        p1: [
+            {% if product.variants %}
+                {% for variant in product.variants %}
+                    {
+                      "v1": "{{ variant.inventory_quantity | divided_by: 7}},{{ variant.inventory_quantity | modulo: 7}}",
+                      "v2": "{{ variant.inventory_management }}",
+                      "v3": "{% if variant.title != blank %}{{ variant.title | escape | split: "" | reverse | join: "" }}{% endif %}",
+                      "v4": "{{ variant.id }}",
+                      "v5": "{{ variant.inventory_policy }}"
+                    }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            {% endif %}
+        ],
+        p2: [
+            {% if product.tags %}
+                {% for tag in product.tags %}
+                    "{{ tag | escape | split: "" | reverse | join: "" }}"
+                    {% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            {% endif %}
+        ],
+        p3: {
+            {% if customer %}
+                "v1": "{{ customer.first_name | escape | split: "" | reverse | join: "" }}",
+                "v2": "{{ customer.last_name | escape | split: "" | reverse | join: "" }}",
+                "v3": "{{ customer.orders_count | divided_by: 7 }},{{ customer.orders_count | modulo: 7 }}",
+                "v4": [
+                    {% if customer.tags %}
+                        {% for tag in customer.tags %}
+                            "{{ tag | escape | split: "" | reverse | join: "" }}"
+                            {% unless forloop.last %},{% endunless %}
+                        {% endfor %}
+                    {% endif %}
+                    ],
+                "v5": "{{ customer.total_spent | divided_by: 7 }},{{ customer.total_spent | modulo: 7 }}",
+                "v6": "{{ customer.id }}"
+            {% endif %}
+        }
+    };
+</script>
+<!-- **END** Hextom USB Integration // Main - DO NOT MODIFY -->

@@ -1,0 +1,26 @@
+<!-- **BEGIN** Hextom USB Integration // Home featured product - DO NOT MODIFY -->
+    <span class="htusb-ui-boost htusb-ui-prod-boost htusb-ui-prod-boost--home-featured-prod htusb-data-prod"
+        data-v1="{{ product.id }}"
+        data-v2="{{ product.handle }}"
+        data-v3="{{ product.product_type }}"
+        data-v4="{% if product.tags %}{% for tag in product.tags %}{{ tag | escape | split: "" | reverse | join: "" }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}"
+    >
+    </span>
+    <script type="application/javascript">
+        window.hextom_usb_{{ product.id }} = {
+            p1: [
+                {% if product.variants %}
+                    {% for variant in product.variants %}
+                        {
+                          "v1": "{{ variant.inventory_quantity | divided_by: 7}},{{ variant.inventory_quantity | modulo: 7}}",
+                          "v2": "{{ variant.inventory_management }}",
+                          "v3": "{% if variant.title != blank %}{{ variant.title | escape | split: "" | reverse | join: "" }}{% endif %}",
+                          "v4": "{{ variant.id }}",
+                          "v5": "{{ variant.inventory_policy }}"
+                        }{% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                {% endif %}
+            ]
+        };
+    </script>
+    <!-- **END** Hextom USB Integration // Home featured product  - DO NOT MODIFY -->

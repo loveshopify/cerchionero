@@ -1,0 +1,78 @@
+{% layout none %}
+
+<script type="text/javascript">
+  //Get products inventory state if ba_check_stock url parameter sent
+  {%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+  {%- assign pageUrl = contentForQuerystring | url_decode | split:'"pageurl":"' | last | split:'"' | first | split:'cerchionero.com' | last |
+  replace:'\/','/' |
+  replace:'%20',' ' |
+  replace:'\u0026','&'-%}
+
+  //At this point ba_check_stock is obligatory but we can change it later
+  //Extract product handles string  from pageUrl
+  {% if pageUrl contains 'ba_check_stock' %}
+
+    {%- assign productsHandlesStr = pageUrl | split:'ba_check_stock=' | last -%}
+    {% if productsHandlesStr contains '&' %}
+      {% assign productsHandlesStr = productsHandlesStr | split: '&' | first %}
+    {% endif %}
+
+    //Extract collection handles from pageUrl
+    {%- assign collectionsPart = pageUrl | split:'ba_collections=' | last -%}
+    {% if collectionsPart contains '&' %}
+       {% assign collectionsPart = collectionsPart | split: '&' | first %}
+    {% endif %}
+    {% assign collection_handles = collectionsPart | split:',' | uniq %}
+
+    //Loop over collections and extract product handes into productsHandlesStr - limit extracted products to 50 with pagination and collection_products_counter
+    //Limit is 50 because if collection have common products we don't know it before we get collection
+    {% assign collection_products_counter = 50 %}
+    {% if collection_handles %}
+      //Try first 10 collections
+      {% for collection_handle in collection_handles | limit: 10 %}
+      {% assign collection = collections[collection_handle] %}
+        {% if collection and collection_products_counter > 0 %}
+           {% paginate collection.products by collection_products_counter %}
+             {% for p in collection.products %}
+                {% if forloop.index  == 1 %}
+                  {% assign collection_products_counter = collection_products_counter | minus: forloop.length %}
+                {% endif %}
+                {% assign testHandle = '&' | append: p.handle %}
+                {% unless productsHandlesStr contains testHandle %}
+                  {% assign productsHandlesStr = productsHandlesStr | append: ',' | append: p.handle %}
+                {% endunless %}
+             {% endfor %}
+           {% endpaginate %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    //Generate productHandlesArr array
+    {% assign productHandlesArr  = productsHandlesStr | split:',' | uniq %}
+
+    //booster-check-products-stock = start flag for script evaluation
+    //Build productsInStock object with information about inventory for products and variants
+    //Limit 20 needed because all_products method limitation
+    window.booster.productsInStock = {
+    {% for handle in productHandlesArr | limit: 20 %}
+      {% if handle == '' %}
+        {% continue %} //skip empty handles
+      {% endif %}
+      {% assign product  = all_products[handle] %}
+      {{product.id}}:
+      {id: {{ product.id }},available: '{{ product.available }}',title: '{{ product.title | escape }}',handle: '{{ product.handle | escape }}',image_url: '{{ product | img_url: "" }}',image: {src: '{{ product | img_url: "" }}' },
+        images: [
+          {% for image in product.images %}
+            {id: '{{ image.id }}', src: '{{ image | img_url: "" }}'},
+          {% endfor %}
+        ],
+        variants_stock: {
+        {% for variant in all_products[handle].variants %}
+          {{variant.id}}: {id: {{ variant.id }},title: '{{ variant.title | escape }}',available: '{{ variant.available  }}', qty: '{{ variant.inventory_quantity }}',inventory_quantity: '{{ variant.inventory_quantity }}', inventory_policy: '{{ variant.inventory_policy }}',inventory_management: '{{ variant.inventory_management }}',price: '{{ variant.price }}',compare_at_price: '{{ variant.compare_at_price }}',image_url: '{{ variant.image.src  | img_url: "" }}',image_id: '{{ variant.image.id }}' },
+        {% endfor %}}
+      },
+    {% endfor %}};
+  {% endif %}
+  //booster-check-products-stock-end = end flag for script evaluation
+  //version:1575389810
+</script>

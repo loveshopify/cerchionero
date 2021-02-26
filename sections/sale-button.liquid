@@ -1,0 +1,108 @@
+<style>
+  #shopify-section-{{section.id}} .custom__item--{{block.id}} .btn {
+    padding: 16px 15px !important;
+
+  }
+  #shopify-section-{{section.id}} #sale_button_section {
+    {% if section.settings.full_btn %}
+    width:100%;
+    {% endif %}
+    {% unless section.settings.transparent_btn %}
+    background: {{settings.color_button }};
+    color: {{settings.color_button_text}};
+    border: 1px solid {{settings.color_button }};
+    {% else %}
+    background: transparent;
+    color: {{ settings.color_body_text }};
+    border: 1px solid {{ settings.color_body_text }};
+    {% endunless %}
+  }
+  @media only screen and (min-width:750px) {
+    #shopify-section-{{section.id}} #sale_button_section {
+      {% if section.settings.full_btn %}
+      margin: 0 auto;
+      max-width: 75%;   
+      {% endif %}
+    }
+  }
+</style>
+
+
+<div class="page-width sale_button">
+
+  <div class="text-center">
+    <a href="{{section.settings.button_link}}" id="sale_button_section" class="btn btn--secondary  btn--has-icon-before return-link {% if section.settings.button_size == 'medium' %} medium {% endif %}  {% if section.settings.button_size == 'large' %} large {% endif %}">
+      {{ section.settings.button_label }}
+    </a>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Sale Button",  
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sale Button [NEED HELP?](https:\/\/help.boostertheme.com\/hc\/en-us\/articles\/360002078933-How-to-setup-Sale-Button-section-in-Booster-2-0)"
+      },        
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button text",
+        "default": "YES, I WANT TO GET THIS OFFER NOW !"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "header",
+        "content": "Button Style"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_btn",
+        "label": "Full Button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "transparent_btn",
+        "label": "Transparent Button"
+      },
+      {
+        "type": "select",
+        "id": "button_size",
+        "label": "Button size",
+        "default": "medium",
+        "options": [
+          {
+            "value": "small",
+            "label": "small"
+          },
+          {
+            "value": "medium",
+            "label": "medium"
+          },
+          {
+            "value": "large",
+            "label": "large"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Sale Button",
+        "category": "Sale Button"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

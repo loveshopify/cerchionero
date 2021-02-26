@@ -1,0 +1,165 @@
+<!-- sell button -->
+{% if settings.sale_button_option == "sale_button_option_one" %}
+	{% assign sale_box_opt = "sale_wheel" %}
+{% elsif settings.sale_button_option == "sale_button_option_two" %}
+	{% assign sale_box_opt = "sale_wheel-two" %}
+{% elsif settings.sale_button_option == "sale_button_option_three" %}
+	{% assign sale_box_opt = "sale_wheel-three" %}
+{% endif %} 
+<!-- sale option -->
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+	{% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+	{% assign sold_out = false %}
+{% endif %}
+
+{% assign product_avilable_price = product.first_available_variant.price %}
+{% assign free = false %}
+{% if product_avilable_price == 0 %}
+{% assign free = true %}
+{% endif %}
+
+{% unless grid_image_width %}
+{%- assign grid_image_width = '300x300' -%}
+{% endunless %}
+{%- assign grid_image_scale = '1' -%}
+
+<div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %} newgrid sale-sold">
+  {% if free and settings.show_free_badges %}
+  {% unless  sold_out %} 
+  {% if settings.sale_button_option == "sale_button_option_two" %}
+  <div class="sale_btn_2 free_badges">
+    <p class="{{ sale_box_opt  }}"></p>
+   {% else %}
+  <p class="{{ sale_box_opt  }} free_badges">
+  {% endif %}
+   <strong>{{ 'collections.tag.free_text' | t }}</strong> 
+  {% if settings.sale_button_option == "sale_button_option_two" %}  
+  </div>
+  {% else %}
+   </p>
+  {% endif %}
+  {% endunless %}
+    
+  {% elsif on_sale and settings.show_saved_amount %}
+  {% unless  sold_out %} 
+  {% if settings.sale_button_option == "sale_button_option_two" %}
+    <div class="sale_btn_2">
+      <p class="{{ sale_box_opt  }}"></p>
+        {% else %}
+        <p class="{{ sale_box_opt  }}">
+          {% endif %}
+          {% assign sale = product.compare_at_price | minus:  product.price | times: 100.0  %}
+          {% assign  sale = sale | divided_by:  product.compare_at_price | round %}
+          <strong>{{sale}}{{ 'products.product.on_save' | t }} </strong> 
+          {% if settings.sale_button_option == "sale_button_option_two" %}  
+      </div>      
+  {% else %}
+  </p>
+{% endif %}
+  {% endunless %}
+{% endif %}
+
+{% if sold_out %}
+  {% if settings.sale_button_option == "sale_button_option_two" %}
+  <div class="sale_btn_2">
+    <p class="{{ sale_box_opt  }}"></p>    
+      {% else %}
+      <p class="{{ sale_box_opt }} sld-out">
+        {% endif %}
+        <strong>{{ 'collections.tag.sold_out_text' | t }}</strong>
+      </p>
+      {% if settings.sale_button_option == "sale_button_option_two" %}  
+    </div>  
+  {% else %}
+    </p>
+  {% endif %}
+{% endif %}   
+{% if settings.enable_collection_url %}
+<a class="grid-view-item__link grid_set_box" href="{{ product.url | within: collection }}">
+  {% else %}
+  <a class="grid-view-item__link grid_set_box" href="{{ product.url }}">
+  {% endif %}
+  {% unless settings.show_second_image %}
+  
+  {% assign lazyclass="grid-view-item__image" %}
+  {% assign lazy_data_src= product.featured_image.src | img_url: grid_image_width, scale: grid_image_scale %}
+  <img {% include 'lazy_loader' %} alt="{{ product.featured_image.alt }}">  
+	
+  {% else %}
+
+  <div class="reveal">
+    <img src="{{ product.featured_image.src | img_url: '300x300' }}" alt="{{ product.featured_image.alt | escape }}">
+    {% if product.images.size > 1 %}
+    <img class="hidden" src="{{ product.images[1] | img_url: '300x300' }}" alt="{{ product.images.last.alt | escape }}" />
+    {% endif %}
+  </div>
+
+  {% endunless %}
+
+<div class="h4 grid-view-item__title product_title nav-bar mobile-only">
+  {% if settings.on_mobile_title_set == "mobile_title_set_line_trim" %}
+  {% assign setHlimit=settings.mobile_text_limit %}
+  {{ product.title | truncate:setHlimit }}
+  {% else %}
+  {{ product.title }}
+  {% endif %}      
+
+</div>
+
+<div class="h4 grid-view-item__title product_title nav-bar desktop-only">
+  {% if settings.on_desktop_title_set == "title_set_line_trim" %}
+  {% assign setHlimit=settings.desktop_text_limit %}
+  {{ product.title | truncate:setHlimit }}
+  {% else %}
+  {{ product.title }}
+  {% endif %}      
+
+</div> 
+
+{% if section.settings.show_vendor %}
+<div class="grid-view-item__vendor">{{ product.vendor }}</div>
+{% endif %}
+<div class="grid-view-item__meta">
+  {% include 'product-price' %}
+</div>
+</a>
+<div class="r_addtocartbutton">
+{% for variant in  product.variants %}
+  {% if variant == product.selected_or_first_available_variant %}
+  {%- assign pp_id =  variant.id  -%}
+  {% endif %}
+{% endfor %}
+  <button type="submit" class="btn medium-up--five-eighths" {% unless product.first_available_variant.available %}disabled="disabled" {% endunless %}onclick="custome_addcart(this,'{{ pp_id }}',1)">
+    <span id="r_AddToCartText"> 
+      {% unless product.first_available_variant.available %}
+      {{ 'products.product.sold_out' | t }}
+      {% else %}
+      {{ 'products.upsell.add_to_cart_button_text' | t }} 
+      {% endunless %}
+    </span>
+  </button>
+</div>
+</div>
+<style>
+  @media(min-width:320px) and (max-width:991px) {
+
+    .h4.grid-view-item__title.desktop-only {
+      display: none !important;
+    }
+
+    .h4.grid-view-item__title.mobile-only {
+      display: block !important;
+    }  
+  }
+  .h4.grid-view-item__title.desktop-only {
+    display: block;
+  }.h4.grid-view-item__title.mobile-only {
+    display: none;
+  } 
+</style>

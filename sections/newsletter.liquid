@@ -1,0 +1,220 @@
+<style> 
+  #shopify-section-{{ section.id }} .newsletter form .password__input-group{
+    display: inline-block;
+  } 
+    /*===== PARALLAX CSS =====*/
+  {% if section.settings.enable_parallax%}
+  .newsletter_section {  
+    position: relative;
+    max-height: 45vh;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+  }	
+    @media only screen and (min-width:749px) and (max-width:1024px) {
+    .newsletter_section.newsletter-both-names--true {
+      height: auto;
+      background-attachment: scroll; 
+      max-height:none;
+    }
+    .newsletter_section.newsletter-both-names--false {
+      height: auto;
+      background-attachment: scroll;
+      max-height:none;
+    }
+    {% if section.settings.display_first_name or section.settings.display_last_name %}
+    .newsletter_section.newsletter-both-names--false {
+      height: auto;
+      background-attachment: scroll;
+      max-height:none;
+    }
+    {% endif %}
+  }
+  @media only screen and (max-width:749px) {
+    .newsletter_section.newsletter-both-names--true {
+      height: auto;
+      max-height:none;
+    }
+    .newsletter_section.newsletter-both-names--false {
+      height: auto;
+      max-height:none;
+    }
+    {% if section.settings.display_first_name or section.settings.display_last_name %}
+    .newsletter_section.newsletter-both-names--false {
+      height: auto;
+      max-height:none;
+    }
+    {% endif %}
+  }
+  {% endif %}
+  /*===== END PARALLAX CSS =====*/
+</style>
+
+<div class="newsletter_section
+            {% if section.settings.display_first_name and section.settings.display_last_name %}newsletter-both-names--true {% else %}newsletter-both-names--false {% endif %}
+            {% if section.settings.image != nil %}hero__overlay newsletter-bgr-true {% else %}index-section--newsletter-background {% endif %}
+            text-{{section.settings.newsletter_section_text_align}}"            
+      {% if section.settings.image != nil %}style="background-image: url({{ section.settings.image | img_url: '1600x'}})"{% endif %}>
+  
+  <div class="page-width">
+    <div class="section_form">
+      <div class="section-header">
+        {% if section.settings.section_title != blank %}
+        <label for="Email" class="heading">{{ section.settings.section_title | escape }}</label>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+        <p class="subheading">{{ section.settings.subheading | escape }}</p>
+        {% endif %}
+      </div>
+    <div class="newsletter">
+      <span class="message"></span>
+      {% if settings.mailchimp_link != blank %}
+      
+      <span class="message"></span>
+      
+      <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="contact_form" target="_blank">
+        <div class="input-group password__input-group">
+          {% if section.settings.display_first_name %}
+          <input type="text" value="" class="firstName" name="FNAME" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
+          {% endif %}
+          {% if section.settings.display_last_name %}
+          <input type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
+          {% endif %}
+          <input type="email" id="Email" value="" name="EMAIL" class="input-group__field contact_email newsletter__input" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+          <span class="input-group__btn">
+            <button type="submit" class="btn newsletter__submit" name="subscribe" id="Subscribe">
+              <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+            </button>
+          </span>
+        </div>
+      </form>
+      
+      {% elsif settings.klaviyo_link != blank %}
+      <form action="//manage.kmail-lists.com/subscriptions/subscribe" method="post" class="klaviyo_styling klaviyo_standard_embed_{{settings.klaviyo_link}}" id="email_signup" target="_blank" novalidate="novalidate">
+        <input type="hidden" name="g" value="{{settings.klaviyo_link}}">
+        <input type="hidden" name="$fields" value="firstName,lastName"/>
+        <div class="input-group password__input-group klaviyo_field_group">
+          {% if section.settings.display_first_name %}
+          <input id="klaviyo_form_firstName" type="text" value="" class="firstName" name="firstName" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
+          {% endif %}
+          {% if section.settings.display_last_name %}
+          <input id="klaviyo_form_favorite_lastName" type="text" value="" name="lastName" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
+          {% endif %}
+          <input type="email" id="k_id_email" class="input-group__field contact_email newsletter__input" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+          <span class="input-group__btn">
+            <button type="submit" class="btn newsletter__submit klaviyo_submit_button" name="subscribe" id="btnSubmit" value="{{ 'general.newsletter_form.submit' | t }}">
+              <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+            </button>
+          </span> 
+        </div>      
+      </form>
+   
+      
+      {% else %}
+      
+      {% form 'customer' %}
+      {{ form.errors | default_errors }}
+      {% if form.posted_successfully? %}
+      <span class="message">{{ 'general.newsletter_form.confirmation' | t }}</span>
+      {% else %}
+      <div class="input-group password__input-group">
+        <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
+
+        {% if section.settings.display_first_name %}
+        <input type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+        {% endif %}
+        {% if section.settings.display_last_name %}
+        <input type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+        {% endif %}
+
+        <input type="hidden" name="challenge" value="false" />
+        <input type="email"
+               name="contact[email]"
+               id="Email"
+               class="input-group__field newsletter__input"
+               value="{% if customer %}{{ customer.email }}{% endif %}"
+               placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+               autocorrect="off"
+               autocapitalize="off">
+        <span class="input-group__btn">
+          <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+            <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+          </button>
+        </span>
+      </div>
+      {% endif %}
+      {% endform %}
+      {% endif %}
+     </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "A short sentence describing what someone will receive by subscribing"
+      },     
+      {
+        "type": "checkbox",
+        "id": "display_first_name",
+        "label": "Display first name"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_last_name",
+        "label": "Display last name"
+      },
+      {
+        "type": "select",
+        "id": "newsletter_section_text_align",
+        "label": "Alignment",
+        "options": [
+           {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+       ],
+        "default": "center"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Upload banner background image",
+        "info":"1600 x 300px recommended"
+      },     
+      {
+        "type": "checkbox",
+        "id": "enable_parallax",
+        "label": "Enable Parallax"
+      },
+      {
+        "type": "paragraph",
+        "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      }
+    ],
+    "presets": [{
+      "name": "Newsletter",
+      "category": "Promotional"
+    }]
+  }
+{% endschema %}

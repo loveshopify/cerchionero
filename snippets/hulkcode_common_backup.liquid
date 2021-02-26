@@ -1,0 +1,72 @@
+
+      <link rel='stylesheet' type='text/css' href='https://productoption.hulkapps.com/bootstrap-tooltip.css'>
+      <script>
+        if(typeof(jQuery) == "undefined"){
+          window.jQuery || document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"><\/script>')
+        }
+        if (typeof window.hulkapps_config != "object") {
+          window.hulkapps_config = {}
+        }
+
+        {% assign hulkapps_page_type = '' %}
+          window.hulkapps = {
+          shop_slug: "{{shop.permanent_domain | remove: '.myshopify.com' }}",
+          store_id: "{{shop.permanent_domain}}",
+          money_format: "{{shop.money_format | replace: '"', "'"}}",
+          customer: null,
+          cart: null,
+          is_volume_discount: null,
+          product_id: null,
+          page_type: null
+        }
+
+        {% if template contains 'cart' %}
+          {% assign hulkapps_page_type = 'cart' %}
+        {% endif %}
+
+        {% if cart %}
+          window.hulkapps.cart = {{cart | json}}
+          if (typeof window.hulkapps.cart.items == "object") {
+            for (var i=0; i<window.hulkapps.cart.items.length; i++) {
+                ["sku", "grams", "vendor", "url", "image", "handle", "requires_shipping", "product_type", "product_description"].map(function(a) {
+                    delete window.hulkapps.cart.items[i][a]
+                })
+            }
+          }
+        {% endif %}
+        
+        {% if template contains 'product' %}
+          {% assign hulkapps_page_type = 'product' %}
+          window.hulkapps.product_id = {{ product.id }};
+        {% endif %}
+        window.hulkapps.page_type = "{{hulkapps_page_type}}"
+      </script>
+
+      {% if hulkapps_page_type != '' %}
+        {{ 'hulkcode.js' | asset_url | script_tag }}
+      {% endif %}
+
+      <script>
+        {% if template != 'cart' %}
+          jQuery(function(){
+            jQuery(document).on('click', "input[name='checkout']:not(.hulkapps-ignore), input[value='Checkout']:not(.hulkapps-ignore), button[name='checkout']:not(.hulkapps-ignore), [href$='checkout']:not(.hulkapps-ignore), button[value='Checkout']:not(.hulkapps-ignore), input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc']", function(e){
+              e.preventDefault();
+              if (typeof hulkappsCheckout != "function") {
+                window.location = "/checkout";
+              }
+              jQuery.ajax({
+                          cache: false,
+                          contentType: "application/json; charset=utf-8",
+                          dataType: "json",
+                          type: "GET",
+                          url: '/cart.js',
+                          success: function(res) {
+                            window.hulkapps.cart = res
+                            hulkappsCheckout()
+                          }
+                        });
+            });
+          });
+        {% endif %}
+      </script>
+    
